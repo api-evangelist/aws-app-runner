@@ -1,10 +1,17 @@
 aid: aws-app-runner
 name: AWS App Runner
 description: >-
-  AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs at scale.
+  AWS App Runner is a fully managed service that makes it easy to build, deploy,
+  and run containerized web applications and APIs at scale. It automatically
+  builds and deploys applications, load balances traffic with encryption, and
+  scales to meet traffic needs without requiring infrastructure management.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Containers
+  - Serverless
+  - Deployment
+  - AWS
   - Microservices
 url: >-
   https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/apis.yml
@@ -15,14 +22,32 @@ apis:
   - aid: aws-app-runner:aws-app-runner
     name: AWS App Runner
     description: >-
-      AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs at scale.
-    humanURL: https://aws.amazon.com/
+      AWS App Runner is a fully managed service that makes it easy to build,
+      deploy, and run containerized web applications and APIs at scale. It
+      automatically builds and deploys applications, load balances traffic with
+      encryption, and scales to meet traffic needs without requiring
+      infrastructure management.
+    humanURL: https://aws.amazon.com/apprunner/
     tags:
+      - Containers
+      - Serverless
+      - Deployment
+      - AWS
       - Microservices
     properties: []
 common:
   - type: Website
-    url: https://aws.amazon.com/
+    url: https://aws.amazon.com/apprunner/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
+  - type: Features
+    url: https://aws.amazon.com/apprunner/features/
+  - type: Pricing
+    url: https://aws.amazon.com/apprunner/pricing/
+  - type: FAQs
+    url: https://aws.amazon.com/apprunner/faqs/
+  - type: Customers
+    url: https://aws.amazon.com/apprunner/customers/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
