@@ -1,0 +1,28 @@
+aid: aws-app-runner
+name: AWS App Runner
+description: >-
+  AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs at scale.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Microservices
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: aws-app-runner:aws-app-runner
+    name: AWS App Runner
+    description: >-
+      AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs at scale.
+    humanURL: https://aws.amazon.com/
+    tags:
+      - Microservices
+    properties: []
+common:
+  - type: Website
+    url: https://aws.amazon.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
