@@ -1,0 +1,98 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: aws-app-runner-service
+title: AWS App Runner Service
+description: >-
+  An AWS App Runner service resource representing a deployed web application
+  or API.
+type: object
+properties:
+  ServiceName:
+    type: string
+    description: The customer-provided service name.
+  ServiceId:
+    type: string
+    description: An ID that App Runner generated for this service.
+  ServiceArn:
+    type: string
+    description: The Amazon Resource Name (ARN) of this service.
+  ServiceUrl:
+    type: string
+    description: A subdomain URL that App Runner generated for this service.
+  CreatedAt:
+    type: string
+    format: date-time
+    description: The time when the service was created.
+  UpdatedAt:
+    type: string
+    format: date-time
+    description: The time when the service was last updated.
+  Status:
+    type: string
+    enum:
+      - CREATE_FAILED
+      - RUNNING
+      - DELETED
+      - DELETE_FAILED
+      - PAUSED
+      - OPERATION_IN_PROGRESS
+    description: The current state of the App Runner service.
+  SourceConfiguration:
+    type: object
+    description: The source deployed to the App Runner service.
+    properties:
+      CodeRepository:
+        type: object
+        properties:
+          RepositoryUrl:
+            type: string
+          SourceCodeVersion:
+            type: object
+            properties:
+              Type:
+                type: string
+              Value:
+                type: string
+      ImageRepository:
+        type: object
+        properties:
+          ImageIdentifier:
+            type: string
+          ImageRepositoryType:
+            type: string
+            enum:
+              - ECR
+              - ECR_PUBLIC
+      AutoDeploymentsEnabled:
+        type: boolean
+  InstanceConfiguration:
+    type: object
+    properties:
+      Cpu:
+        type: string
+        description: Number of CPU units (256, 512, 1024, 2048, 4096).
+      Memory:
+        type: string
+        description: Amount of memory in MB (512, 1024, 2048, 3072, 4096, 6144, 8192, 10240, 12288).
+      InstanceRoleArn:
+        type: string
+  HealthCheckConfiguration:
+    type: object
+    properties:
+      Protocol:
+        type: string
+        enum:
+          - TCP
+          - HTTP
+      Path:
+        type: string
+      Interval:
+        type: integer
+      Timeout:
+        type: integer
+      HealthyThreshold:
+        type: integer
+      UnhealthyThreshold:
+        type: integer
+required:
+  - ServiceName
+  - SourceConfiguration

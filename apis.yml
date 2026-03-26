@@ -34,7 +34,13 @@ apis:
       - Deployment
       - AWS
       - Microservices
-    properties: []
+    properties:
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/openapi/aws-app-runner-openapi.yml
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/aws-app-runner-service.yml
 common:
   - type: Website
     url: https://aws.amazon.com/apprunner/

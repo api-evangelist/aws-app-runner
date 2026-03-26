@@ -1,0 +1,1445 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner API
+  description: >-
+    AWS App Runner is a fully managed service for building, deploying, and
+    running containerized web applications and APIs. The API provides
+    operations for managing App Runner services, connections, auto scaling
+    configurations, custom domains, VPC connectors, and observability
+    configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+  - url: https://apprunner.{region}.amazonaws.com
+    description: AWS App Runner regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+paths:
+  /:
+    post:
+      operationId: CreateService
+      summary: Create an App Runner service
+      description: >-
+        Create an AWS App Runner service. After the service is created, the
+        action also automatically starts a deployment.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.CreateService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+  /#ListServices:
+    post:
+      operationId: ListServices
+      summary: List App Runner services
+      description: Returns a list of running App Runner services in your AWS account.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ListServices
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                  minimum: 1
+                  maximum: 25
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ServiceSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceSummary'
+                  NextToken:
+                    type: string
+  /#DescribeService:
+    post:
+      operationId: DescribeService
+      summary: Describe an App Runner service
+      description: Returns a full description of an App Runner service.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.DescribeService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+  /#UpdateService:
+    post:
+      operationId: UpdateService
+      summary: Update an App Runner service
+      description: >-
+        Update an AWS App Runner service. You can update the source
+        configuration, instance configuration, auto scaling, and health
+        check configuration.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.UpdateService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+  /#DeleteService:
+    post:
+      operationId: DeleteService
+      summary: Delete an App Runner service
+      description: Delete an AWS App Runner service.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.DeleteService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+  /#PauseService:
+    post:
+      operationId: PauseService
+      summary: Pause an App Runner service
+      description: >-
+        Pause an active AWS App Runner service. Pausing a service reduces
+        costs by stopping the running instances.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.PauseService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+  /#ResumeService:
+    post:
+      operationId: ResumeService
+      summary: Resume an App Runner service
+      description: Resume an active AWS App Runner service that was previously paused.
+      tags:
+        - Services
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ResumeService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+  /#StartDeployment:
+    post:
+      operationId: StartDeployment
+      summary: Start a deployment
+      description: Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository.
+      tags:
+        - Deployments
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.StartDeployment
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OperationId:
+                    type: string
+  /#ListOperations:
+    post:
+      operationId: ListOperations
+      summary: List operations
+      description: Return a list of operations that occurred on an App Runner service.
+      tags:
+        - Deployments
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ListOperations
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OperationSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OperationSummary'
+                  NextToken:
+                    type: string
+  /#CreateConnection:
+    post:
+      operationId: CreateConnection
+      summary: Create a connection
+      description: Create an AWS App Runner connection resource for a source code provider (e.g., GitHub).
+      tags:
+        - Connections
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.CreateConnection
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ConnectionName
+                - ProviderType
+              properties:
+                ConnectionName:
+                  type: string
+                ProviderType:
+                  type: string
+                  enum:
+                    - GITHUB
+                    - BITBUCKET
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Connection:
+                    $ref: '#/components/schemas/Connection'
+  /#ListConnections:
+    post:
+      operationId: ListConnections
+      summary: List connections
+      description: Returns a list of App Runner connection resources in your AWS account.
+      tags:
+        - Connections
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ListConnections
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                ConnectionName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ConnectionSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConnectionSummary'
+                  NextToken:
+                    type: string
+  /#DeleteConnection:
+    post:
+      operationId: DeleteConnection
+      summary: Delete a connection
+      description: Delete an App Runner connection.
+      tags:
+        - Connections
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.DeleteConnection
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ConnectionArn
+              properties:
+                ConnectionArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Connection:
+                    $ref: '#/components/schemas/Connection'
+  /#CreateAutoScalingConfiguration:
+    post:
+      operationId: CreateAutoScalingConfiguration
+      summary: Create an auto scaling configuration
+      description: Create an App Runner automatic scaling configuration resource.
+      tags:
+        - Auto Scaling
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.CreateAutoScalingConfiguration
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - AutoScalingConfigurationName
+              properties:
+                AutoScalingConfigurationName:
+                  type: string
+                MaxConcurrency:
+                  type: integer
+                MinSize:
+                  type: integer
+                MaxSize:
+                  type: integer
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AutoScalingConfiguration:
+                    $ref: '#/components/schemas/AutoScalingConfiguration'
+  /#ListAutoScalingConfigurations:
+    post:
+      operationId: ListAutoScalingConfigurations
+      summary: List auto scaling configurations
+      description: Returns a list of App Runner automatic scaling configurations.
+      tags:
+        - Auto Scaling
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ListAutoScalingConfigurations
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                AutoScalingConfigurationName:
+                  type: string
+                LatestOnly:
+                  type: boolean
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AutoScalingConfigurationSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AutoScalingConfigurationSummary'
+                  NextToken:
+                    type: string
+  /#AssociateCustomDomain:
+    post:
+      operationId: AssociateCustomDomain
+      summary: Associate a custom domain
+      description: Associate your own domain name with the App Runner subdomain URL of your service.
+      tags:
+        - Custom Domains
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.AssociateCustomDomain
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+                - DomainName
+              properties:
+                ServiceArn:
+                  type: string
+                DomainName:
+                  type: string
+                EnableWWWSubdomain:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomain:
+                    $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+  /#DescribeCustomDomains:
+    post:
+      operationId: DescribeCustomDomains
+      summary: Describe custom domains
+      description: Return a description of custom domain names associated with an App Runner service.
+      tags:
+        - Custom Domains
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.DescribeCustomDomains
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomains:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+                  NextToken:
+                    type: string
+  /#DisassociateCustomDomain:
+    post:
+      operationId: DisassociateCustomDomain
+      summary: Disassociate a custom domain
+      description: Disassociate a custom domain name from an App Runner service.
+      tags:
+        - Custom Domains
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.DisassociateCustomDomain
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ServiceArn
+                - DomainName
+              properties:
+                ServiceArn:
+                  type: string
+                DomainName:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomain:
+                    $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+  /#CreateVpcConnector:
+    post:
+      operationId: CreateVpcConnector
+      summary: Create a VPC connector
+      description: Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC.
+      tags:
+        - VPC
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.CreateVpcConnector
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - VpcConnectorName
+                - Subnets
+              properties:
+                VpcConnectorName:
+                  type: string
+                Subnets:
+                  type: array
+                  items:
+                    type: string
+                SecurityGroups:
+                  type: array
+                  items:
+                    type: string
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VpcConnector:
+                    $ref: '#/components/schemas/VpcConnector'
+  /#ListVpcConnectors:
+    post:
+      operationId: ListVpcConnectors
+      summary: List VPC connectors
+      description: Returns a list of App Runner VPC connectors in your AWS account.
+      tags:
+        - VPC
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.ListVpcConnectors
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VpcConnectors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcConnector'
+                  NextToken:
+                    type: string
+  /#CreateObservabilityConfiguration:
+    post:
+      operationId: CreateObservabilityConfiguration
+      summary: Create an observability configuration
+      description: Create an App Runner observability configuration resource.
+      tags:
+        - Observability
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          required: true
+          schema:
+            type: string
+            enum:
+              - AppRunner.CreateObservabilityConfiguration
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+                - ObservabilityConfigurationName
+              properties:
+                ObservabilityConfigurationName:
+                  type: string
+                TraceConfiguration:
+                  type: object
+                  properties:
+                    Vendor:
+                      type: string
+                      enum:
+                        - AWSXRAY
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ObservabilityConfiguration:
+                    $ref: '#/components/schemas/ObservabilityConfiguration'
+components:
+  schemas:
+    Service:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+            - CREATE_FAILED
+            - RUNNING
+            - DELETED
+            - DELETE_FAILED
+            - PAUSED
+            - OPERATION_IN_PROGRESS
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        AutoScalingConfigurationSummary:
+          $ref: '#/components/schemas/AutoScalingConfigurationSummary'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                    - DEFAULT
+                    - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+                - IPV4
+                - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+        EncryptionConfiguration:
+          type: object
+          properties:
+            KmsKey:
+              type: string
+    ServiceSummary:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+            - CREATE_FAILED
+            - RUNNING
+            - DELETED
+            - DELETE_FAILED
+            - PAUSED
+            - OPERATION_IN_PROGRESS
+    CreateServiceRequest:
+      type: object
+      required:
+        - ServiceName
+        - SourceConfiguration
+      properties:
+        ServiceName:
+          type: string
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        EncryptionConfiguration:
+          type: object
+          properties:
+            KmsKey:
+              type: string
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        AutoScalingConfigurationArn:
+          type: string
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                    - DEFAULT
+                    - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+                - IPV4
+                - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+    UpdateServiceRequest:
+      type: object
+      required:
+        - ServiceArn
+      properties:
+        ServiceArn:
+          type: string
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        AutoScalingConfigurationArn:
+          type: string
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                    - DEFAULT
+                    - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+                - IPV4
+                - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+    SourceConfiguration:
+      type: object
+      properties:
+        CodeRepository:
+          type: object
+          properties:
+            RepositoryUrl:
+              type: string
+            SourceCodeVersion:
+              type: object
+              properties:
+                Type:
+                  type: string
+                  enum:
+                    - BRANCH
+                Value:
+                  type: string
+            CodeConfiguration:
+              type: object
+              properties:
+                ConfigurationSource:
+                  type: string
+                  enum:
+                    - REPOSITORY
+                    - API
+                CodeConfigurationValues:
+                  type: object
+                  properties:
+                    Runtime:
+                      type: string
+                      enum:
+                        - PYTHON_3
+                        - NODEJS_12
+                        - NODEJS_14
+                        - NODEJS_16
+                        - NODEJS_18
+                        - CORRETTO_8
+                        - CORRETTO_11
+                        - GO_1
+                        - DOTNET_6
+                        - PHP_81
+                        - RUBY_31
+                    BuildCommand:
+                      type: string
+                    StartCommand:
+                      type: string
+                    Port:
+                      type: string
+                    RuntimeEnvironmentVariables:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    RuntimeEnvironmentSecrets:
+                      type: object
+                      additionalProperties:
+                        type: string
+            SourceDirectory:
+              type: string
+        ImageRepository:
+          type: object
+          properties:
+            ImageIdentifier:
+              type: string
+            ImageConfiguration:
+              type: object
+              properties:
+                RuntimeEnvironmentVariables:
+                  type: object
+                  additionalProperties:
+                    type: string
+                RuntimeEnvironmentSecrets:
+                  type: object
+                  additionalProperties:
+                    type: string
+                StartCommand:
+                  type: string
+                Port:
+                  type: string
+            ImageRepositoryType:
+              type: string
+              enum:
+                - ECR
+                - ECR_PUBLIC
+        AutoDeploymentsEnabled:
+          type: boolean
+        AuthenticationConfiguration:
+          type: object
+          properties:
+            ConnectionArn:
+              type: string
+            AccessRoleArn:
+              type: string
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
+    HealthCheckConfiguration:
+      type: object
+      properties:
+        Protocol:
+          type: string
+          enum:
+            - TCP
+            - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
+    AutoScalingConfiguration:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Latest:
+          type: boolean
+        Status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        MaxConcurrency:
+          type: integer
+        MinSize:
+          type: integer
+        MaxSize:
+          type: integer
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    Connection:
+      type: object
+      properties:
+        ConnectionName:
+          type: string
+        ConnectionArn:
+          type: string
+        ProviderType:
+          type: string
+          enum:
+            - GITHUB
+            - BITBUCKET
+        Status:
+          type: string
+          enum:
+            - PENDING_HANDSHAKE
+            - AVAILABLE
+            - ERROR
+            - DELETED
+        CreatedAt:
+          type: string
+          format: date-time
+    ConnectionSummary:
+      type: object
+      properties:
+        ConnectionName:
+          type: string
+        ConnectionArn:
+          type: string
+        ProviderType:
+          type: string
+          enum:
+            - GITHUB
+            - BITBUCKET
+        Status:
+          type: string
+          enum:
+            - PENDING_HANDSHAKE
+            - AVAILABLE
+            - ERROR
+            - DELETED
+        CreatedAt:
+          type: string
+          format: date-time
+    CustomDomain:
+      type: object
+      properties:
+        DomainName:
+          type: string
+        EnableWWWSubdomain:
+          type: boolean
+        CertificateValidationRecords:
+          type: array
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+              Type:
+                type: string
+              Value:
+                type: string
+              Status:
+                type: string
+                enum:
+                  - PENDING_VALIDATION
+                  - SUCCESS
+                  - FAILED
+        Status:
+          type: string
+          enum:
+            - CREATING
+            - CREATE_FAILED
+            - ACTIVE
+            - DELETING
+            - DELETE_FAILED
+            - PENDING_CERTIFICATE_DNS_VALIDATION
+            - BINDING_CERTIFICATE
+    VpcDNSTarget:
+      type: object
+      properties:
+        VpcIngressConnectionArn:
+          type: string
+        VpcId:
+          type: string
+        DomainName:
+          type: string
+    VpcConnector:
+      type: object
+      properties:
+        VpcConnectorName:
+          type: string
+        VpcConnectorArn:
+          type: string
+        VpcConnectorRevision:
+          type: integer
+        Subnets:
+          type: array
+          items:
+            type: string
+        SecurityGroups:
+          type: array
+          items:
+            type: string
+        Status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+    ObservabilityConfiguration:
+      type: object
+      properties:
+        ObservabilityConfigurationArn:
+          type: string
+        ObservabilityConfigurationName:
+          type: string
+        ObservabilityConfigurationRevision:
+          type: integer
+        Latest:
+          type: boolean
+        Status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        TraceConfiguration:
+          type: object
+          properties:
+            Vendor:
+              type: string
+              enum:
+                - AWSXRAY
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+    OperationSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        Type:
+          type: string
+          enum:
+            - CREATE_SERVICE
+            - START_DEPLOYMENT
+            - PAUSE_SERVICE
+            - RESUME_SERVICE
+            - DELETE_SERVICE
+            - UPDATE_SERVICE
+        Status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROGRESS
+            - FAILED
+            - SUCCEEDED
+            - ROLLBACK_IN_PROGRESS
+            - ROLLBACK_FAILED
+            - ROLLBACK_SUCCEEDED
+        TargetArn:
+          type: string
+        StartedAt:
+          type: string
+          format: date-time
+        EndedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4
+security:
+  - aws_sig_v4: []
+tags:
+  - name: Services
+    description: Manage App Runner services
+  - name: Deployments
+    description: Manage deployments and operations
+  - name: Connections
+    description: Manage source code provider connections
+  - name: Auto Scaling
+    description: Manage auto scaling configurations
+  - name: Custom Domains
+    description: Manage custom domain associations
+  - name: VPC
+    description: Manage VPC connectors
+  - name: Observability
+    description: Manage observability configurations
