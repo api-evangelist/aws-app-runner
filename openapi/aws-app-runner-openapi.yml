@@ -26,8 +26,7 @@ paths:
       description: >-
         Create an AWS App Runner service. After the service is created, the
         action also automatically starts a deployment.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -59,8 +58,7 @@ paths:
       operationId: ListServices
       summary: AWS App Runner List App Runner services
       description: Returns a list of running App Runner services in your AWS account.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -100,8 +98,7 @@ paths:
       operationId: DescribeService
       summary: AWS App Runner Describe an App Runner service
       description: Returns a full description of an App Runner service.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -139,8 +136,7 @@ paths:
         Update an AWS App Runner service. You can update the source
         configuration, instance configuration, auto scaling, and health
         check configuration.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -172,8 +168,7 @@ paths:
       operationId: DeleteService
       summary: AWS App Runner Delete an App Runner service
       description: Delete an AWS App Runner service.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -212,8 +207,7 @@ paths:
       description: >-
         Pause an active AWS App Runner service. Pausing a service reduces
         costs by stopping the running instances.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -250,8 +244,7 @@ paths:
       operationId: ResumeService
       summary: AWS App Runner Resume an App Runner service
       description: Resume an active AWS App Runner service that was previously paused.
-      tags:
-        - Services
+      tags: []
       parameters:
         - name: X-Amz-Target
           in: header
@@ -1429,17 +1422,15 @@ components:
 security:
   - aws_sig_v4: []
 tags:
-  - name: Services
-    description: Manage App Runner services
-  - name: Deployments
-    description: Manage deployments and operations
-  - name: Connections
-    description: Manage source code provider connections
   - name: Auto Scaling
     description: Manage auto scaling configurations
+  - name: Connections
+    description: Manage source code provider connections
   - name: Custom Domains
     description: Manage custom domain associations
-  - name: VPC
-    description: Manage VPC connectors
+  - name: Deployments
+    description: Manage deployments and operations
   - name: Observability
     description: Manage observability configurations
+  - name: VPC
+    description: Manage VPC connectors
