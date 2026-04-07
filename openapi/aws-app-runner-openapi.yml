@@ -22,7 +22,7 @@ paths:
   /:
     post:
       operationId: CreateService
-      summary: Create an App Runner service
+      summary: AWS App Runner Create an App Runner service
       description: >-
         Create an AWS App Runner service. After the service is created, the
         action also automatically starts a deployment.
@@ -57,7 +57,7 @@ paths:
   /#ListServices:
     post:
       operationId: ListServices
-      summary: List App Runner services
+      summary: AWS App Runner List App Runner services
       description: Returns a list of running App Runner services in your AWS account.
       tags:
         - Services
@@ -98,7 +98,7 @@ paths:
   /#DescribeService:
     post:
       operationId: DescribeService
-      summary: Describe an App Runner service
+      summary: AWS App Runner Describe an App Runner service
       description: Returns a full description of an App Runner service.
       tags:
         - Services
@@ -134,7 +134,7 @@ paths:
   /#UpdateService:
     post:
       operationId: UpdateService
-      summary: Update an App Runner service
+      summary: AWS App Runner Update an App Runner service
       description: >-
         Update an AWS App Runner service. You can update the source
         configuration, instance configuration, auto scaling, and health
@@ -170,7 +170,7 @@ paths:
   /#DeleteService:
     post:
       operationId: DeleteService
-      summary: Delete an App Runner service
+      summary: AWS App Runner Delete an App Runner service
       description: Delete an AWS App Runner service.
       tags:
         - Services
@@ -208,7 +208,7 @@ paths:
   /#PauseService:
     post:
       operationId: PauseService
-      summary: Pause an App Runner service
+      summary: AWS App Runner Pause an App Runner service
       description: >-
         Pause an active AWS App Runner service. Pausing a service reduces
         costs by stopping the running instances.
@@ -248,7 +248,7 @@ paths:
   /#ResumeService:
     post:
       operationId: ResumeService
-      summary: Resume an App Runner service
+      summary: AWS App Runner Resume an App Runner service
       description: Resume an active AWS App Runner service that was previously paused.
       tags:
         - Services
@@ -286,7 +286,7 @@ paths:
   /#StartDeployment:
     post:
       operationId: StartDeployment
-      summary: Start a deployment
+      summary: AWS App Runner Start a deployment
       description: Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository.
       tags:
         - Deployments
@@ -322,7 +322,7 @@ paths:
   /#ListOperations:
     post:
       operationId: ListOperations
-      summary: List operations
+      summary: AWS App Runner List operations
       description: Return a list of operations that occurred on an App Runner service.
       tags:
         - Deployments
@@ -366,7 +366,7 @@ paths:
   /#CreateConnection:
     post:
       operationId: CreateConnection
-      summary: Create a connection
+      summary: AWS App Runner Create a connection
       description: Create an AWS App Runner connection resource for a source code provider (e.g., GitHub).
       tags:
         - Connections
@@ -412,7 +412,7 @@ paths:
   /#ListConnections:
     post:
       operationId: ListConnections
-      summary: List connections
+      summary: AWS App Runner List connections
       description: Returns a list of App Runner connection resources in your AWS account.
       tags:
         - Connections
@@ -453,7 +453,7 @@ paths:
   /#DeleteConnection:
     post:
       operationId: DeleteConnection
-      summary: Delete a connection
+      summary: AWS App Runner Delete a connection
       description: Delete an App Runner connection.
       tags:
         - Connections
@@ -489,7 +489,7 @@ paths:
   /#CreateAutoScalingConfiguration:
     post:
       operationId: CreateAutoScalingConfiguration
-      summary: Create an auto scaling configuration
+      summary: AWS App Runner Create an auto scaling configuration
       description: Create an App Runner automatic scaling configuration resource.
       tags:
         - Auto Scaling
@@ -535,7 +535,7 @@ paths:
   /#ListAutoScalingConfigurations:
     post:
       operationId: ListAutoScalingConfigurations
-      summary: List auto scaling configurations
+      summary: AWS App Runner List auto scaling configurations
       description: Returns a list of App Runner automatic scaling configurations.
       tags:
         - Auto Scaling
@@ -578,7 +578,7 @@ paths:
   /#AssociateCustomDomain:
     post:
       operationId: AssociateCustomDomain
-      summary: Associate a custom domain
+      summary: AWS App Runner Associate a custom domain
       description: Associate your own domain name with the App Runner subdomain URL of your service.
       tags:
         - Custom Domains
@@ -627,7 +627,7 @@ paths:
   /#DescribeCustomDomains:
     post:
       operationId: DescribeCustomDomains
-      summary: Describe custom domains
+      summary: AWS App Runner Describe custom domains
       description: Return a description of custom domain names associated with an App Runner service.
       tags:
         - Custom Domains
@@ -679,7 +679,7 @@ paths:
   /#DisassociateCustomDomain:
     post:
       operationId: DisassociateCustomDomain
-      summary: Disassociate a custom domain
+      summary: AWS App Runner Disassociate a custom domain
       description: Disassociate a custom domain name from an App Runner service.
       tags:
         - Custom Domains
@@ -726,7 +726,7 @@ paths:
   /#CreateVpcConnector:
     post:
       operationId: CreateVpcConnector
-      summary: Create a VPC connector
+      summary: AWS App Runner Create a VPC connector
       description: Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC.
       tags:
         - VPC
@@ -775,7 +775,7 @@ paths:
   /#ListVpcConnectors:
     post:
       operationId: ListVpcConnectors
-      summary: List VPC connectors
+      summary: AWS App Runner List VPC connectors
       description: Returns a list of App Runner VPC connectors in your AWS account.
       tags:
         - VPC
@@ -814,7 +814,7 @@ paths:
   /#CreateObservabilityConfiguration:
     post:
       operationId: CreateObservabilityConfiguration
-      summary: Create an observability configuration
+      summary: AWS App Runner Create an observability configuration
       description: Create an App Runner observability configuration resource.
       tags:
         - Observability
