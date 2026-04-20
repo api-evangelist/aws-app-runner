@@ -1,0 +1,85 @@
+{
+  "ServiceName": "my-app-service",
+  "ServiceId": "abc123",
+  "ServiceArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "ServiceUrl": "https://example.awsapprunner.com",
+  "CreatedAt": "example-value",
+  "UpdatedAt": "example-value",
+  "DeletedAt": "example-value",
+  "Status": "CREATE_FAILED",
+  "SourceConfiguration": {
+    "CodeRepository": {
+      "RepositoryUrl": "https://example.awsapprunner.com",
+      "SourceCodeVersion": {
+        "Type": "BRANCH",
+        "Value": "example-value"
+      },
+      "CodeConfiguration": {
+        "ConfigurationSource": "REPOSITORY",
+        "CodeConfigurationValues": {
+          "Runtime": {},
+          "BuildCommand": {},
+          "StartCommand": {},
+          "Port": {},
+          "RuntimeEnvironmentVariables": {},
+          "RuntimeEnvironmentSecrets": {}
+        }
+      },
+      "SourceDirectory": "example-value"
+    },
+    "ImageRepository": {
+      "ImageIdentifier": "abc123",
+      "ImageConfiguration": {
+        "RuntimeEnvironmentVariables": {},
+        "RuntimeEnvironmentSecrets": {},
+        "StartCommand": "example-value",
+        "Port": "example-value"
+      },
+      "ImageRepositoryType": "ECR"
+    },
+    "AutoDeploymentsEnabled": true,
+    "AuthenticationConfiguration": {
+      "ConnectionArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+      "AccessRoleArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+    }
+  },
+  "InstanceConfiguration": {
+    "Cpu": "example-value",
+    "Memory": "example-value",
+    "InstanceRoleArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+  },
+  "HealthCheckConfiguration": {
+    "Protocol": "TCP",
+    "Path": "example-value",
+    "Interval": 42,
+    "Timeout": 42,
+    "HealthyThreshold": 42,
+    "UnhealthyThreshold": 42
+  },
+  "AutoScalingConfigurationSummary": {
+    "AutoScalingConfigurationArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+    "AutoScalingConfigurationName": "my-app-service",
+    "AutoScalingConfigurationRevision": 42,
+    "Status": "ACTIVE",
+    "CreatedAt": "example-value",
+    "HasAssociatedService": true,
+    "IsDefault": true
+  },
+  "NetworkConfiguration": {
+    "EgressConfiguration": {
+      "EgressType": "DEFAULT",
+      "VpcConnectorArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+    },
+    "IngressConfiguration": {
+      "IsPubliclyAccessible": true
+    },
+    "IpAddressType": "IPV4"
+  },
+  "ObservabilityConfiguration": {
+    "ObservabilityEnabled": true,
+    "ObservabilityConfigurationArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+  },
+  "EncryptionConfiguration": {
+    "KmsKey": "example-value"
+  }
+}

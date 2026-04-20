@@ -1,0 +1,12 @@
+{
+  "ObservabilityConfigurationArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "ObservabilityConfigurationName": "my-app-service",
+  "ObservabilityConfigurationRevision": 42,
+  "Latest": true,
+  "Status": "ACTIVE",
+  "TraceConfiguration": {
+    "Vendor": "AWSXRAY"
+  },
+  "CreatedAt": "example-value",
+  "DeletedAt": "example-value"
+}

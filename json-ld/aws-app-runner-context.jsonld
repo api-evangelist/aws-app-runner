@@ -1,0 +1,273 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aws": "https://aws.amazon.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AutoScalingConfiguration": "aws:AutoScalingConfiguration",
+    "ConnectionSummary": "aws:ConnectionSummary",
+    "InstanceConfiguration": {
+      "@id": "aws:InstanceConfiguration",
+      "@type": "@id"
+    },
+    "ObservabilityConfiguration": {
+      "@id": "aws:ObservabilityConfiguration",
+      "@type": "@id"
+    },
+    "OperationSummary": "aws:OperationSummary",
+    "Service": "aws:Service",
+    "CreateServiceRequest": "aws:CreateServiceRequest",
+    "AutoScalingConfigurationSummary": {
+      "@id": "aws:AutoScalingConfigurationSummary",
+      "@type": "@id"
+    },
+    "SourceConfiguration": {
+      "@id": "aws:SourceConfiguration",
+      "@type": "@id"
+    },
+    "UpdateServiceRequest": "aws:UpdateServiceRequest",
+    "Tag": "aws:Tag",
+    "CustomDomain": "aws:CustomDomain",
+    "Connection": "aws:Connection",
+    "VpcConnector": "aws:VpcConnector",
+    "VpcDNSTarget": "aws:VpcDNSTarget",
+    "HealthCheckConfiguration": {
+      "@id": "aws:HealthCheckConfiguration",
+      "@type": "@id"
+    },
+    "ServiceSummary": "aws:ServiceSummary",
+    "Cpu": {
+      "@id": "aws:Cpu",
+      "@type": "xsd:string"
+    },
+    "Memory": {
+      "@id": "aws:Memory",
+      "@type": "xsd:string"
+    },
+    "InstanceRoleArn": {
+      "@id": "aws:InstanceRoleArn",
+      "@type": "xsd:string"
+    },
+    "VpcIngressConnectionArn": {
+      "@id": "aws:VpcIngressConnectionArn",
+      "@type": "xsd:string"
+    },
+    "VpcId": {
+      "@id": "aws:VpcId",
+      "@type": "xsd:string"
+    },
+    "DomainName": {
+      "@id": "aws:DomainName",
+      "@type": "xsd:string"
+    },
+    "ConnectionName": {
+      "@id": "aws:ConnectionName",
+      "@type": "xsd:string"
+    },
+    "ConnectionArn": {
+      "@id": "aws:ConnectionArn",
+      "@type": "xsd:string"
+    },
+    "ProviderType": {
+      "@id": "aws:ProviderType",
+      "@type": "xsd:string"
+    },
+    "Status": {
+      "@id": "aws:Status",
+      "@type": "xsd:string"
+    },
+    "CreatedAt": {
+      "@id": "aws:CreatedAt",
+      "@type": "xsd:dateTime"
+    },
+    "ServiceName": {
+      "@id": "aws:ServiceName",
+      "@type": "xsd:string"
+    },
+    "Tags": {
+      "@id": "aws:Tags",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "EncryptionConfiguration": {
+      "@id": "aws:EncryptionConfiguration",
+      "@type": "@id"
+    },
+    "AutoScalingConfigurationArn": {
+      "@id": "aws:AutoScalingConfigurationArn",
+      "@type": "xsd:string"
+    },
+    "NetworkConfiguration": {
+      "@id": "aws:NetworkConfiguration",
+      "@type": "@id"
+    },
+    "ServiceId": {
+      "@id": "aws:ServiceId",
+      "@type": "xsd:string"
+    },
+    "ServiceArn": {
+      "@id": "aws:ServiceArn",
+      "@type": "xsd:string"
+    },
+    "ServiceUrl": {
+      "@id": "aws:ServiceUrl",
+      "@type": "xsd:string"
+    },
+    "UpdatedAt": {
+      "@id": "aws:UpdatedAt",
+      "@type": "xsd:dateTime"
+    },
+    "DeletedAt": {
+      "@id": "aws:DeletedAt",
+      "@type": "xsd:dateTime"
+    },
+    "AutoScalingConfigurationName": {
+      "@id": "aws:AutoScalingConfigurationName",
+      "@type": "xsd:string"
+    },
+    "AutoScalingConfigurationRevision": {
+      "@id": "aws:AutoScalingConfigurationRevision",
+      "@type": "xsd:integer"
+    },
+    "HasAssociatedService": {
+      "@id": "aws:HasAssociatedService",
+      "@type": "xsd:boolean"
+    },
+    "IsDefault": {
+      "@id": "aws:IsDefault",
+      "@type": "xsd:boolean"
+    },
+    "VpcConnectorName": {
+      "@id": "aws:VpcConnectorName",
+      "@type": "xsd:string"
+    },
+    "VpcConnectorArn": {
+      "@id": "aws:VpcConnectorArn",
+      "@type": "xsd:string"
+    },
+    "VpcConnectorRevision": {
+      "@id": "aws:VpcConnectorRevision",
+      "@type": "xsd:integer"
+    },
+    "Subnets": {
+      "@id": "aws:Subnets",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "SecurityGroups": {
+      "@id": "aws:SecurityGroups",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ObservabilityConfigurationArn": {
+      "@id": "aws:ObservabilityConfigurationArn",
+      "@type": "xsd:string"
+    },
+    "ObservabilityConfigurationName": {
+      "@id": "aws:ObservabilityConfigurationName",
+      "@type": "xsd:string"
+    },
+    "ObservabilityConfigurationRevision": {
+      "@id": "aws:ObservabilityConfigurationRevision",
+      "@type": "xsd:integer"
+    },
+    "Latest": {
+      "@id": "aws:Latest",
+      "@type": "xsd:boolean"
+    },
+    "TraceConfiguration": {
+      "@id": "aws:TraceConfiguration",
+      "@type": "@id"
+    },
+    "Protocol": {
+      "@id": "aws:Protocol",
+      "@type": "xsd:string"
+    },
+    "Path": {
+      "@id": "aws:Path",
+      "@type": "xsd:string"
+    },
+    "Interval": {
+      "@id": "aws:Interval",
+      "@type": "xsd:integer"
+    },
+    "Timeout": {
+      "@id": "aws:Timeout",
+      "@type": "xsd:integer"
+    },
+    "HealthyThreshold": {
+      "@id": "aws:HealthyThreshold",
+      "@type": "xsd:integer"
+    },
+    "UnhealthyThreshold": {
+      "@id": "aws:UnhealthyThreshold",
+      "@type": "xsd:integer"
+    },
+    "Key": {
+      "@id": "aws:Key",
+      "@type": "xsd:string"
+    },
+    "Value": {
+      "@id": "aws:Value",
+      "@type": "xsd:string"
+    },
+    "MaxConcurrency": {
+      "@id": "aws:MaxConcurrency",
+      "@type": "xsd:integer"
+    },
+    "MinSize": {
+      "@id": "aws:MinSize",
+      "@type": "xsd:integer"
+    },
+    "MaxSize": {
+      "@id": "aws:MaxSize",
+      "@type": "xsd:integer"
+    },
+    "Id": {
+      "@id": "aws:Id",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "aws:Type",
+      "@type": "xsd:string"
+    },
+    "TargetArn": {
+      "@id": "aws:TargetArn",
+      "@type": "xsd:string"
+    },
+    "StartedAt": {
+      "@id": "aws:StartedAt",
+      "@type": "xsd:dateTime"
+    },
+    "EndedAt": {
+      "@id": "aws:EndedAt",
+      "@type": "xsd:dateTime"
+    },
+    "CodeRepository": {
+      "@id": "aws:CodeRepository",
+      "@type": "@id"
+    },
+    "ImageRepository": {
+      "@id": "aws:ImageRepository",
+      "@type": "@id"
+    },
+    "AutoDeploymentsEnabled": {
+      "@id": "aws:AutoDeploymentsEnabled",
+      "@type": "xsd:boolean"
+    },
+    "AuthenticationConfiguration": {
+      "@id": "aws:AuthenticationConfiguration",
+      "@type": "@id"
+    },
+    "EnableWWWSubdomain": {
+      "@id": "aws:EnableWWWSubdomain",
+      "@type": "xsd:boolean"
+    },
+    "CertificateValidationRecords": {
+      "@id": "aws:CertificateValidationRecords",
+      "@container": "@set",
+      "@type": "@id"
+    }
+  }
+}

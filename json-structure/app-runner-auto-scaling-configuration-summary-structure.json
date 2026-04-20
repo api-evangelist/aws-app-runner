@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "AutoScalingConfigurationArn": {
+      "type": "string"
+    },
+    "AutoScalingConfigurationName": {
+      "type": "string"
+    },
+    "AutoScalingConfigurationRevision": {
+      "type": "int32"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "CreatedAt": {
+      "type": "datetime"
+    },
+    "HasAssociatedService": {
+      "type": "boolean"
+    },
+    "IsDefault": {
+      "type": "boolean"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-auto-scaling-configuration-summary-structure.json",
+  "name": "AutoScalingConfigurationSummary",
+  "description": "AutoScalingConfigurationSummary schema from AWS App Runner"
+}

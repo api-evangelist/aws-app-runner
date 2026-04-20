@@ -1,0 +1,9 @@
+{
+  "Id": "abc123",
+  "Type": "CREATE_SERVICE",
+  "Status": "PENDING",
+  "TargetArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "StartedAt": "example-value",
+  "EndedAt": "example-value",
+  "UpdatedAt": "example-value"
+}

@@ -1,0 +1,268 @@
+{
+  "type": "object",
+  "properties": {
+    "ServiceName": {
+      "type": "string"
+    },
+    "SourceConfiguration": {
+      "type": "object",
+      "properties": {
+        "CodeRepository": {
+          "type": "object",
+          "properties": {
+            "RepositoryUrl": {
+              "type": "string"
+            },
+            "SourceCodeVersion": {
+              "type": "object",
+              "properties": {
+                "Type": {
+                  "type": "string",
+                  "enum": [
+                    "BRANCH"
+                  ]
+                },
+                "Value": {
+                  "type": "string"
+                }
+              }
+            },
+            "CodeConfiguration": {
+              "type": "object",
+              "properties": {
+                "ConfigurationSource": {
+                  "type": "string",
+                  "enum": [
+                    "REPOSITORY",
+                    "API"
+                  ]
+                },
+                "CodeConfigurationValues": {
+                  "type": "object",
+                  "properties": {
+                    "Runtime": {
+                      "type": "string",
+                      "enum": [
+                        "PYTHON_3",
+                        "NODEJS_12",
+                        "NODEJS_14",
+                        "NODEJS_16",
+                        "NODEJS_18",
+                        "CORRETTO_8",
+                        "CORRETTO_11",
+                        "GO_1",
+                        "DOTNET_6",
+                        "PHP_81",
+                        "RUBY_31"
+                      ]
+                    },
+                    "BuildCommand": {
+                      "type": "string"
+                    },
+                    "StartCommand": {
+                      "type": "string"
+                    },
+                    "Port": {
+                      "type": "string"
+                    },
+                    "RuntimeEnvironmentVariables": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "RuntimeEnvironmentSecrets": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "SourceDirectory": {
+              "type": "string"
+            }
+          }
+        },
+        "ImageRepository": {
+          "type": "object",
+          "properties": {
+            "ImageIdentifier": {
+              "type": "string"
+            },
+            "ImageConfiguration": {
+              "type": "object",
+              "properties": {
+                "RuntimeEnvironmentVariables": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "RuntimeEnvironmentSecrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "StartCommand": {
+                  "type": "string"
+                },
+                "Port": {
+                  "type": "string"
+                }
+              }
+            },
+            "ImageRepositoryType": {
+              "type": "string",
+              "enum": [
+                "ECR",
+                "ECR_PUBLIC"
+              ]
+            }
+          }
+        },
+        "AutoDeploymentsEnabled": {
+          "type": "boolean"
+        },
+        "AuthenticationConfiguration": {
+          "type": "object",
+          "properties": {
+            "ConnectionArn": {
+              "type": "string"
+            },
+            "AccessRoleArn": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "InstanceConfiguration": {
+      "type": "object",
+      "properties": {
+        "Cpu": {
+          "type": "string",
+          "description": "CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096)."
+        },
+        "Memory": {
+          "type": "string",
+          "description": "Memory in MB (e.g., 2048 for 2 GB)."
+        },
+        "InstanceRoleArn": {
+          "type": "string"
+        }
+      }
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Key": {
+            "type": "string"
+          },
+          "Value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "EncryptionConfiguration": {
+      "type": "object",
+      "properties": {
+        "KmsKey": {
+          "type": "string"
+        }
+      }
+    },
+    "HealthCheckConfiguration": {
+      "type": "object",
+      "properties": {
+        "Protocol": {
+          "type": "string",
+          "enum": [
+            "TCP",
+            "HTTP"
+          ]
+        },
+        "Path": {
+          "type": "string"
+        },
+        "Interval": {
+          "type": "integer",
+          "description": "Interval in seconds between health checks."
+        },
+        "Timeout": {
+          "type": "integer",
+          "description": "Timeout in seconds for each health check."
+        },
+        "HealthyThreshold": {
+          "type": "integer"
+        },
+        "UnhealthyThreshold": {
+          "type": "integer"
+        }
+      }
+    },
+    "AutoScalingConfigurationArn": {
+      "type": "string"
+    },
+    "NetworkConfiguration": {
+      "type": "object",
+      "properties": {
+        "EgressConfiguration": {
+          "type": "object",
+          "properties": {
+            "EgressType": {
+              "type": "string",
+              "enum": [
+                "DEFAULT",
+                "VPC"
+              ]
+            },
+            "VpcConnectorArn": {
+              "type": "string"
+            }
+          }
+        },
+        "IngressConfiguration": {
+          "type": "object",
+          "properties": {
+            "IsPubliclyAccessible": {
+              "type": "boolean"
+            }
+          }
+        },
+        "IpAddressType": {
+          "type": "string",
+          "enum": [
+            "IPV4",
+            "DUAL_STACK"
+          ]
+        }
+      }
+    },
+    "ObservabilityConfiguration": {
+      "type": "object",
+      "properties": {
+        "ObservabilityEnabled": {
+          "type": "boolean"
+        },
+        "ObservabilityConfigurationArn": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "ServiceName",
+    "SourceConfiguration"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/app-runner-create-service-request-schema.json",
+  "title": "CreateServiceRequest",
+  "description": "CreateServiceRequest schema from AWS App Runner"
+}

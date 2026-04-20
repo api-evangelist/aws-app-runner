@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "ObservabilityConfigurationArn": {
+      "type": "string"
+    },
+    "ObservabilityConfigurationName": {
+      "type": "string"
+    },
+    "ObservabilityConfigurationRevision": {
+      "type": "int32"
+    },
+    "Latest": {
+      "type": "boolean"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "TraceConfiguration": {
+      "type": "object",
+      "properties": {
+        "Vendor": {
+          "type": "string",
+          "enum": [
+            "AWSXRAY"
+          ]
+        }
+      }
+    },
+    "CreatedAt": {
+      "type": "datetime"
+    },
+    "DeletedAt": {
+      "type": "datetime"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-observability-configuration-structure.json",
+  "name": "ObservabilityConfiguration",
+  "description": "ObservabilityConfiguration schema from AWS App Runner"
+}

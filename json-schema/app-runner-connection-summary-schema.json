@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "ConnectionName": {
+      "type": "string"
+    },
+    "ConnectionArn": {
+      "type": "string"
+    },
+    "ProviderType": {
+      "type": "string",
+      "enum": [
+        "GITHUB",
+        "BITBUCKET"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "PENDING_HANDSHAKE",
+        "AVAILABLE",
+        "ERROR",
+        "DELETED"
+      ]
+    },
+    "CreatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/app-runner-connection-summary-schema.json",
+  "title": "ConnectionSummary",
+  "description": "ConnectionSummary schema from AWS App Runner"
+}

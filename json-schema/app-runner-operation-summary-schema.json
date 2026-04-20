@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "CREATE_SERVICE",
+        "START_DEPLOYMENT",
+        "PAUSE_SERVICE",
+        "RESUME_SERVICE",
+        "DELETE_SERVICE",
+        "UPDATE_SERVICE"
+      ]
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "IN_PROGRESS",
+        "FAILED",
+        "SUCCEEDED",
+        "ROLLBACK_IN_PROGRESS",
+        "ROLLBACK_FAILED",
+        "ROLLBACK_SUCCEEDED"
+      ]
+    },
+    "TargetArn": {
+      "type": "string"
+    },
+    "StartedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "EndedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "UpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/app-runner-operation-summary-schema.json",
+  "title": "OperationSummary",
+  "description": "OperationSummary schema from AWS App Runner"
+}

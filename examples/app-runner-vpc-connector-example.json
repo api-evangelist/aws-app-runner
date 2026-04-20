@@ -1,0 +1,14 @@
+{
+  "VpcConnectorName": "my-app-service",
+  "VpcConnectorArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "VpcConnectorRevision": 42,
+  "Subnets": [
+    "example-value"
+  ],
+  "SecurityGroups": [
+    "example-value"
+  ],
+  "Status": "ACTIVE",
+  "CreatedAt": "example-value",
+  "DeletedAt": "example-value"
+}

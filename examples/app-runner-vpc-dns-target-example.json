@@ -1,0 +1,5 @@
+{
+  "VpcIngressConnectionArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "VpcId": "abc123",
+  "DomainName": "my-app-service"
+}

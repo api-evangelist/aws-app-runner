@@ -1,0 +1,5 @@
+{
+  "Cpu": "example-value",
+  "Memory": "example-value",
+  "InstanceRoleArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+}

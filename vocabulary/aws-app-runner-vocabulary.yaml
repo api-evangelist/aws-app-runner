@@ -1,0 +1,215 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "AWS App Runner"
+  description: "Unified taxonomy for AWS App Runner covering containerized application deployment, auto-scaling, VPC connectivity, and deployment management."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: app-runner
+      version: "2020-05-15"
+      baseUrl: https://apprunner.{region}.amazonaws.com
+      status: active
+
+  resources:
+    - name: services
+      apis:
+        - app-runner
+      actions:
+        - list
+        - create
+        - describe
+        - update
+        - delete
+        - pause
+        - resume
+    - name: deployments
+      apis:
+        - app-runner
+      actions:
+        - list
+        - start
+    - name: connections
+      apis:
+        - app-runner
+      actions:
+        - list
+        - create
+        - delete
+    - name: auto-scaling-configurations
+      apis:
+        - app-runner
+      actions:
+        - list
+        - create
+        - describe
+        - delete
+    - name: vpc-connectors
+      apis:
+        - app-runner
+      actions:
+        - list
+        - create
+        - describe
+        - delete
+    - name: custom-domains
+      apis:
+        - app-runner
+      actions:
+        - associate
+        - describe
+        - disassociate
+    - name: observability-configurations
+      apis:
+        - app-runner
+      actions:
+        - list
+        - create
+
+  actions:
+    - name: list
+      methods:
+        - GET
+      pattern: read
+    - name: describe
+      methods:
+        - POST
+      pattern: read
+    - name: create
+      methods:
+        - POST
+      pattern: write
+    - name: update
+      methods:
+        - POST
+      pattern: write
+    - name: delete
+      methods:
+        - POST
+      pattern: destructive
+    - name: pause
+      methods:
+        - POST
+      pattern: write
+    - name: resume
+      methods:
+        - POST
+      pattern: write
+    - name: start
+      methods:
+        - POST
+      pattern: write
+
+  schemas:
+    core:
+      - name: Service
+        description: App Runner service with source configuration, instance config, and health checks
+      - name: ServiceSummary
+        description: Summary of an App Runner service for list operations
+    deployment:
+      - name: OperationSummary
+        description: Status of a service operation like create, update, or deployment
+    connectivity:
+      - name: VpcConnector
+        description: VPC connector enabling private backend connectivity
+      - name: CustomDomain
+        description: Custom domain name associated with an App Runner service
+    scaling:
+      - name: AutoScalingConfiguration
+        description: Configuration for min/max concurrency and instances
+
+  authentication:
+    schemes:
+      - name: AWS SigV4
+        type: apikey
+        description: AWS Signature Version 4 request signing
+
+capability:
+  workflows:
+    - name: Application Deployment Workflow
+      file: capabilities/app-deployment-workflow.yaml
+      description: Deploy, manage, and scale containerized applications with App Runner
+      apis:
+        - app-runner
+      tools: 11
+      personas:
+        - Developer
+        - Platform Engineer
+
+  personas:
+    - id: developer
+      name: Developer
+      description: Deploys and manages containerized web applications and APIs
+      workflows:
+        - Application Deployment Workflow
+    - id: platform-engineer
+      name: Platform Engineer
+      description: Manages App Runner infrastructure, scaling, and VPC connectivity
+      workflows:
+        - Application Deployment Workflow
+
+  domains:
+    - name: Application Deployment
+      description: Service lifecycle from creation to deletion
+      resources:
+        - services
+        - deployments
+    - name: Connectivity
+      description: Network connectivity including custom domains and VPC access
+      resources:
+        - connections
+        - vpc-connectors
+        - custom-domains
+    - name: Scaling and Performance
+      description: Auto-scaling and observability configuration
+      resources:
+        - auto-scaling-configurations
+        - observability-configurations
+
+  namespaces:
+    - name: app-runner
+      type: consumed
+      baseUri: https://apprunner.{region}.amazonaws.com
+    - name: app-runner-workflow-api
+      type: rest-exposed
+      port: 8080
+    - name: app-runner-workflow-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: AWS_ACCESS_KEY_ID
+      workflows:
+        - Application Deployment Workflow
+    - name: AWS_SECRET_ACCESS_KEY
+      workflows:
+        - Application Deployment Workflow
+    - name: AWS_REGION
+      workflows:
+        - Application Deployment Workflow
+
+crossReference:
+  - resource: services
+    operations:
+      - ListServices
+      - CreateService
+      - DescribeService
+      - UpdateService
+      - DeleteService
+      - PauseService
+      - ResumeService
+    workflows:
+      - Application Deployment Workflow
+    personas:
+      - Developer
+      - Platform Engineer
+  - resource: deployments
+    operations:
+      - StartDeployment
+      - ListOperations
+    workflows:
+      - Application Deployment Workflow
+    personas:
+      - Developer

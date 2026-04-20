@@ -1,0 +1,13 @@
+{
+  "DomainName": "my-app-service",
+  "EnableWWWSubdomain": true,
+  "CertificateValidationRecords": [
+    {
+      "Name": "my-app-service",
+      "Type": "example-value",
+      "Value": "example-value",
+      "Status": "PENDING_VALIDATION"
+    }
+  ],
+  "Status": "CREATING"
+}

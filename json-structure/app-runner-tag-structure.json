@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "properties": {
+    "Key": {
+      "type": "string"
+    },
+    "Value": {
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-tag-structure.json",
+  "name": "Tag",
+  "description": "Tag schema from AWS App Runner"
+}

@@ -1,0 +1,36 @@
+{
+  "CodeRepository": {
+    "RepositoryUrl": "https://example.awsapprunner.com",
+    "SourceCodeVersion": {
+      "Type": "BRANCH",
+      "Value": "example-value"
+    },
+    "CodeConfiguration": {
+      "ConfigurationSource": "REPOSITORY",
+      "CodeConfigurationValues": {
+        "Runtime": "PYTHON_3",
+        "BuildCommand": "example-value",
+        "StartCommand": "example-value",
+        "Port": "example-value",
+        "RuntimeEnvironmentVariables": {},
+        "RuntimeEnvironmentSecrets": {}
+      }
+    },
+    "SourceDirectory": "example-value"
+  },
+  "ImageRepository": {
+    "ImageIdentifier": "abc123",
+    "ImageConfiguration": {
+      "RuntimeEnvironmentVariables": {},
+      "RuntimeEnvironmentSecrets": {},
+      "StartCommand": "example-value",
+      "Port": "example-value"
+    },
+    "ImageRepositoryType": "ECR"
+  },
+  "AutoDeploymentsEnabled": true,
+  "AuthenticationConfiguration": {
+    "ConnectionArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+    "AccessRoleArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service"
+  }
+}

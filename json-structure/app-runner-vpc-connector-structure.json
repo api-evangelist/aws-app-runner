@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "VpcConnectorName": {
+      "type": "string"
+    },
+    "VpcConnectorArn": {
+      "type": "string"
+    },
+    "VpcConnectorRevision": {
+      "type": "int32"
+    },
+    "Subnets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "SecurityGroups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "CreatedAt": {
+      "type": "datetime"
+    },
+    "DeletedAt": {
+      "type": "datetime"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-vpc-connector-structure.json",
+  "name": "VpcConnector",
+  "description": "VpcConnector schema from AWS App Runner"
+}

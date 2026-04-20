@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "VpcIngressConnectionArn": {
+      "type": "string"
+    },
+    "VpcId": {
+      "type": "string"
+    },
+    "DomainName": {
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-vpc-dns-target-structure.json",
+  "name": "VpcDNSTarget",
+  "description": "VpcDNSTarget schema from AWS App Runner"
+}

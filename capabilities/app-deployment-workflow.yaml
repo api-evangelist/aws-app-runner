@@ -1,0 +1,182 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AWS App Runner Application Deployment Workflow"
+  description: "Workflow for developers and platform engineers to deploy, manage, and monitor containerized web applications and APIs using AWS App Runner. Covers service lifecycle, deployments, auto-scaling, and VPC connectivity."
+  tags:
+    - AWS App Runner
+    - AWS
+    - Containers
+    - Deployment
+    - Serverless
+    - CI/CD
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - import: app-runner
+      location: ./shared/app-runner.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: app-runner-workflow-api
+      description: "Unified REST API for AWS App Runner application deployment management."
+      resources:
+        - path: /v1/services
+          name: services
+          description: "Application service lifecycle"
+          operations:
+            - method: GET
+              name: list-services
+              description: "List all App Runner services"
+              call: "app-runner.list-services"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-service
+              description: "Deploy a new containerized application"
+              call: "app-runner.create-service"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/services/{serviceArn}/deployments
+          name: deployments
+          description: "Deployment management"
+          operations:
+            - method: POST
+              name: start-deployment
+              description: "Trigger a new deployment"
+              call: "app-runner.start-deployment"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/auto-scaling-configurations
+          name: auto-scaling
+          description: "Auto-scaling configuration"
+          operations:
+            - method: GET
+              name: list-auto-scaling-configurations
+              description: "List auto-scaling configurations"
+              call: "app-runner.list-auto-scaling-configurations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/vpc-connectors
+          name: vpc-connectors
+          description: "VPC connectivity management"
+          operations:
+            - method: GET
+              name: list-vpc-connectors
+              description: "List VPC connectors"
+              call: "app-runner.list-vpc-connectors"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: app-runner-workflow-mcp
+      transport: http
+      description: "MCP server for AI-assisted AWS App Runner application deployment."
+      tools:
+        - name: list-services
+          description: "List all App Runner services and their status"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "app-runner.list-services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-service
+          description: "Deploy a new containerized web application or API"
+          hints:
+            readOnly: false
+          call: "app-runner.create-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-service
+          description: "Get detailed status and configuration of an App Runner service"
+          hints:
+            readOnly: true
+          call: "app-runner.describe-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-service
+          description: "Update application configuration, image, or code source"
+          hints:
+            readOnly: false
+          call: "app-runner.update-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-service
+          description: "Delete an App Runner service and all its resources"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "app-runner.delete-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: start-deployment
+          description: "Trigger a new deployment of the current image or code"
+          hints:
+            readOnly: false
+          call: "app-runner.start-deployment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pause-service
+          description: "Pause a service to save costs during idle periods"
+          hints:
+            readOnly: false
+          call: "app-runner.pause-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: resume-service
+          description: "Resume a paused service to resume traffic handling"
+          hints:
+            readOnly: false
+          call: "app-runner.resume-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-connections
+          description: "List GitHub or Bitbucket source code connections"
+          hints:
+            readOnly: true
+          call: "app-runner.list-connections"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-auto-scaling-configurations
+          description: "List auto-scaling configurations for capacity management"
+          hints:
+            readOnly: true
+          call: "app-runner.list-auto-scaling-configurations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-vpc-connectors
+          description: "List VPC connectors for private backend connectivity"
+          hints:
+            readOnly: true
+          call: "app-runner.list-vpc-connectors"
+          outputParameters:
+            - type: object
+              mapping: "$."

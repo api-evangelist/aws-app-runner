@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "Protocol": {
+      "type": "string",
+      "enum": [
+        "TCP",
+        "HTTP"
+      ]
+    },
+    "Path": {
+      "type": "string"
+    },
+    "Interval": {
+      "type": "int32",
+      "description": "Interval in seconds between health checks."
+    },
+    "Timeout": {
+      "type": "int32",
+      "description": "Timeout in seconds for each health check."
+    },
+    "HealthyThreshold": {
+      "type": "int32"
+    },
+    "UnhealthyThreshold": {
+      "type": "int32"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-health-check-configuration-structure.json",
+  "name": "HealthCheckConfiguration",
+  "description": "HealthCheckConfiguration schema from AWS App Runner"
+}

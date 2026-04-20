@@ -1,0 +1,14 @@
+{
+  "AutoScalingConfigurationArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "AutoScalingConfigurationName": "my-app-service",
+  "AutoScalingConfigurationRevision": 42,
+  "Latest": true,
+  "Status": "ACTIVE",
+  "MaxConcurrency": 42,
+  "MinSize": 42,
+  "MaxSize": 42,
+  "CreatedAt": "example-value",
+  "DeletedAt": "example-value",
+  "HasAssociatedService": true,
+  "IsDefault": true
+}

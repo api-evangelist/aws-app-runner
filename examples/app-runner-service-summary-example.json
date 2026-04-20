@@ -1,0 +1,9 @@
+{
+  "ServiceName": "my-app-service",
+  "ServiceId": "abc123",
+  "ServiceArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "ServiceUrl": "https://example.awsapprunner.com",
+  "CreatedAt": "example-value",
+  "UpdatedAt": "example-value",
+  "Status": "CREATE_FAILED"
+}

@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "properties": {
+    "ServiceName": {
+      "type": "string"
+    },
+    "ServiceId": {
+      "type": "string"
+    },
+    "ServiceArn": {
+      "type": "string"
+    },
+    "ServiceUrl": {
+      "type": "string"
+    },
+    "CreatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "UpdatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "CREATE_FAILED",
+        "RUNNING",
+        "DELETED",
+        "DELETE_FAILED",
+        "PAUSED",
+        "OPERATION_IN_PROGRESS"
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/app-runner-service-summary-schema.json",
+  "title": "ServiceSummary",
+  "description": "ServiceSummary schema from AWS App Runner"
+}

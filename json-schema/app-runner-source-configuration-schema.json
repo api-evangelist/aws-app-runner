@@ -1,0 +1,140 @@
+{
+  "type": "object",
+  "properties": {
+    "CodeRepository": {
+      "type": "object",
+      "properties": {
+        "RepositoryUrl": {
+          "type": "string"
+        },
+        "SourceCodeVersion": {
+          "type": "object",
+          "properties": {
+            "Type": {
+              "type": "string",
+              "enum": [
+                "BRANCH"
+              ]
+            },
+            "Value": {
+              "type": "string"
+            }
+          }
+        },
+        "CodeConfiguration": {
+          "type": "object",
+          "properties": {
+            "ConfigurationSource": {
+              "type": "string",
+              "enum": [
+                "REPOSITORY",
+                "API"
+              ]
+            },
+            "CodeConfigurationValues": {
+              "type": "object",
+              "properties": {
+                "Runtime": {
+                  "type": "string",
+                  "enum": [
+                    "PYTHON_3",
+                    "NODEJS_12",
+                    "NODEJS_14",
+                    "NODEJS_16",
+                    "NODEJS_18",
+                    "CORRETTO_8",
+                    "CORRETTO_11",
+                    "GO_1",
+                    "DOTNET_6",
+                    "PHP_81",
+                    "RUBY_31"
+                  ]
+                },
+                "BuildCommand": {
+                  "type": "string"
+                },
+                "StartCommand": {
+                  "type": "string"
+                },
+                "Port": {
+                  "type": "string"
+                },
+                "RuntimeEnvironmentVariables": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "RuntimeEnvironmentSecrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SourceDirectory": {
+          "type": "string"
+        }
+      }
+    },
+    "ImageRepository": {
+      "type": "object",
+      "properties": {
+        "ImageIdentifier": {
+          "type": "string"
+        },
+        "ImageConfiguration": {
+          "type": "object",
+          "properties": {
+            "RuntimeEnvironmentVariables": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "RuntimeEnvironmentSecrets": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "StartCommand": {
+              "type": "string"
+            },
+            "Port": {
+              "type": "string"
+            }
+          }
+        },
+        "ImageRepositoryType": {
+          "type": "string",
+          "enum": [
+            "ECR",
+            "ECR_PUBLIC"
+          ]
+        }
+      }
+    },
+    "AutoDeploymentsEnabled": {
+      "type": "boolean"
+    },
+    "AuthenticationConfiguration": {
+      "type": "object",
+      "properties": {
+        "ConnectionArn": {
+          "type": "string"
+        },
+        "AccessRoleArn": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-schema/app-runner-source-configuration-schema.json",
+  "title": "SourceConfiguration",
+  "description": "SourceConfiguration schema from AWS App Runner"
+}

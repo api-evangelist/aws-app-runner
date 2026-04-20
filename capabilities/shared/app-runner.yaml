@@ -1,0 +1,291 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AWS App Runner"
+  description: "Fully managed service for building, deploying, and scaling containerized web applications and APIs without infrastructure management."
+  tags:
+    - AWS App Runner
+    - AWS
+    - Containers
+    - Serverless
+    - Deployment
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: app-runner
+      baseUri: https://apprunner.{region}.amazonaws.com
+      description: "AWS App Runner control plane API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_SIGV4_TOKEN}}"
+        placement: header
+      resources:
+        - name: services
+          path: /20200101/Service
+          description: "Manage App Runner services"
+          operations:
+            - name: list-services
+              method: GET
+              description: "List all App Runner services"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-service
+              method: POST
+              description: "Create a new App Runner service"
+              body:
+                type: json
+                data:
+                  ServiceName: "{{tools.service_name}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: describe-service
+              method: POST
+              description: "Get details of an App Runner service"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-service
+              method: POST
+              description: "Update an App Runner service configuration"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-service
+              method: POST
+              description: "Delete an App Runner service"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: pause-service
+              method: POST
+              description: "Pause an App Runner service to stop billing"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: resume-service
+              method: POST
+              description: "Resume a paused App Runner service"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: start-deployment
+              method: POST
+              description: "Trigger a new deployment for an App Runner service"
+              body:
+                type: json
+                data:
+                  ServiceArn: "{{tools.service_arn}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: connections
+          path: /20200101/Connection
+          description: "Manage connections to source repositories"
+          operations:
+            - name: list-connections
+              method: GET
+              description: "List all App Runner connections"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: auto-scaling
+          path: /20200101/AutoScalingConfiguration
+          description: "Manage auto-scaling configurations"
+          operations:
+            - name: list-auto-scaling-configurations
+              method: GET
+              description: "List auto-scaling configurations"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-auto-scaling-configuration
+              method: POST
+              description: "Create an auto-scaling configuration"
+              body:
+                type: json
+                data:
+                  AutoScalingConfigurationName: "{{tools.config_name}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: vpc-connectors
+          path: /20200101/VpcConnector
+          description: "Manage VPC connectors for private network access"
+          operations:
+            - name: list-vpc-connectors
+              method: GET
+              description: "List VPC connectors"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: app-runner-rest
+      resources:
+        - path: /v1/services
+          name: services
+          description: "App Runner service management"
+          operations:
+            - method: GET
+              name: list-services
+              description: "List all App Runner services"
+              call: "app-runner.list-services"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: app-runner-mcp
+      transport: http
+      tools:
+        - name: list-services
+          description: "List all App Runner services"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "app-runner.list-services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-service
+          description: "Create a new App Runner service"
+          hints:
+            readOnly: false
+          call: "app-runner.create-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: describe-service
+          description: "Get details of an App Runner service"
+          hints:
+            readOnly: true
+          call: "app-runner.describe-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-service
+          description: "Update an App Runner service configuration"
+          hints:
+            readOnly: false
+          call: "app-runner.update-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-service
+          description: "Delete an App Runner service"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "app-runner.delete-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: start-deployment
+          description: "Trigger a new deployment for an App Runner service"
+          hints:
+            readOnly: false
+          call: "app-runner.start-deployment"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: pause-service
+          description: "Pause an App Runner service to stop billing"
+          hints:
+            readOnly: false
+          call: "app-runner.pause-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: resume-service
+          description: "Resume a paused App Runner service"
+          hints:
+            readOnly: false
+          call: "app-runner.resume-service"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-connections
+          description: "List source code repository connections"
+          hints:
+            readOnly: true
+          call: "app-runner.list-connections"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-auto-scaling-configurations
+          description: "List auto-scaling configurations"
+          hints:
+            readOnly: true
+          call: "app-runner.list-auto-scaling-configurations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-vpc-connectors
+          description: "List VPC connectors for private network access"
+          hints:
+            readOnly: true
+          call: "app-runner.list-vpc-connectors"
+          outputParameters:
+            - type: object
+              mapping: "$."

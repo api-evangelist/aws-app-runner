@@ -12,29 +12,29 @@ info:
     name: Amazon Web Services
     url: https://aws.amazon.com/apprunner/
 servers:
-  - url: https://apprunner.{region}.amazonaws.com
-    description: AWS App Runner regional endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: AWS region
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
 paths:
   /:
     post:
       operationId: CreateService
-      summary: AWS App Runner Create an App Runner service
+      summary: AWS App Runner Create an App Runner Service
       description: >-
         Create an AWS App Runner service. After the service is created, the
         action also automatically starts a deployment.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.CreateService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateService
       requestBody:
         required: true
         content:
@@ -53,20 +53,54 @@ paths:
                     $ref: '#/components/schemas/Service'
                   OperationId:
                     type: string
+              examples:
+                CreateService200Example:
+                  summary: Default CreateService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListServices:
     post:
       operationId: ListServices
-      summary: AWS App Runner List App Runner services
+      summary: AWS App Runner List App Runner Services
       description: Returns a list of running App Runner services in your AWS account.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ListServices
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListServices
       requestBody:
         content:
           application/x-amz-json-1.0:
@@ -93,20 +127,31 @@ paths:
                       $ref: '#/components/schemas/ServiceSummary'
                   NextToken:
                     type: string
+              examples:
+                ListServices200Example:
+                  summary: Default ListServices 200 response
+                  x-microcks-default: true
+                  value:
+                    ServiceSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeService:
     post:
       operationId: DescribeService
-      summary: AWS App Runner Describe an App Runner service
+      summary: AWS App Runner Describe an App Runner Service
       description: Returns a full description of an App Runner service.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.DescribeService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DescribeService
       requestBody:
         required: true
         content:
@@ -114,7 +159,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -128,23 +173,56 @@ paths:
                 properties:
                   Service:
                     $ref: '#/components/schemas/Service'
+              examples:
+                DescribeService200Example:
+                  summary: Default DescribeService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#UpdateService:
     post:
       operationId: UpdateService
-      summary: AWS App Runner Update an App Runner service
+      summary: AWS App Runner Update an App Runner Service
       description: >-
         Update an AWS App Runner service. You can update the source
         configuration, instance configuration, auto scaling, and health
         check configuration.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.UpdateService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.UpdateService
       requestBody:
         required: true
         content:
@@ -163,20 +241,54 @@ paths:
                     $ref: '#/components/schemas/Service'
                   OperationId:
                     type: string
+              examples:
+                UpdateService200Example:
+                  summary: Default UpdateService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteService:
     post:
       operationId: DeleteService
-      summary: AWS App Runner Delete an App Runner service
+      summary: AWS App Runner Delete an App Runner Service
       description: Delete an AWS App Runner service.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.DeleteService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DeleteService
       requestBody:
         required: true
         content:
@@ -184,7 +296,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -200,22 +312,56 @@ paths:
                     $ref: '#/components/schemas/Service'
                   OperationId:
                     type: string
+              examples:
+                DeleteService200Example:
+                  summary: Default DeleteService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PauseService:
     post:
       operationId: PauseService
-      summary: AWS App Runner Pause an App Runner service
+      summary: AWS App Runner Pause an App Runner Service
       description: >-
         Pause an active AWS App Runner service. Pausing a service reduces
         costs by stopping the running instances.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.PauseService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.PauseService
       requestBody:
         required: true
         content:
@@ -223,7 +369,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -239,20 +385,54 @@ paths:
                     $ref: '#/components/schemas/Service'
                   OperationId:
                     type: string
+              examples:
+                PauseService200Example:
+                  summary: Default PauseService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ResumeService:
     post:
       operationId: ResumeService
-      summary: AWS App Runner Resume an App Runner service
+      summary: AWS App Runner Resume an App Runner Service
       description: Resume an active AWS App Runner service that was previously paused.
       tags: []
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ResumeService
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ResumeService
       requestBody:
         required: true
         content:
@@ -260,7 +440,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -276,21 +456,55 @@ paths:
                     $ref: '#/components/schemas/Service'
                   OperationId:
                     type: string
+              examples:
+                ResumeService200Example:
+                  summary: Default ResumeService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#StartDeployment:
     post:
       operationId: StartDeployment
-      summary: AWS App Runner Start a deployment
+      summary: AWS App Runner Start a Deployment
       description: Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository.
       tags:
-        - Deployments
+      - Deployments
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.StartDeployment
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.StartDeployment
       requestBody:
         required: true
         content:
@@ -298,7 +512,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -312,21 +526,30 @@ paths:
                 properties:
                   OperationId:
                     type: string
+              examples:
+                StartDeployment200Example:
+                  summary: Default StartDeployment 200 response
+                  x-microcks-default: true
+                  value:
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListOperations:
     post:
       operationId: ListOperations
-      summary: AWS App Runner List operations
+      summary: AWS App Runner List Operations
       description: Return a list of operations that occurred on an App Runner service.
       tags:
-        - Deployments
+      - Deployments
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ListOperations
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListOperations
       requestBody:
         required: true
         content:
@@ -334,7 +557,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -356,21 +579,32 @@ paths:
                       $ref: '#/components/schemas/OperationSummary'
                   NextToken:
                     type: string
+              examples:
+                ListOperations200Example:
+                  summary: Default ListOperations 200 response
+                  x-microcks-default: true
+                  value:
+                    OperationSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#CreateConnection:
     post:
       operationId: CreateConnection
-      summary: AWS App Runner Create a connection
+      summary: AWS App Runner Create a Connection
       description: Create an AWS App Runner connection resource for a source code provider (e.g., GitHub).
       tags:
-        - Connections
+      - Connections
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.CreateConnection
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateConnection
       requestBody:
         required: true
         content:
@@ -378,16 +612,16 @@ paths:
             schema:
               type: object
               required:
-                - ConnectionName
-                - ProviderType
+              - ConnectionName
+              - ProviderType
               properties:
                 ConnectionName:
                   type: string
                 ProviderType:
                   type: string
                   enum:
-                    - GITHUB
-                    - BITBUCKET
+                  - GITHUB
+                  - BITBUCKET
                 Tags:
                   type: array
                   items:
@@ -402,21 +636,35 @@ paths:
                 properties:
                   Connection:
                     $ref: '#/components/schemas/Connection'
+              examples:
+                CreateConnection200Example:
+                  summary: Default CreateConnection 200 response
+                  x-microcks-default: true
+                  value:
+                    Connection:
+                      ConnectionName: my-app-service
+                      ConnectionArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ProviderType: GITHUB
+                      Status: PENDING_HANDSHAKE
+                      CreatedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListConnections:
     post:
       operationId: ListConnections
-      summary: AWS App Runner List connections
+      summary: AWS App Runner List Connections
       description: Returns a list of App Runner connection resources in your AWS account.
       tags:
-        - Connections
+      - Connections
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ListConnections
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListConnections
       requestBody:
         content:
           application/x-amz-json-1.0:
@@ -443,21 +691,32 @@ paths:
                       $ref: '#/components/schemas/ConnectionSummary'
                   NextToken:
                     type: string
+              examples:
+                ListConnections200Example:
+                  summary: Default ListConnections 200 response
+                  x-microcks-default: true
+                  value:
+                    ConnectionSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteConnection:
     post:
       operationId: DeleteConnection
-      summary: AWS App Runner Delete a connection
+      summary: AWS App Runner Delete a Connection
       description: Delete an App Runner connection.
       tags:
-        - Connections
+      - Connections
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.DeleteConnection
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DeleteConnection
       requestBody:
         required: true
         content:
@@ -465,7 +724,7 @@ paths:
             schema:
               type: object
               required:
-                - ConnectionArn
+              - ConnectionArn
               properties:
                 ConnectionArn:
                   type: string
@@ -479,21 +738,35 @@ paths:
                 properties:
                   Connection:
                     $ref: '#/components/schemas/Connection'
+              examples:
+                DeleteConnection200Example:
+                  summary: Default DeleteConnection 200 response
+                  x-microcks-default: true
+                  value:
+                    Connection:
+                      ConnectionName: my-app-service
+                      ConnectionArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ProviderType: GITHUB
+                      Status: PENDING_HANDSHAKE
+                      CreatedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#CreateAutoScalingConfiguration:
     post:
       operationId: CreateAutoScalingConfiguration
-      summary: AWS App Runner Create an auto scaling configuration
+      summary: AWS App Runner Create an Auto Scaling Configuration
       description: Create an App Runner automatic scaling configuration resource.
       tags:
-        - Auto Scaling
+      - Auto Scaling
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.CreateAutoScalingConfiguration
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateAutoScalingConfiguration
       requestBody:
         required: true
         content:
@@ -501,7 +774,7 @@ paths:
             schema:
               type: object
               required:
-                - AutoScalingConfigurationName
+              - AutoScalingConfigurationName
               properties:
                 AutoScalingConfigurationName:
                   type: string
@@ -525,21 +798,42 @@ paths:
                 properties:
                   AutoScalingConfiguration:
                     $ref: '#/components/schemas/AutoScalingConfiguration'
+              examples:
+                CreateAutoScalingConfiguration200Example:
+                  summary: Default CreateAutoScalingConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    AutoScalingConfiguration:
+                      AutoScalingConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      AutoScalingConfigurationName: my-app-service
+                      AutoScalingConfigurationRevision: 42
+                      Latest: true
+                      Status: ACTIVE
+                      MaxConcurrency: 42
+                      MinSize: 42
+                      MaxSize: 42
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+                      HasAssociatedService: true
+                      IsDefault: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListAutoScalingConfigurations:
     post:
       operationId: ListAutoScalingConfigurations
-      summary: AWS App Runner List auto scaling configurations
+      summary: AWS App Runner List Auto Scaling Configurations
       description: Returns a list of App Runner automatic scaling configurations.
       tags:
-        - Auto Scaling
+      - Auto Scaling
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ListAutoScalingConfigurations
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListAutoScalingConfigurations
       requestBody:
         content:
           application/x-amz-json-1.0:
@@ -568,21 +862,32 @@ paths:
                       $ref: '#/components/schemas/AutoScalingConfigurationSummary'
                   NextToken:
                     type: string
+              examples:
+                ListAutoScalingConfigurations200Example:
+                  summary: Default ListAutoScalingConfigurations 200 response
+                  x-microcks-default: true
+                  value:
+                    AutoScalingConfigurationSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#AssociateCustomDomain:
     post:
       operationId: AssociateCustomDomain
-      summary: AWS App Runner Associate a custom domain
+      summary: AWS App Runner Associate a Custom Domain
       description: Associate your own domain name with the App Runner subdomain URL of your service.
       tags:
-        - Custom Domains
+      - Custom Domains
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.AssociateCustomDomain
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.AssociateCustomDomain
       requestBody:
         required: true
         content:
@@ -590,8 +895,8 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
-                - DomainName
+              - ServiceArn
+              - DomainName
               properties:
                 ServiceArn:
                   type: string
@@ -617,21 +922,42 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/VpcDNSTarget'
+              examples:
+                AssociateCustomDomain200Example:
+                  summary: Default AssociateCustomDomain 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomain:
+                      DomainName: my-app-service
+                      EnableWWWSubdomain: true
+                      CertificateValidationRecords:
+                      - Name: {}
+                        Type: {}
+                        Value: {}
+                        Status: {}
+                      Status: CREATING
+                    VpcDNSTargets:
+                    - example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeCustomDomains:
     post:
       operationId: DescribeCustomDomains
-      summary: AWS App Runner Describe custom domains
+      summary: AWS App Runner Describe Custom Domains
       description: Return a description of custom domain names associated with an App Runner service.
       tags:
-        - Custom Domains
+      - Custom Domains
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.DescribeCustomDomains
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DescribeCustomDomains
       requestBody:
         required: true
         content:
@@ -639,7 +965,7 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
+              - ServiceArn
               properties:
                 ServiceArn:
                   type: string
@@ -669,21 +995,36 @@ paths:
                       $ref: '#/components/schemas/VpcDNSTarget'
                   NextToken:
                     type: string
+              examples:
+                DescribeCustomDomains200Example:
+                  summary: Default DescribeCustomDomains 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomains:
+                    - example-value
+                    VpcDNSTargets:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DisassociateCustomDomain:
     post:
       operationId: DisassociateCustomDomain
-      summary: AWS App Runner Disassociate a custom domain
+      summary: AWS App Runner Disassociate a Custom Domain
       description: Disassociate a custom domain name from an App Runner service.
       tags:
-        - Custom Domains
+      - Custom Domains
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.DisassociateCustomDomain
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DisassociateCustomDomain
       requestBody:
         required: true
         content:
@@ -691,8 +1032,8 @@ paths:
             schema:
               type: object
               required:
-                - ServiceArn
-                - DomainName
+              - ServiceArn
+              - DomainName
               properties:
                 ServiceArn:
                   type: string
@@ -716,21 +1057,42 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/VpcDNSTarget'
+              examples:
+                DisassociateCustomDomain200Example:
+                  summary: Default DisassociateCustomDomain 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomain:
+                      DomainName: my-app-service
+                      EnableWWWSubdomain: true
+                      CertificateValidationRecords:
+                      - Name: {}
+                        Type: {}
+                        Value: {}
+                        Status: {}
+                      Status: CREATING
+                    VpcDNSTargets:
+                    - example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#CreateVpcConnector:
     post:
       operationId: CreateVpcConnector
-      summary: AWS App Runner Create a VPC connector
+      summary: AWS App Runner Create a VPC Connector
       description: Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC.
       tags:
-        - VPC
+      - VPC
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.CreateVpcConnector
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateVpcConnector
       requestBody:
         required: true
         content:
@@ -738,8 +1100,8 @@ paths:
             schema:
               type: object
               required:
-                - VpcConnectorName
-                - Subnets
+              - VpcConnectorName
+              - Subnets
               properties:
                 VpcConnectorName:
                   type: string
@@ -765,21 +1127,40 @@ paths:
                 properties:
                   VpcConnector:
                     $ref: '#/components/schemas/VpcConnector'
+              examples:
+                CreateVpcConnector200Example:
+                  summary: Default CreateVpcConnector 200 response
+                  x-microcks-default: true
+                  value:
+                    VpcConnector:
+                      VpcConnectorName: my-app-service
+                      VpcConnectorArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      VpcConnectorRevision: 42
+                      Subnets:
+                      - example-value
+                      SecurityGroups:
+                      - example-value
+                      Status: ACTIVE
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListVpcConnectors:
     post:
       operationId: ListVpcConnectors
-      summary: AWS App Runner List VPC connectors
+      summary: AWS App Runner List VPC Connectors
       description: Returns a list of App Runner VPC connectors in your AWS account.
       tags:
-        - VPC
+      - VPC
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.ListVpcConnectors
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListVpcConnectors
       requestBody:
         content:
           application/x-amz-json-1.0:
@@ -804,21 +1185,32 @@ paths:
                       $ref: '#/components/schemas/VpcConnector'
                   NextToken:
                     type: string
+              examples:
+                ListVpcConnectors200Example:
+                  summary: Default ListVpcConnectors 200 response
+                  x-microcks-default: true
+                  value:
+                    VpcConnectors:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#CreateObservabilityConfiguration:
     post:
       operationId: CreateObservabilityConfiguration
-      summary: AWS App Runner Create an observability configuration
+      summary: AWS App Runner Create an Observability Configuration
       description: Create an App Runner observability configuration resource.
       tags:
-        - Observability
+      - Observability
       parameters:
-        - name: X-Amz-Target
-          in: header
-          required: true
-          schema:
-            type: string
-            enum:
-              - AppRunner.CreateObservabilityConfiguration
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateObservabilityConfiguration
       requestBody:
         required: true
         content:
@@ -826,7 +1218,7 @@ paths:
             schema:
               type: object
               required:
-                - ObservabilityConfigurationName
+              - ObservabilityConfigurationName
               properties:
                 ObservabilityConfigurationName:
                   type: string
@@ -836,7 +1228,7 @@ paths:
                     Vendor:
                       type: string
                       enum:
-                        - AWSXRAY
+                      - AWSXRAY
                 Tags:
                   type: array
                   items:
@@ -851,6 +1243,24 @@ paths:
                 properties:
                   ObservabilityConfiguration:
                     $ref: '#/components/schemas/ObservabilityConfiguration'
+              examples:
+                CreateObservabilityConfiguration200Example:
+                  summary: Default CreateObservabilityConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    ObservabilityConfiguration:
+                      ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ObservabilityConfigurationName: my-app-service
+                      ObservabilityConfigurationRevision: 42
+                      Latest: true
+                      Status: ACTIVE
+                      TraceConfiguration:
+                        Vendor: AWSXRAY
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
     Service:
@@ -876,12 +1286,12 @@ components:
         Status:
           type: string
           enum:
-            - CREATE_FAILED
-            - RUNNING
-            - DELETED
-            - DELETE_FAILED
-            - PAUSED
-            - OPERATION_IN_PROGRESS
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
         SourceConfiguration:
           $ref: '#/components/schemas/SourceConfiguration'
         InstanceConfiguration:
@@ -899,8 +1309,8 @@ components:
                 EgressType:
                   type: string
                   enum:
-                    - DEFAULT
-                    - VPC
+                  - DEFAULT
+                  - VPC
                 VpcConnectorArn:
                   type: string
             IngressConfiguration:
@@ -911,8 +1321,8 @@ components:
             IpAddressType:
               type: string
               enum:
-                - IPV4
-                - DUAL_STACK
+              - IPV4
+              - DUAL_STACK
         ObservabilityConfiguration:
           type: object
           properties:
@@ -945,17 +1355,17 @@ components:
         Status:
           type: string
           enum:
-            - CREATE_FAILED
-            - RUNNING
-            - DELETED
-            - DELETE_FAILED
-            - PAUSED
-            - OPERATION_IN_PROGRESS
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
     CreateServiceRequest:
       type: object
       required:
-        - ServiceName
-        - SourceConfiguration
+      - ServiceName
+      - SourceConfiguration
       properties:
         ServiceName:
           type: string
@@ -985,8 +1395,8 @@ components:
                 EgressType:
                   type: string
                   enum:
-                    - DEFAULT
-                    - VPC
+                  - DEFAULT
+                  - VPC
                 VpcConnectorArn:
                   type: string
             IngressConfiguration:
@@ -997,8 +1407,8 @@ components:
             IpAddressType:
               type: string
               enum:
-                - IPV4
-                - DUAL_STACK
+              - IPV4
+              - DUAL_STACK
         ObservabilityConfiguration:
           type: object
           properties:
@@ -1009,7 +1419,7 @@ components:
     UpdateServiceRequest:
       type: object
       required:
-        - ServiceArn
+      - ServiceArn
       properties:
         ServiceArn:
           type: string
@@ -1030,8 +1440,8 @@ components:
                 EgressType:
                   type: string
                   enum:
-                    - DEFAULT
-                    - VPC
+                  - DEFAULT
+                  - VPC
                 VpcConnectorArn:
                   type: string
             IngressConfiguration:
@@ -1042,8 +1452,8 @@ components:
             IpAddressType:
               type: string
               enum:
-                - IPV4
-                - DUAL_STACK
+              - IPV4
+              - DUAL_STACK
         ObservabilityConfiguration:
           type: object
           properties:
@@ -1065,7 +1475,7 @@ components:
                 Type:
                   type: string
                   enum:
-                    - BRANCH
+                  - BRANCH
                 Value:
                   type: string
             CodeConfiguration:
@@ -1074,25 +1484,25 @@ components:
                 ConfigurationSource:
                   type: string
                   enum:
-                    - REPOSITORY
-                    - API
+                  - REPOSITORY
+                  - API
                 CodeConfigurationValues:
                   type: object
                   properties:
                     Runtime:
                       type: string
                       enum:
-                        - PYTHON_3
-                        - NODEJS_12
-                        - NODEJS_14
-                        - NODEJS_16
-                        - NODEJS_18
-                        - CORRETTO_8
-                        - CORRETTO_11
-                        - GO_1
-                        - DOTNET_6
-                        - PHP_81
-                        - RUBY_31
+                      - PYTHON_3
+                      - NODEJS_12
+                      - NODEJS_14
+                      - NODEJS_16
+                      - NODEJS_18
+                      - CORRETTO_8
+                      - CORRETTO_11
+                      - GO_1
+                      - DOTNET_6
+                      - PHP_81
+                      - RUBY_31
                     BuildCommand:
                       type: string
                     StartCommand:
@@ -1132,8 +1542,8 @@ components:
             ImageRepositoryType:
               type: string
               enum:
-                - ECR
-                - ECR_PUBLIC
+              - ECR
+              - ECR_PUBLIC
         AutoDeploymentsEnabled:
           type: boolean
         AuthenticationConfiguration:
@@ -1160,8 +1570,8 @@ components:
         Protocol:
           type: string
           enum:
-            - TCP
-            - HTTP
+          - TCP
+          - HTTP
         Path:
           type: string
         Interval:
@@ -1188,8 +1598,8 @@ components:
         Status:
           type: string
           enum:
-            - ACTIVE
-            - INACTIVE
+          - ACTIVE
+          - INACTIVE
         MaxConcurrency:
           type: integer
         MinSize:
@@ -1218,8 +1628,8 @@ components:
         Status:
           type: string
           enum:
-            - ACTIVE
-            - INACTIVE
+          - ACTIVE
+          - INACTIVE
         CreatedAt:
           type: string
           format: date-time
@@ -1237,15 +1647,15 @@ components:
         ProviderType:
           type: string
           enum:
-            - GITHUB
-            - BITBUCKET
+          - GITHUB
+          - BITBUCKET
         Status:
           type: string
           enum:
-            - PENDING_HANDSHAKE
-            - AVAILABLE
-            - ERROR
-            - DELETED
+          - PENDING_HANDSHAKE
+          - AVAILABLE
+          - ERROR
+          - DELETED
         CreatedAt:
           type: string
           format: date-time
@@ -1259,15 +1669,15 @@ components:
         ProviderType:
           type: string
           enum:
-            - GITHUB
-            - BITBUCKET
+          - GITHUB
+          - BITBUCKET
         Status:
           type: string
           enum:
-            - PENDING_HANDSHAKE
-            - AVAILABLE
-            - ERROR
-            - DELETED
+          - PENDING_HANDSHAKE
+          - AVAILABLE
+          - ERROR
+          - DELETED
         CreatedAt:
           type: string
           format: date-time
@@ -1292,19 +1702,19 @@ components:
               Status:
                 type: string
                 enum:
-                  - PENDING_VALIDATION
-                  - SUCCESS
-                  - FAILED
+                - PENDING_VALIDATION
+                - SUCCESS
+                - FAILED
         Status:
           type: string
           enum:
-            - CREATING
-            - CREATE_FAILED
-            - ACTIVE
-            - DELETING
-            - DELETE_FAILED
-            - PENDING_CERTIFICATE_DNS_VALIDATION
-            - BINDING_CERTIFICATE
+          - CREATING
+          - CREATE_FAILED
+          - ACTIVE
+          - DELETING
+          - DELETE_FAILED
+          - PENDING_CERTIFICATE_DNS_VALIDATION
+          - BINDING_CERTIFICATE
     VpcDNSTarget:
       type: object
       properties:
@@ -1334,8 +1744,8 @@ components:
         Status:
           type: string
           enum:
-            - ACTIVE
-            - INACTIVE
+          - ACTIVE
+          - INACTIVE
         CreatedAt:
           type: string
           format: date-time
@@ -1356,15 +1766,15 @@ components:
         Status:
           type: string
           enum:
-            - ACTIVE
-            - INACTIVE
+          - ACTIVE
+          - INACTIVE
         TraceConfiguration:
           type: object
           properties:
             Vendor:
               type: string
               enum:
-                - AWSXRAY
+              - AWSXRAY
         CreatedAt:
           type: string
           format: date-time
@@ -1379,22 +1789,22 @@ components:
         Type:
           type: string
           enum:
-            - CREATE_SERVICE
-            - START_DEPLOYMENT
-            - PAUSE_SERVICE
-            - RESUME_SERVICE
-            - DELETE_SERVICE
-            - UPDATE_SERVICE
+          - CREATE_SERVICE
+          - START_DEPLOYMENT
+          - PAUSE_SERVICE
+          - RESUME_SERVICE
+          - DELETE_SERVICE
+          - UPDATE_SERVICE
         Status:
           type: string
           enum:
-            - PENDING
-            - IN_PROGRESS
-            - FAILED
-            - SUCCEEDED
-            - ROLLBACK_IN_PROGRESS
-            - ROLLBACK_FAILED
-            - ROLLBACK_SUCCEEDED
+          - PENDING
+          - IN_PROGRESS
+          - FAILED
+          - SUCCEEDED
+          - ROLLBACK_IN_PROGRESS
+          - ROLLBACK_FAILED
+          - ROLLBACK_SUCCEEDED
         TargetArn:
           type: string
         StartedAt:
@@ -1420,17 +1830,17 @@ components:
       in: header
       description: AWS Signature Version 4
 security:
-  - aws_sig_v4: []
+- aws_sig_v4: []
 tags:
-  - name: Auto Scaling
-    description: Manage auto scaling configurations
-  - name: Connections
-    description: Manage source code provider connections
-  - name: Custom Domains
-    description: Manage custom domain associations
-  - name: Deployments
-    description: Manage deployments and operations
-  - name: Observability
-    description: Manage observability configurations
-  - name: VPC
-    description: Manage VPC connectors
+- name: Auto Scaling
+  description: Manage auto scaling configurations
+- name: Connections
+  description: Manage source code provider connections
+- name: Custom Domains
+  description: Manage custom domain associations
+- name: Deployments
+  description: Manage deployments and operations
+- name: Observability
+  description: Manage observability configurations
+- name: VPC
+  description: Manage VPC connectors

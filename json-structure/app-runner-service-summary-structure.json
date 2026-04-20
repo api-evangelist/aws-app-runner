@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "ServiceName": {
+      "type": "string"
+    },
+    "ServiceId": {
+      "type": "string"
+    },
+    "ServiceArn": {
+      "type": "string"
+    },
+    "ServiceUrl": {
+      "type": "string"
+    },
+    "CreatedAt": {
+      "type": "datetime"
+    },
+    "UpdatedAt": {
+      "type": "datetime"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "CREATE_FAILED",
+        "RUNNING",
+        "DELETED",
+        "DELETE_FAILED",
+        "PAUSED",
+        "OPERATION_IN_PROGRESS"
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/json-structure/app-runner-service-summary-structure.json",
+  "name": "ServiceSummary",
+  "description": "ServiceSummary schema from AWS App Runner"
+}

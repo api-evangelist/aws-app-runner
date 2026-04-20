@@ -1,0 +1,9 @@
+{
+  "AutoScalingConfigurationArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "AutoScalingConfigurationName": "my-app-service",
+  "AutoScalingConfigurationRevision": 42,
+  "Status": "ACTIVE",
+  "CreatedAt": "example-value",
+  "HasAssociatedService": true,
+  "IsDefault": true
+}

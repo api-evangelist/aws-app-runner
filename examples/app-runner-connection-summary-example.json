@@ -1,0 +1,7 @@
+{
+  "ConnectionName": "my-app-service",
+  "ConnectionArn": "arn:aws:apprunner:us-east-1:123456789:service/my-service",
+  "ProviderType": "GITHUB",
+  "Status": "PENDING_HANDSHAKE",
+  "CreatedAt": "example-value"
+}
