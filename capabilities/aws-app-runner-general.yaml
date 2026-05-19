@@ -1,0 +1,375 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AWS App Runner API
+  description: 'AWS App Runner API. 7 operations. Lead operation: AWS App Runner Create an App Runner Service. Self-contained
+    Naftiko capability covering one Aws App Runner business surface.'
+  tags:
+  - Aws App Runner
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AWS_APP_RUNNER_API_KEY: AWS_APP_RUNNER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: aws-app-runner-general
+    baseUri: https://apprunner.{region}.amazonaws.com
+    description: AWS App Runner API business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: createservice
+        method: POST
+        description: AWS App Runner Create an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DeleteService'
+      path: /#DeleteService
+      operations:
+      - name: deleteservice
+        method: POST
+        description: AWS App Runner Delete an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DescribeService'
+      path: /#DescribeService
+      operations:
+      - name: describeservice
+        method: POST
+        description: AWS App Runner Describe an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#ListServices'
+      path: /#ListServices
+      operations:
+      - name: listservices
+        method: POST
+        description: AWS App Runner List App Runner Services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#PauseService'
+      path: /#PauseService
+      operations:
+      - name: pauseservice
+        method: POST
+        description: AWS App Runner Pause an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#ResumeService'
+      path: /#ResumeService
+      operations:
+      - name: resumeservice
+        method: POST
+        description: AWS App Runner Resume an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#UpdateService'
+      path: /#UpdateService
+      operations:
+      - name: updateservice
+        method: POST
+        description: AWS App Runner Update an App Runner Service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AWS_APP_RUNNER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: aws-app-runner-general-rest
+    port: 8080
+    description: REST adapter for AWS App Runner API. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: POST
+        name: createservice
+        description: AWS App Runner Create an App Runner Service
+        call: aws-app-runner-general.createservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/deleteservice
+      name: deleteservice
+      description: 'REST surface for #DeleteService.'
+      operations:
+      - method: POST
+        name: deleteservice
+        description: AWS App Runner Delete an App Runner Service
+        call: aws-app-runner-general.deleteservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describeservice
+      name: describeservice
+      description: 'REST surface for #DescribeService.'
+      operations:
+      - method: POST
+        name: describeservice
+        description: AWS App Runner Describe an App Runner Service
+        call: aws-app-runner-general.describeservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/listservices
+      name: listservices
+      description: 'REST surface for #ListServices.'
+      operations:
+      - method: POST
+        name: listservices
+        description: AWS App Runner List App Runner Services
+        call: aws-app-runner-general.listservices
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pauseservice
+      name: pauseservice
+      description: 'REST surface for #PauseService.'
+      operations:
+      - method: POST
+        name: pauseservice
+        description: AWS App Runner Pause an App Runner Service
+        call: aws-app-runner-general.pauseservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/resumeservice
+      name: resumeservice
+      description: 'REST surface for #ResumeService.'
+      operations:
+      - method: POST
+        name: resumeservice
+        description: AWS App Runner Resume an App Runner Service
+        call: aws-app-runner-general.resumeservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/updateservice
+      name: updateservice
+      description: 'REST surface for #UpdateService.'
+      operations:
+      - method: POST
+        name: updateservice
+        description: AWS App Runner Update an App Runner Service
+        call: aws-app-runner-general.updateservice
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: aws-app-runner-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AWS App Runner API. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: aws-app-runner-create-app
+      description: AWS App Runner Create an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.createservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-delete-app
+      description: AWS App Runner Delete an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.deleteservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-describe-app
+      description: AWS App Runner Describe an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.describeservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-list-app
+      description: AWS App Runner List App Runner Services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.listservices
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-pause-app
+      description: AWS App Runner Pause an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.pauseservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-resume-app
+      description: AWS App Runner Resume an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.resumeservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-update-app
+      description: AWS App Runner Update an App Runner Service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-general.updateservice
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AWS App Runner API — Custom Domains
+  description: 'AWS App Runner API — Custom Domains. 3 operations. Lead operation: AWS App Runner Associate a Custom Domain.
+    Self-contained Naftiko capability covering one Aws App Runner business surface.'
+  tags:
+  - Aws App Runner
+  - Custom Domains
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AWS_APP_RUNNER_API_KEY: AWS_APP_RUNNER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: aws-app-runner-custom-domains
+    baseUri: https://apprunner.{region}.amazonaws.com
+    description: AWS App Runner API — Custom Domains business capability. Self-contained, no shared references.
+    resources:
+    - name: '#AssociateCustomDomain'
+      path: /#AssociateCustomDomain
+      operations:
+      - name: associatecustomdomain
+        method: POST
+        description: AWS App Runner Associate a Custom Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DescribeCustomDomains'
+      path: /#DescribeCustomDomains
+      operations:
+      - name: describecustomdomains
+        method: POST
+        description: AWS App Runner Describe Custom Domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DisassociateCustomDomain'
+      path: /#DisassociateCustomDomain
+      operations:
+      - name: disassociatecustomdomain
+        method: POST
+        description: AWS App Runner Disassociate a Custom Domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AWS_APP_RUNNER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: aws-app-runner-custom-domains-rest
+    port: 8080
+    description: REST adapter for AWS App Runner API — Custom Domains. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/associatecustomdomain
+      name: associatecustomdomain
+      description: 'REST surface for #AssociateCustomDomain.'
+      operations:
+      - method: POST
+        name: associatecustomdomain
+        description: AWS App Runner Associate a Custom Domain
+        call: aws-app-runner-custom-domains.associatecustomdomain
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describecustomdomains
+      name: describecustomdomains
+      description: 'REST surface for #DescribeCustomDomains.'
+      operations:
+      - method: POST
+        name: describecustomdomains
+        description: AWS App Runner Describe Custom Domains
+        call: aws-app-runner-custom-domains.describecustomdomains
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/disassociatecustomdomain
+      name: disassociatecustomdomain
+      description: 'REST surface for #DisassociateCustomDomain.'
+      operations:
+      - method: POST
+        name: disassociatecustomdomain
+        description: AWS App Runner Disassociate a Custom Domain
+        call: aws-app-runner-custom-domains.disassociatecustomdomain
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: aws-app-runner-custom-domains-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AWS App Runner API — Custom Domains. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: aws-app-runner-associate-custom
+      description: AWS App Runner Associate a Custom Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-custom-domains.associatecustomdomain
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-describe-custom
+      description: AWS App Runner Describe Custom Domains
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-custom-domains.describecustomdomains
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-disassociate-custom
+      description: AWS App Runner Disassociate a Custom Domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-custom-domains.disassociatecustomdomain
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

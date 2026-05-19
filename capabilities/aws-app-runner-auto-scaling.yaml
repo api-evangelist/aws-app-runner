@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AWS App Runner API — Auto Scaling
+  description: 'AWS App Runner API — Auto Scaling. 2 operations. Lead operation: AWS App Runner Create an Auto Scaling Configuration.
+    Self-contained Naftiko capability covering one Aws App Runner business surface.'
+  tags:
+  - Aws App Runner
+  - Auto Scaling
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AWS_APP_RUNNER_API_KEY: AWS_APP_RUNNER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: aws-app-runner-auto-scaling
+    baseUri: https://apprunner.{region}.amazonaws.com
+    description: AWS App Runner API — Auto Scaling business capability. Self-contained, no shared references.
+    resources:
+    - name: '#CreateAutoScalingConfiguration'
+      path: /#CreateAutoScalingConfiguration
+      operations:
+      - name: createautoscalingconfiguration
+        method: POST
+        description: AWS App Runner Create an Auto Scaling Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#ListAutoScalingConfigurations'
+      path: /#ListAutoScalingConfigurations
+      operations:
+      - name: listautoscalingconfigurations
+        method: POST
+        description: AWS App Runner List Auto Scaling Configurations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AWS_APP_RUNNER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: aws-app-runner-auto-scaling-rest
+    port: 8080
+    description: REST adapter for AWS App Runner API — Auto Scaling. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/createautoscalingconfiguration
+      name: createautoscalingconfiguration
+      description: 'REST surface for #CreateAutoScalingConfiguration.'
+      operations:
+      - method: POST
+        name: createautoscalingconfiguration
+        description: AWS App Runner Create an Auto Scaling Configuration
+        call: aws-app-runner-auto-scaling.createautoscalingconfiguration
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/listautoscalingconfigurations
+      name: listautoscalingconfigurations
+      description: 'REST surface for #ListAutoScalingConfigurations.'
+      operations:
+      - method: POST
+        name: listautoscalingconfigurations
+        description: AWS App Runner List Auto Scaling Configurations
+        call: aws-app-runner-auto-scaling.listautoscalingconfigurations
+        with:
+          X-Amz-Target: rest.X-Amz-Target
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: aws-app-runner-auto-scaling-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AWS App Runner API — Auto Scaling. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: aws-app-runner-create-auto
+      description: AWS App Runner Create an Auto Scaling Configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-auto-scaling.createautoscalingconfiguration
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-app-runner-list-auto
+      description: AWS App Runner List Auto Scaling Configurations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: aws-app-runner-auto-scaling.listautoscalingconfigurations
+      with:
+        X-Amz-Target: tools.X-Amz-Target
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
