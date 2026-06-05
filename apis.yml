@@ -1,9 +1,10 @@
 aid: aws-app-runner
 name: AWS App Runner
-description: AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized web applications
-  and APIs at scale. It automatically builds and deploys applications from container images or source code, load balances
-  traffic with encryption, and scales to meet traffic needs without requiring infrastructure management. App Runner integrates
-  with ECR, GitHub, Bitbucket, VPC, IAM, and CloudWatch for complete application delivery.
+description: >-
+  AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized web applications
+  and APIs at scale. It automatically builds and deploys applications from container images or source code, load
+  balances traffic with encryption, and scales to meet traffic needs without requiring infrastructure management. App
+  Runner integrates with ECR, GitHub, Bitbucket, VPC, IAM, and CloudWatch for complete application delivery.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -20,9 +21,10 @@ specificationVersion: '0.19'
 apis:
 - aid: aws-app-runner:aws-app-runner
   name: AWS App Runner
-  description: AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized web applications
-    and APIs at scale. It automatically builds and deploys applications, load balances traffic with encryption, and scales
-    to meet traffic needs without requiring infrastructure management.
+  description: >-
+    AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized web
+    applications and APIs at scale. It automatically builds and deploys applications, load balances traffic with
+    encryption, and scales to meet traffic needs without requiring infrastructure management.
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
   tags:
@@ -42,20 +44,8 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
   - type: OpenAPI
     url: openapi/aws-app-runner-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-general.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-auto-scaling.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-connections.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-custom-domains.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-deployments.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-observability.yaml
-  - type: NaftikoCapability
-    url: capabilities/aws-app-runner-vpc.yaml
+  - url: graphql/aws-app-runner-graphql.md
+    type: GraphQL
 common:
 - type: Website
   url: https://aws.amazon.com/apprunner/
