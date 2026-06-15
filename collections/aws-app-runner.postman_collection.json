@@ -1,0 +1,2451 @@
+{
+  "item": [
+    {
+      "id": "7ef2e7e0-688f-421c-b18d-1d420777b2dd",
+      "name": "Auto Scaling",
+      "description": {
+        "content": "Manage auto scaling configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d1e3092-5d7f-47b3-be82-ba1d0c17f5a5",
+          "name": "AWS App Runner Create an Auto Scaling Configuration",
+          "request": {
+            "name": "AWS App Runner Create an Auto Scaling Configuration",
+            "description": {
+              "content": "Create an App Runner automatic scaling configuration resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "CreateAutoScalingConfiguration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"MaxConcurrency\": \"<integer>\",\n  \"MinSize\": \"<integer>\",\n  \"MaxSize\": \"<integer>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "23cf8ae0-2eaf-4068-9dba-2bcf0d0ba8f6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateAutoScalingConfiguration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"MaxConcurrency\": \"<integer>\",\n  \"MinSize\": \"<integer>\",\n  \"MaxSize\": \"<integer>\",\n  \"Tags\": [\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AutoScalingConfiguration\": {\n    \"AutoScalingConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"AutoScalingConfigurationName\": \"my-app-service\",\n    \"AutoScalingConfigurationRevision\": 42,\n    \"Latest\": true,\n    \"Status\": \"ACTIVE\",\n    \"MaxConcurrency\": 42,\n    \"MinSize\": 42,\n    \"MaxSize\": 42,\n    \"CreatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"HasAssociatedService\": true,\n    \"IsDefault\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9e07ce9-c9cd-439a-a1fb-0b6320f4e2fc",
+          "name": "AWS App Runner List Auto Scaling Configurations",
+          "request": {
+            "name": "AWS App Runner List Auto Scaling Configurations",
+            "description": {
+              "content": "Returns a list of App Runner automatic scaling configurations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListAutoScalingConfigurations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"LatestOnly\": \"<boolean>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "2732b1c7-cb7c-469e-a3e0-6c32f9eeb3cc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListAutoScalingConfigurations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"LatestOnly\": \"<boolean>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AutoScalingConfigurationSummaryList\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "89278246-8396-4b64-be56-bd372df234c7",
+      "name": "Connections",
+      "description": {
+        "content": "Manage source code provider connections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b5d8903-7858-4123-a762-d85321c594d4",
+          "name": "AWS App Runner Create a Connection",
+          "request": {
+            "name": "AWS App Runner Create a Connection",
+            "description": {
+              "content": "Create an AWS App Runner connection resource for a source code provider (e.g., GitHub).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "CreateConnection",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ConnectionName\": \"<string>\",\n  \"ProviderType\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "8ce68dc6-2ad1-44b1-81bd-c0f469319c31",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateConnection",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConnectionName\": \"<string>\",\n  \"ProviderType\": \"<string>\",\n  \"Tags\": [\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Connection\": {\n    \"ConnectionName\": \"my-app-service\",\n    \"ConnectionArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ProviderType\": \"GITHUB\",\n    \"Status\": \"PENDING_HANDSHAKE\",\n    \"CreatedAt\": \"example-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9b7a183-ad6d-4e4a-9cc5-41bbff83d7a7",
+          "name": "AWS App Runner List Connections",
+          "request": {
+            "name": "AWS App Runner List Connections",
+            "description": {
+              "content": "Returns a list of App Runner connection resources in your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListConnections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ConnectionName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "b2a60880-db36-4a6a-99eb-62431310e71c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListConnections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConnectionName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ConnectionSummaryList\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dfcc12b-9bd8-4a32-9b9f-36cf6a2d28e0",
+          "name": "AWS App Runner Delete a Connection",
+          "request": {
+            "name": "AWS App Runner Delete a Connection",
+            "description": {
+              "content": "Delete an App Runner connection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteConnection",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ConnectionArn\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "9c6c5e35-dae7-448a-93ee-a035907e6ee9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteConnection",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ConnectionArn\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Connection\": {\n    \"ConnectionName\": \"my-app-service\",\n    \"ConnectionArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ProviderType\": \"GITHUB\",\n    \"Status\": \"PENDING_HANDSHAKE\",\n    \"CreatedAt\": \"example-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fae67ad1-dbd9-4599-adb1-9b199fc52586",
+      "name": "Custom Domains",
+      "description": {
+        "content": "Manage custom domain associations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5da2ad85-ef0e-4474-98fe-a505dd131e14",
+          "name": "AWS App Runner Associate a Custom Domain",
+          "request": {
+            "name": "AWS App Runner Associate a Custom Domain",
+            "description": {
+              "content": "Associate your own domain name with the App Runner subdomain URL of your service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "AssociateCustomDomain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\",\n  \"EnableWWWSubdomain\": \"<boolean>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "931c04e2-f372-4fad-938d-141f5d52ab40",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "AssociateCustomDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\",\n  \"EnableWWWSubdomain\": \"<boolean>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DNSTarget\": \"example-value\",\n  \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n  \"CustomDomain\": {\n    \"DomainName\": \"my-app-service\",\n    \"EnableWWWSubdomain\": true,\n    \"CertificateValidationRecords\": [\n      {\n        \"Name\": {},\n        \"Type\": {},\n        \"Value\": {},\n        \"Status\": {}\n      }\n    ],\n    \"Status\": \"CREATING\"\n  },\n  \"VpcDNSTargets\": [\n    \"example-value\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5524f68-7141-4467-971b-491804dcb94d",
+          "name": "AWS App Runner Describe Custom Domains",
+          "request": {
+            "name": "AWS App Runner Describe Custom Domains",
+            "description": {
+              "content": "Return a description of custom domain names associated with an App Runner service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeCustomDomains",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "65f77ee8-0881-412e-877b-4b1b2675c97f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeCustomDomains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DNSTarget\": \"example-value\",\n  \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n  \"CustomDomains\": [\n    \"example-value\"\n  ],\n  \"VpcDNSTargets\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "619a2ac0-c2f1-4548-8355-a53695ea874c",
+          "name": "AWS App Runner Disassociate a Custom Domain",
+          "request": {
+            "name": "AWS App Runner Disassociate a Custom Domain",
+            "description": {
+              "content": "Disassociate a custom domain name from an App Runner service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DisassociateCustomDomain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "6e9e0d87-0b58-4118-b1e0-cdb0ddfe0617",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DisassociateCustomDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DNSTarget\": \"example-value\",\n  \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n  \"CustomDomain\": {\n    \"DomainName\": \"my-app-service\",\n    \"EnableWWWSubdomain\": true,\n    \"CertificateValidationRecords\": [\n      {\n        \"Name\": {},\n        \"Type\": {},\n        \"Value\": {},\n        \"Status\": {}\n      }\n    ],\n    \"Status\": \"CREATING\"\n  },\n  \"VpcDNSTargets\": [\n    \"example-value\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b551d920-c063-4c04-b736-4678d84ed1c5",
+      "name": "Deployments",
+      "description": {
+        "content": "Manage deployments and operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e7d4a53-44c1-4ee1-b84d-736067ae7c5c",
+          "name": "AWS App Runner Start a Deployment",
+          "request": {
+            "name": "AWS App Runner Start a Deployment",
+            "description": {
+              "content": "Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "StartDeployment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "bf76d4c3-67bb-46ba-b34d-78816fb967ba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "StartDeployment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OperationId\": \"abc123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5b8dbd8-8158-4a07-b245-5b58e8fa6ad0",
+          "name": "AWS App Runner List Operations",
+          "request": {
+            "name": "AWS App Runner List Operations",
+            "description": {
+              "content": "Return a list of operations that occurred on an App Runner service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListOperations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "7ae2bc59-da76-4d35-b362-da39411e7e6c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListOperations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OperationSummaryList\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "87854d33-e6b9-4703-ae41-ba0e1c18c49d",
+      "name": "Observability",
+      "description": {
+        "content": "Manage observability configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b54a6827-c04d-468e-ac96-64c238376a73",
+          "name": "AWS App Runner Create an Observability Configuration",
+          "request": {
+            "name": "AWS App Runner Create an Observability Configuration",
+            "description": {
+              "content": "Create an App Runner observability configuration resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "CreateObservabilityConfiguration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ObservabilityConfigurationName\": \"<string>\",\n  \"TraceConfiguration\": {\n    \"Vendor\": \"<string>\"\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "902e8319-b558-4313-a8c5-1f560206997f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateObservabilityConfiguration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ObservabilityConfigurationName\": \"<string>\",\n  \"TraceConfiguration\": {\n    \"Vendor\": \"<string>\"\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ObservabilityConfigurationName\": \"my-app-service\",\n    \"ObservabilityConfigurationRevision\": 42,\n    \"Latest\": true,\n    \"Status\": \"ACTIVE\",\n    \"TraceConfiguration\": {\n      \"Vendor\": \"AWSXRAY\"\n    },\n    \"CreatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6afa39bc-e058-427c-af47-186e2c83554f",
+      "name": "VPC",
+      "description": {
+        "content": "Manage VPC connectors",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be7523d8-062b-4903-a886-96df1da35266",
+          "name": "AWS App Runner Create a VPC Connector",
+          "request": {
+            "name": "AWS App Runner Create a VPC Connector",
+            "description": {
+              "content": "Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "CreateVpcConnector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VpcConnectorName\": \"<string>\",\n  \"Subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "d70b423c-32dc-41a5-8eb1-e0c8575c29f8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateVpcConnector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"VpcConnectorName\": \"<string>\",\n  \"Subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Tags\": [\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    }\n  ]\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"VpcConnector\": {\n    \"VpcConnectorName\": \"my-app-service\",\n    \"VpcConnectorArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"VpcConnectorRevision\": 42,\n    \"Subnets\": [\n      \"example-value\"\n    ],\n    \"SecurityGroups\": [\n      \"example-value\"\n    ],\n    \"Status\": \"ACTIVE\",\n    \"CreatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7969fa1-799b-490a-8912-beaf61b8d7b1",
+          "name": "AWS App Runner List VPC Connectors",
+          "request": {
+            "name": "AWS App Runner List VPC Connectors",
+            "description": {
+              "content": "Returns a list of App Runner VPC connectors in your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListVpcConnectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "176a6088-30a2-4361-8033-6888265a762b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListVpcConnectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"VpcConnectors\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cd4e1cf8-83a9-4cc9-975c-bc5b8c422812",
+      "name": "AWS App Runner Create an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Create an App Runner Service",
+        "description": {
+          "content": "Create an AWS App Runner service. After the service is created, the action also automatically starts a deployment.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceName\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"<string>\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"<string>\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"<string>\",\n          \"BuildCommand\": \"<string>\",\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\",\n          \"RuntimeEnvironmentVariables\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"<string>\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"<string>\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"StartCommand\": \"<string>\",\n        \"Port\": \"<string>\"\n      },\n      \"ImageRepositoryType\": \"<string>\"\n    },\n    \"AutoDeploymentsEnabled\": \"<boolean>\",\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"<string>\",\n      \"AccessRoleArn\": \"<string>\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"<string>\",\n    \"Memory\": \"<string>\",\n    \"InstanceRoleArn\": \"<string>\"\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ],\n  \"EncryptionConfiguration\": {\n    \"KmsKey\": \"<string>\"\n  },\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"<string>\",\n    \"Path\": \"<string>\",\n    \"Interval\": \"<integer>\",\n    \"Timeout\": \"<integer>\",\n    \"HealthyThreshold\": \"<integer>\",\n    \"UnhealthyThreshold\": \"<integer>\"\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"<string>\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "fe8c6480-7724-4f89-82f2-00b5508912e0",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceName\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"string\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"BRANCH\",\n        \"Value\": \"string\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"API\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"GO_1\",\n          \"BuildCommand\": \"string\",\n          \"StartCommand\": \"string\",\n          \"Port\": \"string\",\n          \"RuntimeEnvironmentVariables\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"string\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"string\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"key_0\": \"string\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"StartCommand\": \"string\",\n        \"Port\": \"string\"\n      },\n      \"ImageRepositoryType\": \"ECR\"\n    },\n    \"AutoDeploymentsEnabled\": true,\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"string\",\n      \"AccessRoleArn\": \"string\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"string\",\n    \"Memory\": \"string\",\n    \"InstanceRoleArn\": \"string\"\n  },\n  \"Tags\": [\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"Key\": \"string\",\n      \"Value\": \"string\"\n    }\n  ],\n  \"EncryptionConfiguration\": {\n    \"KmsKey\": \"<string>\"\n  },\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"HTTP\",\n    \"Path\": \"string\",\n    \"Interval\": 6192,\n    \"Timeout\": 923,\n    \"HealthyThreshold\": 5914,\n    \"UnhealthyThreshold\": 9600\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"<string>\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  },\n  \"OperationId\": \"abc123\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d2e18bc8-32f5-4ad4-9804-db63179e4a84",
+      "name": "AWS App Runner List App Runner Services",
+      "request": {
+        "name": "AWS App Runner List App Runner Services",
+        "description": {
+          "content": "Returns a list of running App Runner services in your AWS account.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "ListServices",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "32a1edc9-20fe-447c-8b0c-caaeb31a0f82",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListServices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"ServiceSummaryList\": [\n    \"example-value\"\n  ],\n  \"NextToken\": \"example-value\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e63e69bc-1efc-4cab-b9f2-dc73d136630f",
+      "name": "AWS App Runner Describe an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Describe an App Runner Service",
+        "description": {
+          "content": "Returns a full description of an App Runner service.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "DescribeService",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "abea82a9-e876-4165-84d2-37ab995869b4",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9c44827d-2080-4641-ad08-a957104cc8b6",
+      "name": "AWS App Runner Update an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Update an App Runner Service",
+        "description": {
+          "content": "Update an AWS App Runner service. You can update the source configuration, instance configuration, auto scaling, and health check configuration.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "UpdateService",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"<string>\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"<string>\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"<string>\",\n          \"BuildCommand\": \"<string>\",\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\",\n          \"RuntimeEnvironmentVariables\": {\n            \"key_0\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"<string>\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"<string>\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"StartCommand\": \"<string>\",\n        \"Port\": \"<string>\"\n      },\n      \"ImageRepositoryType\": \"<string>\"\n    },\n    \"AutoDeploymentsEnabled\": \"<boolean>\",\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"<string>\",\n      \"AccessRoleArn\": \"<string>\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"<string>\",\n    \"Memory\": \"<string>\",\n    \"InstanceRoleArn\": \"<string>\"\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"<string>\",\n    \"Path\": \"<string>\",\n    \"Interval\": \"<integer>\",\n    \"Timeout\": \"<integer>\",\n    \"HealthyThreshold\": \"<integer>\",\n    \"UnhealthyThreshold\": \"<integer>\"\n  },\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"<string>\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "191d4bd0-a59f-4b23-9405-8acb73e5fffe",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "UpdateService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"string\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"BRANCH\",\n        \"Value\": \"string\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"API\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"NODEJS_12\",\n          \"BuildCommand\": \"string\",\n          \"StartCommand\": \"string\",\n          \"Port\": \"string\",\n          \"RuntimeEnvironmentVariables\": {\n            \"key_0\": \"string\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"string\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"string\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"key_0\": \"string\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"StartCommand\": \"string\",\n        \"Port\": \"string\"\n      },\n      \"ImageRepositoryType\": \"ECR_PUBLIC\"\n    },\n    \"AutoDeploymentsEnabled\": false,\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"string\",\n      \"AccessRoleArn\": \"string\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"string\",\n    \"Memory\": \"string\",\n    \"InstanceRoleArn\": \"string\"\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"HTTP\",\n    \"Path\": \"string\",\n    \"Interval\": 8784,\n    \"Timeout\": 1536,\n    \"HealthyThreshold\": 4134,\n    \"UnhealthyThreshold\": 9280\n  },\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"<string>\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  },\n  \"OperationId\": \"abc123\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "7a98877a-538f-49dc-8e3d-90cdb1dbd30c",
+      "name": "AWS App Runner Delete an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Delete an App Runner Service",
+        "description": {
+          "content": "Delete an AWS App Runner service.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "DeleteService",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "ce1a8c9e-508a-4fa4-b4af-f97ef89676e6",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  },\n  \"OperationId\": \"abc123\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8eb517cd-7f07-439f-b97e-02fdd083542c",
+      "name": "AWS App Runner Pause an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Pause an App Runner Service",
+        "description": {
+          "content": "Pause an active AWS App Runner service. Pausing a service reduces costs by stopping the running instances.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "PauseService",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "bd84eefe-1920-4cff-bd18-019dca1f6d15",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "PauseService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  },\n  \"OperationId\": \"abc123\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "19532db4-afcb-4c03-a909-9d57747c9eb6",
+      "name": "AWS App Runner Resume an App Runner Service",
+      "request": {
+        "name": "AWS App Runner Resume an App Runner Service",
+        "description": {
+          "content": "Resume an active AWS App Runner service that was previously paused.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ""
+          ],
+          "hash": "ResumeService",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "AWS region",
+              "type": "any",
+              "value": "{{region}}",
+              "key": "region"
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) ",
+            "key": "X-Amz-Target",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-amz-json-1.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+        }
+      },
+      "response": [
+        {
+          "id": "118a6c2d-ffce-4124-a2ad-4136287739c6",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ResumeService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: apikey",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<API Key>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"Service\": {\n    \"ServiceName\": \"my-app-service\",\n    \"ServiceId\": \"abc123\",\n    \"ServiceArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\",\n    \"ServiceUrl\": \"example-value\",\n    \"CreatedAt\": \"example-value\",\n    \"UpdatedAt\": \"example-value\",\n    \"DeletedAt\": \"example-value\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": \"example-value\",\n    \"InstanceConfiguration\": \"example-value\",\n    \"HealthCheckConfiguration\": \"example-value\",\n    \"AutoScalingConfigurationSummary\": \"example-value\",\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": {},\n        \"VpcConnectorArn\": {}\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": {}\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": true,\n      \"ObservabilityConfigurationArn\": \"arn:aws:apprunner:us-east-1:123456789:service/my-service\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"example-value\"\n    }\n  },\n  \"OperationId\": \"abc123\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://apprunner.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2abc9654-1bb4-45d6-9320-6162537ced28",
+    "name": "AWS App Runner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}
