@@ -2,17 +2,12 @@
   "repo": "aws-app-runner",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/containers/category/compute/aws-app-runner/feed/",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://aws.amazon.com/premiumsupport/",
-      "feed_url": "https://aws.amazon.com/premiumsupport/",
-      "title": "",
+      "source": "https://aws.amazon.com/blogs/containers/category/compute/aws-app-runner/",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "error": "HTTP 404 Not Found"
     }
   ],
   "post_count": 159,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:26:39Z"
 }
