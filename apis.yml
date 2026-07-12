@@ -47,6 +47,14 @@ apis:
   - url: graphql/aws-app-runner-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/aws-app-runner-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/aws-app-runner-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/aws-app-runner-domain-security.yml
+- type: Authentication
+  url: authentication/aws-app-runner-authentication.yml
 - type: Website
   url: https://aws.amazon.com/apprunner/
 - type: Documentation
