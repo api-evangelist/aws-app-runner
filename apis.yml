@@ -47,6 +47,8 @@ apis:
   - url: graphql/aws-app-runner-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/aws-app-runner-agentic-access.yml
 - type: TrustCenter
   url: security/aws-app-runner-trust-center.yml
 - type: VulnerabilityDisclosure
