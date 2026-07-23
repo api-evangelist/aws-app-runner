@@ -1,0 +1,182 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling VPC API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: VPC
+  description: Manage VPC connectors
+paths:
+  /#CreateVpcConnector:
+    post:
+      operationId: CreateVpcConnector
+      summary: AWS App Runner Create a VPC Connector
+      description: Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC.
+      tags:
+      - VPC
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateVpcConnector
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - VpcConnectorName
+              - Subnets
+              properties:
+                VpcConnectorName:
+                  type: string
+                Subnets:
+                  type: array
+                  items:
+                    type: string
+                SecurityGroups:
+                  type: array
+                  items:
+                    type: string
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VpcConnector:
+                    $ref: '#/components/schemas/VpcConnector'
+              examples:
+                CreateVpcConnector200Example:
+                  summary: Default CreateVpcConnector 200 response
+                  x-microcks-default: true
+                  value:
+                    VpcConnector:
+                      VpcConnectorName: my-app-service
+                      VpcConnectorArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      VpcConnectorRevision: 42
+                      Subnets:
+                      - example-value
+                      SecurityGroups:
+                      - example-value
+                      Status: ACTIVE
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListVpcConnectors:
+    post:
+      operationId: ListVpcConnectors
+      summary: AWS App Runner List VPC Connectors
+      description: Returns a list of App Runner VPC connectors in your AWS account.
+      tags:
+      - VPC
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListVpcConnectors
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VpcConnectors:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcConnector'
+                  NextToken:
+                    type: string
+              examples:
+                ListVpcConnectors200Example:
+                  summary: Default ListVpcConnectors 200 response
+                  x-microcks-default: true
+                  value:
+                    VpcConnectors:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    VpcConnector:
+      type: object
+      properties:
+        VpcConnectorName:
+          type: string
+        VpcConnectorArn:
+          type: string
+        VpcConnectorRevision:
+          type: integer
+        Subnets:
+          type: array
+          items:
+            type: string
+        SecurityGroups:
+          type: array
+          items:
+            type: string
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

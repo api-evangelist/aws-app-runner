@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: Auto Scaling
+  description: Manage auto scaling configurations
+paths:
+  /#CreateAutoScalingConfiguration:
+    post:
+      operationId: CreateAutoScalingConfiguration
+      summary: AWS App Runner Create an Auto Scaling Configuration
+      description: Create an App Runner automatic scaling configuration resource.
+      tags:
+      - Auto Scaling
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateAutoScalingConfiguration
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - AutoScalingConfigurationName
+              properties:
+                AutoScalingConfigurationName:
+                  type: string
+                MaxConcurrency:
+                  type: integer
+                MinSize:
+                  type: integer
+                MaxSize:
+                  type: integer
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AutoScalingConfiguration:
+                    $ref: '#/components/schemas/AutoScalingConfiguration'
+              examples:
+                CreateAutoScalingConfiguration200Example:
+                  summary: Default CreateAutoScalingConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    AutoScalingConfiguration:
+                      AutoScalingConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      AutoScalingConfigurationName: my-app-service
+                      AutoScalingConfigurationRevision: 42
+                      Latest: true
+                      Status: ACTIVE
+                      MaxConcurrency: 42
+                      MinSize: 42
+                      MaxSize: 42
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+                      HasAssociatedService: true
+                      IsDefault: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListAutoScalingConfigurations:
+    post:
+      operationId: ListAutoScalingConfigurations
+      summary: AWS App Runner List Auto Scaling Configurations
+      description: Returns a list of App Runner automatic scaling configurations.
+      tags:
+      - Auto Scaling
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListAutoScalingConfigurations
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                AutoScalingConfigurationName:
+                  type: string
+                LatestOnly:
+                  type: boolean
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  AutoScalingConfigurationSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AutoScalingConfigurationSummary'
+                  NextToken:
+                    type: string
+              examples:
+                ListAutoScalingConfigurations200Example:
+                  summary: Default ListAutoScalingConfigurations 200 response
+                  x-microcks-default: true
+                  value:
+                    AutoScalingConfigurationSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+    AutoScalingConfiguration:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Latest:
+          type: boolean
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        MaxConcurrency:
+          type: integer
+        MinSize:
+          type: integer
+        MaxSize:
+          type: integer
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

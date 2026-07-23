@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: 'AWS App Runner Auto Scaling #ListServices API'
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: '#ListServices'
+paths:
+  /#ListServices:
+    post:
+      operationId: ListServices
+      summary: AWS App Runner List App Runner Services
+      description: Returns a list of running App Runner services in your AWS account.
+      tags:
+      - '#ListServices'
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListServices
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                  minimum: 1
+                  maximum: 25
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ServiceSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceSummary'
+                  NextToken:
+                    type: string
+              examples:
+                ListServices200Example:
+                  summary: Default ListServices 200 response
+                  x-microcks-default: true
+                  value:
+                    ServiceSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ServiceSummary:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling Connections API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: Connections
+  description: Manage source code provider connections
+paths:
+  /#CreateConnection:
+    post:
+      operationId: CreateConnection
+      summary: AWS App Runner Create a Connection
+      description: Create an AWS App Runner connection resource for a source code provider (e.g., GitHub).
+      tags:
+      - Connections
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateConnection
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ConnectionName
+              - ProviderType
+              properties:
+                ConnectionName:
+                  type: string
+                ProviderType:
+                  type: string
+                  enum:
+                  - GITHUB
+                  - BITBUCKET
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Connection:
+                    $ref: '#/components/schemas/Connection'
+              examples:
+                CreateConnection200Example:
+                  summary: Default CreateConnection 200 response
+                  x-microcks-default: true
+                  value:
+                    Connection:
+                      ConnectionName: my-app-service
+                      ConnectionArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ProviderType: GITHUB
+                      Status: PENDING_HANDSHAKE
+                      CreatedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListConnections:
+    post:
+      operationId: ListConnections
+      summary: AWS App Runner List Connections
+      description: Returns a list of App Runner connection resources in your AWS account.
+      tags:
+      - Connections
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListConnections
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                ConnectionName:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ConnectionSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConnectionSummary'
+                  NextToken:
+                    type: string
+              examples:
+                ListConnections200Example:
+                  summary: Default ListConnections 200 response
+                  x-microcks-default: true
+                  value:
+                    ConnectionSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DeleteConnection:
+    post:
+      operationId: DeleteConnection
+      summary: AWS App Runner Delete a Connection
+      description: Delete an App Runner connection.
+      tags:
+      - Connections
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DeleteConnection
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ConnectionArn
+              properties:
+                ConnectionArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Connection:
+                    $ref: '#/components/schemas/Connection'
+              examples:
+                DeleteConnection200Example:
+                  summary: Default DeleteConnection 200 response
+                  x-microcks-default: true
+                  value:
+                    Connection:
+                      ConnectionName: my-app-service
+                      ConnectionArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ProviderType: GITHUB
+                      Status: PENDING_HANDSHAKE
+                      CreatedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Connection:
+      type: object
+      properties:
+        ConnectionName:
+          type: string
+        ConnectionArn:
+          type: string
+        ProviderType:
+          type: string
+          enum:
+          - GITHUB
+          - BITBUCKET
+        Status:
+          type: string
+          enum:
+          - PENDING_HANDSHAKE
+          - AVAILABLE
+          - ERROR
+          - DELETED
+        CreatedAt:
+          type: string
+          format: date-time
+    ConnectionSummary:
+      type: object
+      properties:
+        ConnectionName:
+          type: string
+        ConnectionArn:
+          type: string
+        ProviderType:
+          type: string
+          enum:
+          - GITHUB
+          - BITBUCKET
+        Status:
+          type: string
+          enum:
+          - PENDING_HANDSHAKE
+          - AVAILABLE
+          - ERROR
+          - DELETED
+        CreatedAt:
+          type: string
+          format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

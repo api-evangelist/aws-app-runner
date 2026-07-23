@@ -1,0 +1,130 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling Observability API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: Observability
+  description: Manage observability configurations
+paths:
+  /#CreateObservabilityConfiguration:
+    post:
+      operationId: CreateObservabilityConfiguration
+      summary: AWS App Runner Create an Observability Configuration
+      description: Create an App Runner observability configuration resource.
+      tags:
+      - Observability
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateObservabilityConfiguration
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ObservabilityConfigurationName
+              properties:
+                ObservabilityConfigurationName:
+                  type: string
+                TraceConfiguration:
+                  type: object
+                  properties:
+                    Vendor:
+                      type: string
+                      enum:
+                      - AWSXRAY
+                Tags:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ObservabilityConfiguration:
+                    $ref: '#/components/schemas/ObservabilityConfiguration'
+              examples:
+                CreateObservabilityConfiguration200Example:
+                  summary: Default CreateObservabilityConfiguration 200 response
+                  x-microcks-default: true
+                  value:
+                    ObservabilityConfiguration:
+                      ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ObservabilityConfigurationName: my-app-service
+                      ObservabilityConfigurationRevision: 42
+                      Latest: true
+                      Status: ACTIVE
+                      TraceConfiguration:
+                        Vendor: AWSXRAY
+                      CreatedAt: example-value
+                      DeletedAt: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ObservabilityConfiguration:
+      type: object
+      properties:
+        ObservabilityConfigurationArn:
+          type: string
+        ObservabilityConfigurationName:
+          type: string
+        ObservabilityConfigurationRevision:
+          type: integer
+        Latest:
+          type: boolean
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        TraceConfiguration:
+          type: object
+          properties:
+            Vendor:
+              type: string
+              enum:
+              - AWSXRAY
+        CreatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

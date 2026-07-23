@@ -1,0 +1,277 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling Custom Domains API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: Custom Domains
+  description: Manage custom domain associations
+paths:
+  /#AssociateCustomDomain:
+    post:
+      operationId: AssociateCustomDomain
+      summary: AWS App Runner Associate a Custom Domain
+      description: Associate your own domain name with the App Runner subdomain URL of your service.
+      tags:
+      - Custom Domains
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.AssociateCustomDomain
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              - DomainName
+              properties:
+                ServiceArn:
+                  type: string
+                DomainName:
+                  type: string
+                EnableWWWSubdomain:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomain:
+                    $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+              examples:
+                AssociateCustomDomain200Example:
+                  summary: Default AssociateCustomDomain 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomain:
+                      DomainName: my-app-service
+                      EnableWWWSubdomain: true
+                      CertificateValidationRecords:
+                      - Name: {}
+                        Type: {}
+                        Value: {}
+                        Status: {}
+                      Status: CREATING
+                    VpcDNSTargets:
+                    - example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeCustomDomains:
+    post:
+      operationId: DescribeCustomDomains
+      summary: AWS App Runner Describe Custom Domains
+      description: Return a description of custom domain names associated with an App Runner service.
+      tags:
+      - Custom Domains
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DescribeCustomDomains
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomains:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+                  NextToken:
+                    type: string
+              examples:
+                DescribeCustomDomains200Example:
+                  summary: Default DescribeCustomDomains 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomains:
+                    - example-value
+                    VpcDNSTargets:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DisassociateCustomDomain:
+    post:
+      operationId: DisassociateCustomDomain
+      summary: AWS App Runner Disassociate a Custom Domain
+      description: Disassociate a custom domain name from an App Runner service.
+      tags:
+      - Custom Domains
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DisassociateCustomDomain
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              - DomainName
+              properties:
+                ServiceArn:
+                  type: string
+                DomainName:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DNSTarget:
+                    type: string
+                  ServiceArn:
+                    type: string
+                  CustomDomain:
+                    $ref: '#/components/schemas/CustomDomain'
+                  VpcDNSTargets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VpcDNSTarget'
+              examples:
+                DisassociateCustomDomain200Example:
+                  summary: Default DisassociateCustomDomain 200 response
+                  x-microcks-default: true
+                  value:
+                    DNSTarget: example-value
+                    ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                    CustomDomain:
+                      DomainName: my-app-service
+                      EnableWWWSubdomain: true
+                      CertificateValidationRecords:
+                      - Name: {}
+                        Type: {}
+                        Value: {}
+                        Status: {}
+                      Status: CREATING
+                    VpcDNSTargets:
+                    - example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    VpcDNSTarget:
+      type: object
+      properties:
+        VpcIngressConnectionArn:
+          type: string
+        VpcId:
+          type: string
+        DomainName:
+          type: string
+    CustomDomain:
+      type: object
+      properties:
+        DomainName:
+          type: string
+        EnableWWWSubdomain:
+          type: boolean
+        CertificateValidationRecords:
+          type: array
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+              Type:
+                type: string
+              Value:
+                type: string
+              Status:
+                type: string
+                enum:
+                - PENDING_VALIDATION
+                - SUCCESS
+                - FAILED
+        Status:
+          type: string
+          enum:
+          - CREATING
+          - CREATE_FAILED
+          - ACTIVE
+          - DELETING
+          - DELETE_FAILED
+          - PENDING_CERTIFICATE_DNS_VALIDATION
+          - BINDING_CERTIFICATE
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

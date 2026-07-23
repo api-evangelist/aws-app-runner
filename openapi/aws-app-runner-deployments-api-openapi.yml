@@ -1,0 +1,164 @@
+openapi: 3.1.0
+info:
+  title: AWS App Runner Auto Scaling Deployments API
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: Deployments
+  description: Manage deployments and operations
+paths:
+  /#StartDeployment:
+    post:
+      operationId: StartDeployment
+      summary: AWS App Runner Start a Deployment
+      description: Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository.
+      tags:
+      - Deployments
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.StartDeployment
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OperationId:
+                    type: string
+              examples:
+                StartDeployment200Example:
+                  summary: Default StartDeployment 200 response
+                  x-microcks-default: true
+                  value:
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListOperations:
+    post:
+      operationId: ListOperations
+      summary: AWS App Runner List Operations
+      description: Return a list of operations that occurred on an App Runner service.
+      tags:
+      - Deployments
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListOperations
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+                MaxResults:
+                  type: integer
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OperationSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OperationSummary'
+                  NextToken:
+                    type: string
+              examples:
+                ListOperations200Example:
+                  summary: Default ListOperations 200 response
+                  x-microcks-default: true
+                  value:
+                    OperationSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    OperationSummary:
+      type: object
+      properties:
+        Id:
+          type: string
+        Type:
+          type: string
+          enum:
+          - CREATE_SERVICE
+          - START_DEPLOYMENT
+          - PAUSE_SERVICE
+          - RESUME_SERVICE
+          - DELETE_SERVICE
+          - UPDATE_SERVICE
+        Status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - FAILED
+          - SUCCEEDED
+          - ROLLBACK_IN_PROGRESS
+          - ROLLBACK_FAILED
+          - ROLLBACK_SUCCEEDED
+        TargetArn:
+          type: string
+        StartedAt:
+          type: string
+          format: date-time
+        EndedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4

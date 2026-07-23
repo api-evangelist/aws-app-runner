@@ -1,0 +1,313 @@
+openapi: 3.1.0
+info:
+  title: 'AWS App Runner Auto Scaling #DescribeService API'
+  description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
+  version: '2020-05-15'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/apprunner/
+servers:
+- url: https://apprunner.{region}.amazonaws.com
+  description: AWS App Runner regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+security:
+- aws_sig_v4: []
+tags:
+- name: '#DescribeService'
+paths:
+  /#DescribeService:
+    post:
+      operationId: DescribeService
+      summary: AWS App Runner Describe an App Runner Service
+      description: Returns a full description of an App Runner service.
+      tags:
+      - '#DescribeService'
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DescribeService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+              examples:
+                DescribeService200Example:
+                  summary: Default DescribeService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SourceConfiguration:
+      type: object
+      properties:
+        CodeRepository:
+          type: object
+          properties:
+            RepositoryUrl:
+              type: string
+            SourceCodeVersion:
+              type: object
+              properties:
+                Type:
+                  type: string
+                  enum:
+                  - BRANCH
+                Value:
+                  type: string
+            CodeConfiguration:
+              type: object
+              properties:
+                ConfigurationSource:
+                  type: string
+                  enum:
+                  - REPOSITORY
+                  - API
+                CodeConfigurationValues:
+                  type: object
+                  properties:
+                    Runtime:
+                      type: string
+                      enum:
+                      - PYTHON_3
+                      - NODEJS_12
+                      - NODEJS_14
+                      - NODEJS_16
+                      - NODEJS_18
+                      - CORRETTO_8
+                      - CORRETTO_11
+                      - GO_1
+                      - DOTNET_6
+                      - PHP_81
+                      - RUBY_31
+                    BuildCommand:
+                      type: string
+                    StartCommand:
+                      type: string
+                    Port:
+                      type: string
+                    RuntimeEnvironmentVariables:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    RuntimeEnvironmentSecrets:
+                      type: object
+                      additionalProperties:
+                        type: string
+            SourceDirectory:
+              type: string
+        ImageRepository:
+          type: object
+          properties:
+            ImageIdentifier:
+              type: string
+            ImageConfiguration:
+              type: object
+              properties:
+                RuntimeEnvironmentVariables:
+                  type: object
+                  additionalProperties:
+                    type: string
+                RuntimeEnvironmentSecrets:
+                  type: object
+                  additionalProperties:
+                    type: string
+                StartCommand:
+                  type: string
+                Port:
+                  type: string
+            ImageRepositoryType:
+              type: string
+              enum:
+              - ECR
+              - ECR_PUBLIC
+        AutoDeploymentsEnabled:
+          type: boolean
+        AuthenticationConfiguration:
+          type: object
+          properties:
+            ConnectionArn:
+              type: string
+            AccessRoleArn:
+              type: string
+    Service:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        AutoScalingConfigurationSummary:
+          $ref: '#/components/schemas/AutoScalingConfigurationSummary'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                  - DEFAULT
+                  - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+              - IPV4
+              - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+        EncryptionConfiguration:
+          type: object
+          properties:
+            KmsKey:
+              type: string
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
+    HealthCheckConfiguration:
+      type: object
+      properties:
+        Protocol:
+          type: string
+          enum:
+          - TCP
+          - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
+  securitySchemes:
+    aws_sig_v4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4
