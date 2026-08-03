@@ -1,0 +1,264 @@
+{
+  "info": {
+    "_postman_id": "704f8049-1f09-494b-973c-83020ca67ab0",
+    "name": "AWS App Runner Auto Scaling VPC API",
+    "description": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:07:24.000Z",
+    "updatedAt": "2026-07-28T01:07:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-704f8049-1f09-494b-973c-83020ca67ab0"
+  },
+  "item": [
+    {
+      "name": "#CreateVpcConnector",
+      "item": [
+        {
+          "name": "AWS App Runner Create a VPC Connector",
+          "id": "c2817224-1462-4e82-87ff-3727f2a2784c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.CreateVpcConnector"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"VpcConnectorName\": \"<string>\",\n  \"Subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#CreateVpcConnector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "CreateVpcConnector"
+            },
+            "description": "Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC."
+          },
+          "response": [
+            {
+              "id": "e327b414-4154-44e5-8cd9-03504e4f1e94",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.CreateVpcConnector"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"VpcConnectorName\": \"<string>\",\n  \"Subnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#CreateVpcConnector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateVpcConnector"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"VpcConnector\": {\n    \"VpcConnectorName\": \"<string>\",\n    \"VpcConnectorArn\": \"<string>\",\n    \"VpcConnectorRevision\": \"<integer>\",\n    \"Subnets\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"SecurityGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Status\": \"INACTIVE\",\n    \"CreatedAt\": \"<dateTime>\",\n    \"DeletedAt\": \"<dateTime>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:07:25.000Z",
+              "updatedAt": "2026-07-28T01:07:25.000Z",
+              "uid": "35240-e327b414-4154-44e5-8cd9-03504e4f1e94"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:25.000Z",
+          "updatedAt": "2026-07-28T01:07:25.000Z",
+          "uid": "35240-c2817224-1462-4e82-87ff-3727f2a2784c"
+        }
+      ],
+      "id": "0b280bc7-2550-422d-bc1c-8bbff6741f58",
+      "createdAt": "2026-07-28T01:07:25.000Z",
+      "updatedAt": "2026-07-28T01:07:25.000Z",
+      "uid": "35240-0b280bc7-2550-422d-bc1c-8bbff6741f58"
+    },
+    {
+      "name": "#ListVpcConnectors",
+      "item": [
+        {
+          "name": "AWS App Runner List VPC Connectors",
+          "id": "1ac004ef-887f-4aaa-ab1d-88300770ac48",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.ListVpcConnectors"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#ListVpcConnectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "ListVpcConnectors"
+            },
+            "description": "Returns a list of App Runner VPC connectors in your AWS account."
+          },
+          "response": [
+            {
+              "id": "4aedab93-1e86-4b8a-9498-57235d6d3f99",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.ListVpcConnectors"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#ListVpcConnectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListVpcConnectors"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"VpcConnectors\": [\n    {\n      \"VpcConnectorName\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\",\n      \"VpcConnectorRevision\": \"<integer>\",\n      \"Subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SecurityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Status\": \"INACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"DeletedAt\": \"<dateTime>\"\n    },\n    {\n      \"VpcConnectorName\": \"<string>\",\n      \"VpcConnectorArn\": \"<string>\",\n      \"VpcConnectorRevision\": \"<integer>\",\n      \"Subnets\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SecurityGroups\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"Status\": \"INACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"DeletedAt\": \"<dateTime>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:07:25.000Z",
+              "updatedAt": "2026-07-28T01:07:25.000Z",
+              "uid": "35240-4aedab93-1e86-4b8a-9498-57235d6d3f99"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:25.000Z",
+          "updatedAt": "2026-07-28T01:07:25.000Z",
+          "uid": "35240-1ac004ef-887f-4aaa-ab1d-88300770ac48"
+        }
+      ],
+      "id": "b9d61951-6a28-46fb-98a1-717ac9d748e3",
+      "createdAt": "2026-07-28T01:07:25.000Z",
+      "updatedAt": "2026-07-28T01:07:25.000Z",
+      "uid": "35240-b9d61951-6a28-46fb-98a1-717ac9d748e3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://apprunner.{{region}}.amazonaws.com"
+    }
+  ]
+}

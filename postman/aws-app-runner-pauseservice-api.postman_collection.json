@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "8fe8efba-29f8-42ca-a330-87ba458f2119",
+    "name": "AWS App Runner Auto Scaling #PauseService API",
+    "description": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:07:21.000Z",
+    "updatedAt": "2026-07-28T01:07:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8fe8efba-29f8-42ca-a330-87ba458f2119"
+  },
+  "item": [
+    {
+      "name": "#PauseService",
+      "item": [
+        {
+          "name": "AWS App Runner Pause an App Runner Service",
+          "id": "e57323fe-1e68-4b1d-9a94-61824d447c72",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.PauseService"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#PauseService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "PauseService"
+            },
+            "description": "Pause an active AWS App Runner service. Pausing a service reduces costs by stopping the running instances."
+          },
+          "response": [
+            {
+              "id": "f8c7307c-e551-4f29-ad16-c457d92fb166",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.PauseService"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#PauseService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PauseService"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Service\": {\n    \"ServiceName\": \"<string>\",\n    \"ServiceId\": \"<string>\",\n    \"ServiceArn\": \"<string>\",\n    \"ServiceUrl\": \"<string>\",\n    \"CreatedAt\": \"<dateTime>\",\n    \"UpdatedAt\": \"<dateTime>\",\n    \"DeletedAt\": \"<dateTime>\",\n    \"Status\": \"RUNNING\",\n    \"SourceConfiguration\": {\n      \"CodeRepository\": {\n        \"RepositoryUrl\": \"<string>\",\n        \"SourceCodeVersion\": {\n          \"Type\": \"BRANCH\",\n          \"Value\": \"<string>\"\n        },\n        \"CodeConfiguration\": {\n          \"ConfigurationSource\": \"API\",\n          \"CodeConfigurationValues\": {\n            \"Runtime\": \"RUBY_31\",\n            \"BuildCommand\": \"<string>\",\n            \"StartCommand\": \"<string>\",\n            \"Port\": \"<string>\",\n            \"RuntimeEnvironmentVariables\": {\n              \"incididunt_b\": \"<string>\",\n              \"pariatur__0\": \"<string>\"\n            },\n            \"RuntimeEnvironmentSecrets\": {\n              \"est_f1a\": \"<string>\",\n              \"id70\": \"<string>\",\n              \"animf7\": \"<string>\"\n            }\n          }\n        },\n        \"SourceDirectory\": \"<string>\"\n      },\n      \"ImageRepository\": {\n        \"ImageIdentifier\": \"<string>\",\n        \"ImageConfiguration\": {\n          \"RuntimeEnvironmentVariables\": {\n            \"dolore_2\": \"<string>\",\n            \"deserunt1\": \"<string>\",\n            \"Ut_2\": \"<string>\",\n            \"etb1\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"adipisicingb8\": \"<string>\",\n            \"magnaa41\": \"<string>\"\n          },\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\"\n        },\n        \"ImageRepositoryType\": \"ECR_PUBLIC\"\n      },\n      \"AutoDeploymentsEnabled\": \"<boolean>\",\n      \"AuthenticationConfiguration\": {\n        \"ConnectionArn\": \"<string>\",\n        \"AccessRoleArn\": \"<string>\"\n      }\n    },\n    \"InstanceConfiguration\": {\n      \"Cpu\": \"<string>\",\n      \"Memory\": \"<string>\",\n      \"InstanceRoleArn\": \"<string>\"\n    },\n    \"HealthCheckConfiguration\": {\n      \"Protocol\": \"TCP\",\n      \"Path\": \"<string>\",\n      \"Interval\": \"<integer>\",\n      \"Timeout\": \"<integer>\",\n      \"HealthyThreshold\": \"<integer>\",\n      \"UnhealthyThreshold\": \"<integer>\"\n    },\n    \"AutoScalingConfigurationSummary\": {\n      \"AutoScalingConfigurationArn\": \"<string>\",\n      \"AutoScalingConfigurationName\": \"<string>\",\n      \"AutoScalingConfigurationRevision\": \"<integer>\",\n      \"Status\": \"INACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"HasAssociatedService\": \"<boolean>\",\n      \"IsDefault\": \"<boolean>\"\n    },\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": \"VPC\",\n        \"VpcConnectorArn\": \"<string>\"\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": \"<boolean>\"\n      },\n      \"IpAddressType\": \"DUAL_STACK\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": \"<boolean>\",\n      \"ObservabilityConfigurationArn\": \"<string>\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"<string>\"\n    }\n  },\n  \"OperationId\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:07:22.000Z",
+              "updatedAt": "2026-07-28T01:07:22.000Z",
+              "uid": "35240-f8c7307c-e551-4f29-ad16-c457d92fb166"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:22.000Z",
+          "updatedAt": "2026-07-28T01:07:22.000Z",
+          "uid": "35240-e57323fe-1e68-4b1d-9a94-61824d447c72"
+        }
+      ],
+      "id": "fd665849-cf88-4656-acdc-30f5bff8978e",
+      "createdAt": "2026-07-28T01:07:22.000Z",
+      "updatedAt": "2026-07-28T01:07:22.000Z",
+      "uid": "35240-fd665849-cf88-4656-acdc-30f5bff8978e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://apprunner.{{region}}.amazonaws.com"
+    }
+  ]
+}

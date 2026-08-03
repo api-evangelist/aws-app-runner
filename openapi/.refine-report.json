@@ -1,0 +1,38 @@
+{
+  "provider": "aws-app-runner",
+  "sources": [
+    "aws-app-runner-auto-scaling-api-openapi.yml",
+    "aws-app-runner-aws-app-runner-api-api-openapi.yml",
+    "aws-app-runner-connections-api-openapi.yml",
+    "aws-app-runner-custom-domains-api-openapi.yml",
+    "aws-app-runner-deleteservice-api-openapi.yml",
+    "aws-app-runner-deployments-api-openapi.yml",
+    "aws-app-runner-describeservice-api-openapi.yml",
+    "aws-app-runner-listservices-api-openapi.yml",
+    "aws-app-runner-observability-api-openapi.yml",
+    "aws-app-runner-pauseservice-api-openapi.yml",
+    "aws-app-runner-resumeservice-api-openapi.yml",
+    "aws-app-runner-updateservice-api-openapi.yml",
+    "aws-app-runner-vpc-api-openapi.yml"
+  ],
+  "outputs": [
+    "aws-app-runner-auto-scaling-api-openapi.yml",
+    "aws-app-runner-aws-app-runner-api-api-openapi.yml",
+    "aws-app-runner-connections-api-openapi.yml",
+    "aws-app-runner-custom-domains-api-openapi.yml",
+    "aws-app-runner-deleteservice-api-openapi.yml",
+    "aws-app-runner-deployments-api-openapi.yml",
+    "aws-app-runner-describeservice-api-openapi.yml",
+    "aws-app-runner-listservices-api-openapi.yml",
+    "aws-app-runner-observability-api-openapi.yml",
+    "aws-app-runner-pauseservice-api-openapi.yml",
+    "aws-app-runner-resumeservice-api-openapi.yml",
+    "aws-app-runner-updateservice-api-openapi.yml",
+    "aws-app-runner-vpc-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

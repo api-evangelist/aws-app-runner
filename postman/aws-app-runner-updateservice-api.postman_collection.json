@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "2c5ae6df-6023-46a6-85f9-7fe5e3a15ebf",
+    "name": "AWS App Runner Auto Scaling #UpdateService API",
+    "description": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:07:23.000Z",
+    "updatedAt": "2026-07-28T01:07:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c5ae6df-6023-46a6-85f9-7fe5e3a15ebf"
+  },
+  "item": [
+    {
+      "name": "#UpdateService",
+      "item": [
+        {
+          "name": "AWS App Runner Update an App Runner Service",
+          "id": "0bdd4bdb-d232-42f7-af53-964babc9dda1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.UpdateService"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"<string>\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"BRANCH\",\n        \"Value\": \"<string>\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"API\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"PHP_81\",\n          \"BuildCommand\": \"<string>\",\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\",\n          \"RuntimeEnvironmentVariables\": {\n            \"Excepteur_3f0\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"non_6c\": \"<string>\",\n            \"exercitation__4\": \"<string>\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"<string>\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"<string>\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"amet25\": \"<string>\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"ullamco_68\": \"<string>\"\n        },\n        \"StartCommand\": \"<string>\",\n        \"Port\": \"<string>\"\n      },\n      \"ImageRepositoryType\": \"ECR_PUBLIC\"\n    },\n    \"AutoDeploymentsEnabled\": \"<boolean>\",\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"<string>\",\n      \"AccessRoleArn\": \"<string>\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"<string>\",\n    \"Memory\": \"<string>\",\n    \"InstanceRoleArn\": \"<string>\"\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"HTTP\",\n    \"Path\": \"<string>\",\n    \"Interval\": \"<integer>\",\n    \"Timeout\": \"<integer>\",\n    \"HealthyThreshold\": \"<integer>\",\n    \"UnhealthyThreshold\": \"<integer>\"\n  },\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"VPC\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"IPV4\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#UpdateService",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "UpdateService"
+            },
+            "description": "Update an AWS App Runner service. You can update the source configuration, instance configuration, auto scaling, and health check configuration."
+          },
+          "response": [
+            {
+              "id": "44202b42-9f60-47d9-86bd-1f01a12a590e",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.UpdateService"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"SourceConfiguration\": {\n    \"CodeRepository\": {\n      \"RepositoryUrl\": \"<string>\",\n      \"SourceCodeVersion\": {\n        \"Type\": \"BRANCH\",\n        \"Value\": \"<string>\"\n      },\n      \"CodeConfiguration\": {\n        \"ConfigurationSource\": \"API\",\n        \"CodeConfigurationValues\": {\n          \"Runtime\": \"PHP_81\",\n          \"BuildCommand\": \"<string>\",\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\",\n          \"RuntimeEnvironmentVariables\": {\n            \"Excepteur_3f0\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"non_6c\": \"<string>\",\n            \"exercitation__4\": \"<string>\"\n          }\n        }\n      },\n      \"SourceDirectory\": \"<string>\"\n    },\n    \"ImageRepository\": {\n      \"ImageIdentifier\": \"<string>\",\n      \"ImageConfiguration\": {\n        \"RuntimeEnvironmentVariables\": {\n          \"amet25\": \"<string>\"\n        },\n        \"RuntimeEnvironmentSecrets\": {\n          \"ullamco_68\": \"<string>\"\n        },\n        \"StartCommand\": \"<string>\",\n        \"Port\": \"<string>\"\n      },\n      \"ImageRepositoryType\": \"ECR_PUBLIC\"\n    },\n    \"AutoDeploymentsEnabled\": \"<boolean>\",\n    \"AuthenticationConfiguration\": {\n      \"ConnectionArn\": \"<string>\",\n      \"AccessRoleArn\": \"<string>\"\n    }\n  },\n  \"InstanceConfiguration\": {\n    \"Cpu\": \"<string>\",\n    \"Memory\": \"<string>\",\n    \"InstanceRoleArn\": \"<string>\"\n  },\n  \"AutoScalingConfigurationArn\": \"<string>\",\n  \"HealthCheckConfiguration\": {\n    \"Protocol\": \"HTTP\",\n    \"Path\": \"<string>\",\n    \"Interval\": \"<integer>\",\n    \"Timeout\": \"<integer>\",\n    \"HealthyThreshold\": \"<integer>\",\n    \"UnhealthyThreshold\": \"<integer>\"\n  },\n  \"NetworkConfiguration\": {\n    \"EgressConfiguration\": {\n      \"EgressType\": \"VPC\",\n      \"VpcConnectorArn\": \"<string>\"\n    },\n    \"IngressConfiguration\": {\n      \"IsPubliclyAccessible\": \"<boolean>\"\n    },\n    \"IpAddressType\": \"IPV4\"\n  },\n  \"ObservabilityConfiguration\": {\n    \"ObservabilityEnabled\": \"<boolean>\",\n    \"ObservabilityConfigurationArn\": \"<string>\"\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#UpdateService",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "UpdateService"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Service\": {\n    \"ServiceName\": \"<string>\",\n    \"ServiceId\": \"<string>\",\n    \"ServiceArn\": \"<string>\",\n    \"ServiceUrl\": \"<string>\",\n    \"CreatedAt\": \"<dateTime>\",\n    \"UpdatedAt\": \"<dateTime>\",\n    \"DeletedAt\": \"<dateTime>\",\n    \"Status\": \"CREATE_FAILED\",\n    \"SourceConfiguration\": {\n      \"CodeRepository\": {\n        \"RepositoryUrl\": \"<string>\",\n        \"SourceCodeVersion\": {\n          \"Type\": \"BRANCH\",\n          \"Value\": \"<string>\"\n        },\n        \"CodeConfiguration\": {\n          \"ConfigurationSource\": \"API\",\n          \"CodeConfigurationValues\": {\n            \"Runtime\": \"NODEJS_12\",\n            \"BuildCommand\": \"<string>\",\n            \"StartCommand\": \"<string>\",\n            \"Port\": \"<string>\",\n            \"RuntimeEnvironmentVariables\": {\n              \"quis8\": \"<string>\",\n              \"incididunt_7\": \"<string>\",\n              \"nulla9\": \"<string>\"\n            },\n            \"RuntimeEnvironmentSecrets\": {\n              \"do8f4\": \"<string>\"\n            }\n          }\n        },\n        \"SourceDirectory\": \"<string>\"\n      },\n      \"ImageRepository\": {\n        \"ImageIdentifier\": \"<string>\",\n        \"ImageConfiguration\": {\n          \"RuntimeEnvironmentVariables\": {\n            \"non_0d\": \"<string>\"\n          },\n          \"RuntimeEnvironmentSecrets\": {\n            \"sunt6\": \"<string>\"\n          },\n          \"StartCommand\": \"<string>\",\n          \"Port\": \"<string>\"\n        },\n        \"ImageRepositoryType\": \"ECR\"\n      },\n      \"AutoDeploymentsEnabled\": \"<boolean>\",\n      \"AuthenticationConfiguration\": {\n        \"ConnectionArn\": \"<string>\",\n        \"AccessRoleArn\": \"<string>\"\n      }\n    },\n    \"InstanceConfiguration\": {\n      \"Cpu\": \"<string>\",\n      \"Memory\": \"<string>\",\n      \"InstanceRoleArn\": \"<string>\"\n    },\n    \"HealthCheckConfiguration\": {\n      \"Protocol\": \"HTTP\",\n      \"Path\": \"<string>\",\n      \"Interval\": \"<integer>\",\n      \"Timeout\": \"<integer>\",\n      \"HealthyThreshold\": \"<integer>\",\n      \"UnhealthyThreshold\": \"<integer>\"\n    },\n    \"AutoScalingConfigurationSummary\": {\n      \"AutoScalingConfigurationArn\": \"<string>\",\n      \"AutoScalingConfigurationName\": \"<string>\",\n      \"AutoScalingConfigurationRevision\": \"<integer>\",\n      \"Status\": \"ACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"HasAssociatedService\": \"<boolean>\",\n      \"IsDefault\": \"<boolean>\"\n    },\n    \"NetworkConfiguration\": {\n      \"EgressConfiguration\": {\n        \"EgressType\": \"DEFAULT\",\n        \"VpcConnectorArn\": \"<string>\"\n      },\n      \"IngressConfiguration\": {\n        \"IsPubliclyAccessible\": \"<boolean>\"\n      },\n      \"IpAddressType\": \"IPV4\"\n    },\n    \"ObservabilityConfiguration\": {\n      \"ObservabilityEnabled\": \"<boolean>\",\n      \"ObservabilityConfigurationArn\": \"<string>\"\n    },\n    \"EncryptionConfiguration\": {\n      \"KmsKey\": \"<string>\"\n    }\n  },\n  \"OperationId\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:07:24.000Z",
+              "updatedAt": "2026-07-28T01:07:24.000Z",
+              "uid": "35240-44202b42-9f60-47d9-86bd-1f01a12a590e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:24.000Z",
+          "updatedAt": "2026-07-28T01:07:24.000Z",
+          "uid": "35240-0bdd4bdb-d232-42f7-af53-964babc9dda1"
+        }
+      ],
+      "id": "c2441230-ddcc-40b2-af71-1bc95ad455ff",
+      "createdAt": "2026-07-28T01:07:24.000Z",
+      "updatedAt": "2026-07-28T01:07:24.000Z",
+      "uid": "35240-c2441230-ddcc-40b2-af71-1bc95ad455ff"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://apprunner.{{region}}.amazonaws.com"
+    }
+  ]
+}

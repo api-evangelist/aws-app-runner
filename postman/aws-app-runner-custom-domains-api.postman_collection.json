@@ -1,0 +1,374 @@
+{
+  "info": {
+    "_postman_id": "0f912e7d-4237-4e28-847b-df1cfbc11bce",
+    "name": "AWS App Runner Auto Scaling Custom Domains API",
+    "description": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:07:00.000Z",
+    "updatedAt": "2026-07-28T01:07:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0f912e7d-4237-4e28-847b-df1cfbc11bce"
+  },
+  "item": [
+    {
+      "name": "#AssociateCustomDomain",
+      "item": [
+        {
+          "name": "AWS App Runner Associate a Custom Domain",
+          "id": "263c4b9f-6523-4998-b999-58a3310b2f0e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.AssociateCustomDomain"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\",\n  \"EnableWWWSubdomain\": \"<boolean>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#AssociateCustomDomain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "AssociateCustomDomain"
+            },
+            "description": "Associate your own domain name with the App Runner subdomain URL of your service."
+          },
+          "response": [
+            {
+              "id": "9d07869e-7ebe-4883-a5c0-d47f2aecb992",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.AssociateCustomDomain"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\",\n  \"EnableWWWSubdomain\": \"<boolean>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#AssociateCustomDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "AssociateCustomDomain"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"DNSTarget\": \"<string>\",\n  \"ServiceArn\": \"<string>\",\n  \"CustomDomain\": {\n    \"DomainName\": \"<string>\",\n    \"EnableWWWSubdomain\": \"<boolean>\",\n    \"CertificateValidationRecords\": [\n      {\n        \"Name\": \"<string>\",\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\",\n        \"Status\": \"FAILED\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\",\n        \"Status\": \"SUCCESS\"\n      }\n    ],\n    \"Status\": \"ACTIVE\"\n  },\n  \"VpcDNSTargets\": [\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    },\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:07:01.000Z",
+              "updatedAt": "2026-07-28T01:07:01.000Z",
+              "uid": "35240-9d07869e-7ebe-4883-a5c0-d47f2aecb992"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:01.000Z",
+          "updatedAt": "2026-07-28T01:07:01.000Z",
+          "uid": "35240-263c4b9f-6523-4998-b999-58a3310b2f0e"
+        }
+      ],
+      "id": "95e03729-2334-4a0f-974f-1ca8c9172187",
+      "createdAt": "2026-07-28T01:07:01.000Z",
+      "updatedAt": "2026-07-28T01:07:01.000Z",
+      "uid": "35240-95e03729-2334-4a0f-974f-1ca8c9172187"
+    },
+    {
+      "name": "#DescribeCustomDomains",
+      "item": [
+        {
+          "name": "AWS App Runner Describe Custom Domains",
+          "id": "13333ce2-b16f-4824-be47-e6f1ccb46971",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.DescribeCustomDomains"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#DescribeCustomDomains",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "DescribeCustomDomains"
+            },
+            "description": "Return a description of custom domain names associated with an App Runner service."
+          },
+          "response": [
+            {
+              "id": "2bc96c55-8b65-4543-812a-ac0d361c1de1",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.DescribeCustomDomains"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#DescribeCustomDomains",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeCustomDomains"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"DNSTarget\": \"<string>\",\n  \"ServiceArn\": \"<string>\",\n  \"CustomDomains\": [\n    {\n      \"DomainName\": \"<string>\",\n      \"EnableWWWSubdomain\": \"<boolean>\",\n      \"CertificateValidationRecords\": [\n        {\n          \"Name\": \"<string>\",\n          \"Type\": \"<string>\",\n          \"Value\": \"<string>\",\n          \"Status\": \"SUCCESS\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Type\": \"<string>\",\n          \"Value\": \"<string>\",\n          \"Status\": \"PENDING_VALIDATION\"\n        }\n      ],\n      \"Status\": \"DELETING\"\n    },\n    {\n      \"DomainName\": \"<string>\",\n      \"EnableWWWSubdomain\": \"<boolean>\",\n      \"CertificateValidationRecords\": [\n        {\n          \"Name\": \"<string>\",\n          \"Type\": \"<string>\",\n          \"Value\": \"<string>\",\n          \"Status\": \"FAILED\"\n        },\n        {\n          \"Name\": \"<string>\",\n          \"Type\": \"<string>\",\n          \"Value\": \"<string>\",\n          \"Status\": \"FAILED\"\n        }\n      ],\n      \"Status\": \"PENDING_CERTIFICATE_DNS_VALIDATION\"\n    }\n  ],\n  \"VpcDNSTargets\": [\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    },\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:07:01.000Z",
+              "updatedAt": "2026-07-28T01:07:01.000Z",
+              "uid": "35240-2bc96c55-8b65-4543-812a-ac0d361c1de1"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:01.000Z",
+          "updatedAt": "2026-07-28T01:07:01.000Z",
+          "uid": "35240-13333ce2-b16f-4824-be47-e6f1ccb46971"
+        }
+      ],
+      "id": "6e4b0e5b-85f8-41e6-9d03-abf98e5cdd35",
+      "createdAt": "2026-07-28T01:07:01.000Z",
+      "updatedAt": "2026-07-28T01:07:01.000Z",
+      "uid": "35240-6e4b0e5b-85f8-41e6-9d03-abf98e5cdd35"
+    },
+    {
+      "name": "#DisassociateCustomDomain",
+      "item": [
+        {
+          "name": "AWS App Runner Disassociate a Custom Domain",
+          "id": "cb34f24a-63f2-477b-8b53-370848a040ff",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.DisassociateCustomDomain"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#DisassociateCustomDomain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "DisassociateCustomDomain"
+            },
+            "description": "Disassociate a custom domain name from an App Runner service."
+          },
+          "response": [
+            {
+              "id": "f4be5fb7-3ec0-47ac-a232-9433fec016b8",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.DisassociateCustomDomain"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ServiceArn\": \"<string>\",\n  \"DomainName\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#DisassociateCustomDomain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DisassociateCustomDomain"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"DNSTarget\": \"<string>\",\n  \"ServiceArn\": \"<string>\",\n  \"CustomDomain\": {\n    \"DomainName\": \"<string>\",\n    \"EnableWWWSubdomain\": \"<boolean>\",\n    \"CertificateValidationRecords\": [\n      {\n        \"Name\": \"<string>\",\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\",\n        \"Status\": \"FAILED\"\n      },\n      {\n        \"Name\": \"<string>\",\n        \"Type\": \"<string>\",\n        \"Value\": \"<string>\",\n        \"Status\": \"SUCCESS\"\n      }\n    ],\n    \"Status\": \"ACTIVE\"\n  },\n  \"VpcDNSTargets\": [\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    },\n    {\n      \"VpcIngressConnectionArn\": \"<string>\",\n      \"VpcId\": \"<string>\",\n      \"DomainName\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:07:01.000Z",
+              "updatedAt": "2026-07-28T01:07:01.000Z",
+              "uid": "35240-f4be5fb7-3ec0-47ac-a232-9433fec016b8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:07:01.000Z",
+          "updatedAt": "2026-07-28T01:07:01.000Z",
+          "uid": "35240-cb34f24a-63f2-477b-8b53-370848a040ff"
+        }
+      ],
+      "id": "3d5fe919-f82e-4a6a-bf0d-07e06c3c1d42",
+      "createdAt": "2026-07-28T01:07:01.000Z",
+      "updatedAt": "2026-07-28T01:07:01.000Z",
+      "uid": "35240-3d5fe919-f82e-4a6a-bf0d-07e06c3c1d42"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://apprunner.{{region}}.amazonaws.com"
+    }
+  ]
+}

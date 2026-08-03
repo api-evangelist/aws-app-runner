@@ -1,0 +1,264 @@
+{
+  "info": {
+    "_postman_id": "9c92b212-e524-4f02-85a0-a4cccea26403",
+    "name": "AWS App Runner Auto Scaling API",
+    "description": "AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:43.000Z",
+    "updatedAt": "2026-07-28T01:06:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c92b212-e524-4f02-85a0-a4cccea26403"
+  },
+  "item": [
+    {
+      "name": "#CreateAutoScalingConfiguration",
+      "item": [
+        {
+          "name": "AWS App Runner Create an Auto Scaling Configuration",
+          "id": "9ce44781-179d-4136-bd18-8555e968483a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.CreateAutoScalingConfiguration"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"MaxConcurrency\": \"<integer>\",\n  \"MinSize\": \"<integer>\",\n  \"MaxSize\": \"<integer>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#CreateAutoScalingConfiguration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "CreateAutoScalingConfiguration"
+            },
+            "description": "Create an App Runner automatic scaling configuration resource."
+          },
+          "response": [
+            {
+              "id": "f67946cb-d909-4f41-b373-50321f305cc1",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.CreateAutoScalingConfiguration"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"MaxConcurrency\": \"<integer>\",\n  \"MinSize\": \"<integer>\",\n  \"MaxSize\": \"<integer>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#CreateAutoScalingConfiguration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "CreateAutoScalingConfiguration"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"AutoScalingConfiguration\": {\n    \"AutoScalingConfigurationArn\": \"<string>\",\n    \"AutoScalingConfigurationName\": \"<string>\",\n    \"AutoScalingConfigurationRevision\": \"<integer>\",\n    \"Latest\": \"<boolean>\",\n    \"Status\": \"ACTIVE\",\n    \"MaxConcurrency\": \"<integer>\",\n    \"MinSize\": \"<integer>\",\n    \"MaxSize\": \"<integer>\",\n    \"CreatedAt\": \"<dateTime>\",\n    \"DeletedAt\": \"<dateTime>\",\n    \"HasAssociatedService\": \"<boolean>\",\n    \"IsDefault\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:06:44.000Z",
+              "updatedAt": "2026-07-28T01:06:44.000Z",
+              "uid": "35240-f67946cb-d909-4f41-b373-50321f305cc1"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:44.000Z",
+          "updatedAt": "2026-07-28T01:06:44.000Z",
+          "uid": "35240-9ce44781-179d-4136-bd18-8555e968483a"
+        }
+      ],
+      "id": "18d327d9-9239-4ccd-9bb7-c19015a808a4",
+      "createdAt": "2026-07-28T01:06:44.000Z",
+      "updatedAt": "2026-07-28T01:06:44.000Z",
+      "uid": "35240-18d327d9-9239-4ccd-9bb7-c19015a808a4"
+    },
+    {
+      "name": "#ListAutoScalingConfigurations",
+      "item": [
+        {
+          "name": "AWS App Runner List Auto Scaling Configurations",
+          "id": "3ad9274c-c0f6-405d-b118-c4547921b327",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) ",
+                "key": "X-Amz-Target",
+                "value": "AppRunner.ListAutoScalingConfigurations"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"LatestOnly\": \"<boolean>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/#ListAutoScalingConfigurations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "hash": "ListAutoScalingConfigurations"
+            },
+            "description": "Returns a list of App Runner automatic scaling configurations."
+          },
+          "response": [
+            {
+              "id": "b38c68ad-ba7b-4412-922e-27745d186514",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) ",
+                    "key": "X-Amz-Target",
+                    "value": "AppRunner.ListAutoScalingConfigurations"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-amz-json-1.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AutoScalingConfigurationName\": \"<string>\",\n  \"LatestOnly\": \"<boolean>\",\n  \"MaxResults\": \"<integer>\",\n  \"NextToken\": \"<string>\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/#ListAutoScalingConfigurations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListAutoScalingConfigurations"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"AutoScalingConfigurationSummaryList\": [\n    {\n      \"AutoScalingConfigurationArn\": \"<string>\",\n      \"AutoScalingConfigurationName\": \"<string>\",\n      \"AutoScalingConfigurationRevision\": \"<integer>\",\n      \"Status\": \"INACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"HasAssociatedService\": \"<boolean>\",\n      \"IsDefault\": \"<boolean>\"\n    },\n    {\n      \"AutoScalingConfigurationArn\": \"<string>\",\n      \"AutoScalingConfigurationName\": \"<string>\",\n      \"AutoScalingConfigurationRevision\": \"<integer>\",\n      \"Status\": \"INACTIVE\",\n      \"CreatedAt\": \"<dateTime>\",\n      \"HasAssociatedService\": \"<boolean>\",\n      \"IsDefault\": \"<boolean>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:44.000Z",
+              "updatedAt": "2026-07-28T01:06:44.000Z",
+              "uid": "35240-b38c68ad-ba7b-4412-922e-27745d186514"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:44.000Z",
+          "updatedAt": "2026-07-28T01:06:44.000Z",
+          "uid": "35240-3ad9274c-c0f6-405d-b118-c4547921b327"
+        }
+      ],
+      "id": "0509c229-365e-400a-acbe-ba7a0e05cd2f",
+      "createdAt": "2026-07-28T01:06:44.000Z",
+      "updatedAt": "2026-07-28T01:06:44.000Z",
+      "uid": "35240-0509c229-365e-400a-acbe-ba7a0e05cd2f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://apprunner.{{region}}.amazonaws.com"
+    }
+  ]
+}
