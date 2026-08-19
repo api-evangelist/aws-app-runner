@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS App Runner Auto Scaling Observability API",
+    "version": "2020-05-15"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Observability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AWS App Runner Create an Observability Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#CreateObservabilityConfiguration",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an App Runner observability configuration resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

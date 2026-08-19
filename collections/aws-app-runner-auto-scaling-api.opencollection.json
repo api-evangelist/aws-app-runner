@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS App Runner Auto Scaling API",
+    "version": "2020-05-15"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auto Scaling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AWS App Runner Create an Auto Scaling Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#CreateAutoScalingConfiguration",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an App Runner automatic scaling configuration resource."
+        },
+        {
+          "info": {
+            "name": "AWS App Runner List Auto Scaling Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#ListAutoScalingConfigurations",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of App Runner automatic scaling configurations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

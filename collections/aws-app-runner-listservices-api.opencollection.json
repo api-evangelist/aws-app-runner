@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS App Runner Auto Scaling #ListServices API",
+    "version": "2020-05-15"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "#ListServices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AWS App Runner List App Runner Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#ListServices",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of running App Runner services in your AWS account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

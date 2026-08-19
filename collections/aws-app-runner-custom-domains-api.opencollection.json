@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS App Runner Auto Scaling Custom Domains API",
+    "version": "2020-05-15"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AWS App Runner Associate a Custom Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#AssociateCustomDomain",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associate your own domain name with the App Runner subdomain URL of your service."
+        },
+        {
+          "info": {
+            "name": "AWS App Runner Describe Custom Domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#DescribeCustomDomains",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return a description of custom domain names associated with an App Runner service."
+        },
+        {
+          "info": {
+            "name": "AWS App Runner Disassociate a Custom Domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#DisassociateCustomDomain",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disassociate a custom domain name from an App Runner service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS App Runner Auto Scaling VPC API",
+    "version": "2020-05-15"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VPC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AWS App Runner Create a VPC Connector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#CreateVpcConnector",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an App Runner VPC connector resource for associating an App Runner service with a custom VPC."
+        },
+        {
+          "info": {
+            "name": "AWS App Runner List VPC Connectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://apprunner.{region}.amazonaws.com/#ListVpcConnectors",
+            "headers": [
+              {
+                "name": "X-Amz-Target",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of App Runner VPC connectors in your AWS account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
