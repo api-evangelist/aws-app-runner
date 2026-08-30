@@ -50,7 +50,7 @@ apis:
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
   tags:
-  - Auto-Scaling
+  - Auto Scaling
   tags_raw:
   - Auto Scaling
   properties:
@@ -274,7 +274,7 @@ apis:
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
   tags:
-  - Update Service
+  - '#UpdateService'
   tags_raw:
   - '#UpdateService'
   properties:
