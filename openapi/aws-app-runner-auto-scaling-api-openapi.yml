@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: AWS App Runner Auto Scaling API
   description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
@@ -142,6 +142,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
     AutoScalingConfigurationSummary:
       type: object
       properties:
@@ -163,13 +170,6 @@ components:
           type: boolean
         IsDefault:
           type: boolean
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
     AutoScalingConfiguration:
       type: object
       properties:
