@@ -1,10 +1,10 @@
 aid: aws-app-runner
 name: AWS App Runner
-description: >-
-  AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized web applications
-  and APIs at scale. It automatically builds and deploys applications from container images or source code, load
-  balances traffic with encryption, and scales to meet traffic needs without requiring infrastructure management. App
-  Runner integrates with ECR, GitHub, Bitbucket, VPC, IAM, and CloudWatch for complete application delivery.
+description: AWS App Runner is a fully managed service that makes it easy to build, deploy, and run containerized
+  web applications and APIs at scale. It automatically builds and deploys applications from container
+  images or source code, load balances traffic with encryption, and scales to meet traffic needs without
+  requiring infrastructure management. App Runner integrates with ECR, GitHub, Bitbucket, VPC, IAM, and
+  CloudWatch for complete application delivery.
 type: Index
 deliveryModel:
   model: saas
@@ -43,7 +43,7 @@ tags:
 - Serverless
 url: https://raw.githubusercontent.com/api-evangelist/aws-app-runner/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: aws-app-runner:aws-app-runner-auto-scaling-api
@@ -69,7 +69,7 @@ apis:
   - type: GraphQL
     url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-aws-app-runner-api-api
-  name: AWS App Runner AWS App Runner API API
+  name: AWS App Runner AWS App Runner API
   description: The AWS App Runner API API from AWS App Runner — 1 operation(s) for aws app runner api.
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
