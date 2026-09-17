@@ -46,28 +46,6 @@ created: '2026-03-26'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
-- aid: aws-app-runner:aws-app-runner-auto-scaling-api
-  name: AWS App Runner Auto Scaling API
-  description: Manage auto scaling configurations
-  humanURL: https://aws.amazon.com/apprunner/
-  baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - Auto-Scaling
-  tags_raw:
-  - Auto Scaling
-  properties:
-  - type: OpenAPI
-    url: openapi/aws-app-runner-auto-scaling-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
-  - type: APIReference
-    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-aws-app-runner-api-api
   name: AWS App Runner AWS App Runner API
   description: The AWS App Runner API API from AWS App Runner — 1 operation(s) for aws app runner api.
@@ -128,26 +106,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
   - type: GraphQL
     url: graphql/aws-app-runner-graphql.md
-- aid: aws-app-runner:aws-app-runner-deleteservice-api
-  name: 'AWS App Runner #DeleteService API'
-  description: 'The #DeleteService API from AWS App Runner — 1 operation(s) for #deleteservice.'
-  humanURL: https://aws.amazon.com/apprunner/
-  baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - '#DeleteService'
-  properties:
-  - type: OpenAPI
-    url: openapi/aws-app-runner-deleteservice-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
-  - type: APIReference
-    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-deployments-api
   name: AWS App Runner Deployments API
   description: Manage deployments and operations
@@ -180,26 +138,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aws-app-runner-describeservice-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
-  - type: APIReference
-    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
-- aid: aws-app-runner:aws-app-runner-listservices-api
-  name: 'AWS App Runner #ListServices API'
-  description: 'The #ListServices API from AWS App Runner — 1 operation(s) for #listservices.'
-  humanURL: https://aws.amazon.com/apprunner/
-  baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - '#ListServices'
-  properties:
-  - type: OpenAPI
-    url: openapi/aws-app-runner-listservices-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
   - type: GettingStarted
@@ -270,28 +208,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
   - type: GraphQL
     url: graphql/aws-app-runner-graphql.md
-- aid: aws-app-runner:aws-app-runner-updateservice-api
-  name: 'AWS App Runner #UpdateService API'
-  description: 'The #UpdateService API from AWS App Runner — 1 operation(s) for #updateservice.'
-  humanURL: https://aws.amazon.com/apprunner/
-  baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - Update Service
-  tags_raw:
-  - '#UpdateService'
-  properties:
-  - type: OpenAPI
-    url: openapi/aws-app-runner-updateservice-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
-  - type: GettingStarted
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
-  - type: APIReference
-    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-vpc-api
   name: AWS App Runner VPC API
   description: Manage VPC connectors
@@ -302,6 +218,86 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/aws-app-runner-vpc-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
+  - type: GraphQL
+    url: graphql/aws-app-runner-graphql.md
+- aid: aws-app-runner:aws-app-runner-autoscaling-api
+  name: AWS App Runner Autoscaling API
+  description: Manage auto scaling configurations
+  humanURL: https://aws.amazon.com/apprunner/
+  baseURL: https://apprunner.{region}.amazonaws.com
+  tags:
+  - Autoscaling
+  properties:
+  - type: OpenAPI
+    url: openapi/aws-app-runner-autoscaling-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
+  - type: GraphQL
+    url: graphql/aws-app-runner-graphql.md
+- aid: aws-app-runner:aws-app-runner-delete-service-api
+  name: AWS App Runner Delete Service API
+  description: The Delete Service API from AWS App Runner — 1 operation(s) for delete service.
+  humanURL: https://aws.amazon.com/apprunner/
+  baseURL: https://apprunner.{region}.amazonaws.com
+  tags:
+  - Delete Service
+  properties:
+  - type: OpenAPI
+    url: openapi/aws-app-runner-delete-service-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
+  - type: GraphQL
+    url: graphql/aws-app-runner-graphql.md
+- aid: aws-app-runner:aws-app-runner-list-services-api
+  name: AWS App Runner List Services API
+  description: The List Services API from AWS App Runner — 1 operation(s) for list services.
+  humanURL: https://aws.amazon.com/apprunner/
+  baseURL: https://apprunner.{region}.amazonaws.com
+  tags:
+  - List Services
+  properties:
+  - type: OpenAPI
+    url: openapi/aws-app-runner-list-services-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
+  - type: GettingStarted
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/getting-started.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
+  - type: GraphQL
+    url: graphql/aws-app-runner-graphql.md
+- aid: aws-app-runner:aws-app-runner-update-service-api
+  name: AWS App Runner Update Service API
+  description: The Update Service API from AWS App Runner — 1 operation(s) for update service.
+  humanURL: https://aws.amazon.com/apprunner/
+  baseURL: https://apprunner.{region}.amazonaws.com
+  tags:
+  - Update Service
+  properties:
+  - type: OpenAPI
+    url: openapi/aws-app-runner-update-service-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
   - type: GettingStarted
