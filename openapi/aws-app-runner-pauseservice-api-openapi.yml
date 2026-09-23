@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'AWS App Runner Auto Scaling #PauseService #Pause Service API'
+  title: 'AWS App Runner #Pause Service API'
   description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
   version: '2020-05-15'
   contact:
@@ -164,58 +164,6 @@ components:
           properties:
             KmsKey:
               type: string
-    AutoScalingConfigurationSummary:
-      type: object
-      properties:
-        AutoScalingConfigurationArn:
-          type: string
-        AutoScalingConfigurationName:
-          type: string
-        AutoScalingConfigurationRevision:
-          type: integer
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        CreatedAt:
-          type: string
-          format: date-time
-        HasAssociatedService:
-          type: boolean
-        IsDefault:
-          type: boolean
-    HealthCheckConfiguration:
-      type: object
-      properties:
-        Protocol:
-          type: string
-          enum:
-          - TCP
-          - HTTP
-        Path:
-          type: string
-        Interval:
-          type: integer
-          description: Interval in seconds between health checks.
-        Timeout:
-          type: integer
-          description: Timeout in seconds for each health check.
-        HealthyThreshold:
-          type: integer
-        UnhealthyThreshold:
-          type: integer
-    InstanceConfiguration:
-      type: object
-      properties:
-        Cpu:
-          type: string
-          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
-        Memory:
-          type: string
-          description: Memory in MB (e.g., 2048 for 2 GB).
-        InstanceRoleArn:
-          type: string
     SourceConfiguration:
       type: object
       properties:
@@ -308,6 +256,58 @@ components:
               type: string
             AccessRoleArn:
               type: string
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
+    HealthCheckConfiguration:
+      type: object
+      properties:
+        Protocol:
+          type: string
+          enum:
+          - TCP
+          - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
   securitySchemes:
     aws_sig_v4:
       type: apiKey

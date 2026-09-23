@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: AWS App Runner Auto Scaling Custom Domains API
+  title: AWS App Runner Custom Domains API
   description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
   version: '2020-05-15'
   contact:
@@ -226,6 +226,15 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    VpcDNSTarget:
+      type: object
+      properties:
+        VpcIngressConnectionArn:
+          type: string
+        VpcId:
+          type: string
+        DomainName:
+          type: string
     CustomDomain:
       type: object
       properties:
@@ -260,15 +269,6 @@ components:
           - DELETE_FAILED
           - PENDING_CERTIFICATE_DNS_VALIDATION
           - BINDING_CERTIFICATE
-    VpcDNSTarget:
-      type: object
-      properties:
-        VpcIngressConnectionArn:
-          type: string
-        VpcId:
-          type: string
-        DomainName:
-          type: string
   securitySchemes:
     aws_sig_v4:
       type: apiKey

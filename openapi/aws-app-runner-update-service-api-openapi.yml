@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 'AWS App Runner Auto Scaling #UpdateService #Update Service API'
+  title: 'AWS App Runner #Update Service API'
   description: AWS App Runner is a fully managed service for building, deploying, and running containerized web applications and APIs. The API provides operations for managing App Runner services, connections, auto scaling configurations, custom domains, VPC connectors, and observability configuration.
   version: '2020-05-15'
   contact:
@@ -16,7 +16,7 @@ servers:
 security:
 - aws_sig_v4: []
 tags:
-- name: '#UpdateService'
+- name: Update Service
 paths:
   /#UpdateService:
     post:
@@ -24,7 +24,7 @@ paths:
       summary: AWS App Runner Update an App Runner Service
       description: Update an AWS App Runner service. You can update the source configuration, instance configuration, auto scaling, and health check configuration.
       tags:
-      - '#UpdateService'
+      - Update Service
       parameters:
       - name: X-Amz-Target
         in: header
@@ -87,6 +87,98 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SourceConfiguration:
+      type: object
+      properties:
+        CodeRepository:
+          type: object
+          properties:
+            RepositoryUrl:
+              type: string
+            SourceCodeVersion:
+              type: object
+              properties:
+                Type:
+                  type: string
+                  enum:
+                  - BRANCH
+                Value:
+                  type: string
+            CodeConfiguration:
+              type: object
+              properties:
+                ConfigurationSource:
+                  type: string
+                  enum:
+                  - REPOSITORY
+                  - API
+                CodeConfigurationValues:
+                  type: object
+                  properties:
+                    Runtime:
+                      type: string
+                      enum:
+                      - PYTHON_3
+                      - NODEJS_12
+                      - NODEJS_14
+                      - NODEJS_16
+                      - NODEJS_18
+                      - CORRETTO_8
+                      - CORRETTO_11
+                      - GO_1
+                      - DOTNET_6
+                      - PHP_81
+                      - RUBY_31
+                    BuildCommand:
+                      type: string
+                    StartCommand:
+                      type: string
+                    Port:
+                      type: string
+                    RuntimeEnvironmentVariables:
+                      type: object
+                      additionalProperties:
+                        type: string
+                    RuntimeEnvironmentSecrets:
+                      type: object
+                      additionalProperties:
+                        type: string
+            SourceDirectory:
+              type: string
+        ImageRepository:
+          type: object
+          properties:
+            ImageIdentifier:
+              type: string
+            ImageConfiguration:
+              type: object
+              properties:
+                RuntimeEnvironmentVariables:
+                  type: object
+                  additionalProperties:
+                    type: string
+                RuntimeEnvironmentSecrets:
+                  type: object
+                  additionalProperties:
+                    type: string
+                StartCommand:
+                  type: string
+                Port:
+                  type: string
+            ImageRepositoryType:
+              type: string
+              enum:
+              - ECR
+              - ECR_PUBLIC
+        AutoDeploymentsEnabled:
+          type: boolean
+        AuthenticationConfiguration:
+          type: object
+          properties:
+            ConnectionArn:
+              type: string
+            AccessRoleArn:
+              type: string
     Service:
       type: object
       properties:
@@ -180,6 +272,17 @@ components:
           type: boolean
         IsDefault:
           type: boolean
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
     UpdateServiceRequest:
       type: object
       required:
@@ -245,109 +348,6 @@ components:
           type: integer
         UnhealthyThreshold:
           type: integer
-    InstanceConfiguration:
-      type: object
-      properties:
-        Cpu:
-          type: string
-          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
-        Memory:
-          type: string
-          description: Memory in MB (e.g., 2048 for 2 GB).
-        InstanceRoleArn:
-          type: string
-    SourceConfiguration:
-      type: object
-      properties:
-        CodeRepository:
-          type: object
-          properties:
-            RepositoryUrl:
-              type: string
-            SourceCodeVersion:
-              type: object
-              properties:
-                Type:
-                  type: string
-                  enum:
-                  - BRANCH
-                Value:
-                  type: string
-            CodeConfiguration:
-              type: object
-              properties:
-                ConfigurationSource:
-                  type: string
-                  enum:
-                  - REPOSITORY
-                  - API
-                CodeConfigurationValues:
-                  type: object
-                  properties:
-                    Runtime:
-                      type: string
-                      enum:
-                      - PYTHON_3
-                      - NODEJS_12
-                      - NODEJS_14
-                      - NODEJS_16
-                      - NODEJS_18
-                      - CORRETTO_8
-                      - CORRETTO_11
-                      - GO_1
-                      - DOTNET_6
-                      - PHP_81
-                      - RUBY_31
-                    BuildCommand:
-                      type: string
-                    StartCommand:
-                      type: string
-                    Port:
-                      type: string
-                    RuntimeEnvironmentVariables:
-                      type: object
-                      additionalProperties:
-                        type: string
-                    RuntimeEnvironmentSecrets:
-                      type: object
-                      additionalProperties:
-                        type: string
-            SourceDirectory:
-              type: string
-        ImageRepository:
-          type: object
-          properties:
-            ImageIdentifier:
-              type: string
-            ImageConfiguration:
-              type: object
-              properties:
-                RuntimeEnvironmentVariables:
-                  type: object
-                  additionalProperties:
-                    type: string
-                RuntimeEnvironmentSecrets:
-                  type: object
-                  additionalProperties:
-                    type: string
-                StartCommand:
-                  type: string
-                Port:
-                  type: string
-            ImageRepositoryType:
-              type: string
-              enum:
-              - ECR
-              - ECR_PUBLIC
-        AutoDeploymentsEnabled:
-          type: boolean
-        AuthenticationConfiguration:
-          type: object
-          properties:
-            ConnectionArn:
-              type: string
-            AccessRoleArn:
-              type: string
   securitySchemes:
     aws_sig_v4:
       type: apiKey
