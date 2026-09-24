@@ -64,8 +64,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-connections-api
   name: AWS App Runner Connections API
   description: Manage source code provider connections
@@ -84,8 +82,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-custom-domains-api
   name: AWS App Runner Custom Domains API
   description: Manage custom domain associations
@@ -104,8 +100,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-deployments-api
   name: AWS App Runner Deployments API
   description: Manage deployments and operations
@@ -126,8 +120,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-describeservice-api
   name: 'AWS App Runner #DescribeService API'
   description: 'The #DescribeService API from AWS App Runner — 1 operation(s) for #describeservice.'
@@ -146,8 +138,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-observability-api
   name: AWS App Runner Observability API
   description: Manage observability configurations
@@ -166,8 +156,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-pauseservice-api
   name: 'AWS App Runner #PauseService API'
   description: 'The #PauseService API from AWS App Runner — 1 operation(s) for #pauseservice.'
@@ -186,8 +174,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-resumeservice-api
   name: 'AWS App Runner #ResumeService API'
   description: 'The #ResumeService API from AWS App Runner — 1 operation(s) for #resumeservice.'
@@ -206,8 +192,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-vpc-api
   name: AWS App Runner VPC API
   description: Manage VPC connectors
@@ -226,8 +210,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-autoscaling-api
   name: AWS App Runner Autoscaling API
   description: Manage auto scaling configurations
@@ -248,8 +230,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-delete-service-api
   name: AWS App Runner Delete Service API
   description: The Delete Service API from AWS App Runner — 1 operation(s) for delete service.
@@ -268,8 +248,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-list-services-api
   name: AWS App Runner List Services API
   description: The List Services API from AWS App Runner — 1 operation(s) for list services.
@@ -288,8 +266,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 - aid: aws-app-runner:aws-app-runner-update-service-api
   name: AWS App Runner Update Service API
   description: The Update Service API from AWS App Runner — 1 operation(s) for update service.
@@ -308,8 +284,6 @@ apis:
     url: https://docs.aws.amazon.com/apprunner/latest/api/Welcome.html
   - type: Authentication
     url: https://docs.aws.amazon.com/apprunner/latest/dg/security-iam.html
-  - type: GraphQL
-    url: graphql/aws-app-runner-graphql.md
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/aws-app-runner/overview
@@ -412,5 +386,5 @@ integrations:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product
