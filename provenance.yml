@@ -10,11 +10,11 @@ artifacts:
     method: derived
     evidence: declared in the artifact
   collections/aws-app-runner-auto-scaling-api.opencollection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-auto-scaling-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-auto-scaling-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-auto-scaling-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-aws-app-runner-api-api.opencollection.json:
     method: derived
     evidence: openapi/aws-app-runner-aws-app-runner-api-api
@@ -34,11 +34,11 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-custom-domains-api
   collections/aws-app-runner-deleteservice-api.opencollection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-deleteservice-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-deleteservice-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-deleteservice-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-deployments-api.opencollection.json:
     method: derived
     evidence: openapi/aws-app-runner-deployments-api
@@ -52,11 +52,11 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-describeservice-api
   collections/aws-app-runner-listservices-api.opencollection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-listservices-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-listservices-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-listservices-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-observability-api.opencollection.json:
     method: derived
     evidence: openapi/aws-app-runner-observability-api
@@ -76,11 +76,11 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-resumeservice-api
   collections/aws-app-runner-updateservice-api.opencollection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-updateservice-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-updateservice-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-updateservice-api
+    method: unknown
+    evidence: no authorship recorded
   collections/aws-app-runner-vpc-api.opencollection.json:
     method: derived
     evidence: openapi/aws-app-runner-vpc-api
@@ -93,6 +93,12 @@ artifacts:
   collections/aws-app-runner.postman_collection.json:
     method: derived
     evidence: openapi/aws-app-runner
+  conformance/amazon-app-runner-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  errors/amazon-app-runner-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/app-runner-auto-scaling-configuration-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -147,10 +153,28 @@ artifacts:
   finops/aws-app-runner-finops.yml:
     method: generated
     evidence: declared in the artifact
-  graphql/aws-app-runner-graphql.md:
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
+  json-ld/amazon-app-runner-context.jsonld:
     method: unknown
     evidence: no authorship recorded
   json-ld/aws-app-runner-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-app-runner-apprunnerresourcearn-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-app-runner-asconfigmaxconcurrency-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-app-runner-asconfigmaxsize-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-app-runner-asconfigminsize-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-app-runner-associatecustomdomainrequest-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/app-runner-auto-scaling-configuration-schema.json:
@@ -207,6 +231,15 @@ artifacts:
   json-schema/aws-app-runner-service.yml:
     method: unknown
     evidence: no authorship recorded
+  json-structure/amazon-app-runner-apprunnerresourcearn-structure.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-structure/amazon-app-runner-asconfigmaxconcurrency-structure.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-structure/amazon-app-runner-asconfigmaxsize-structure.json:
+    method: unknown
+    evidence: no authorship recorded
   json-structure/app-runner-auto-scaling-configuration-structure.json:
     method: unknown
     evidence: no authorship recorded
@@ -258,55 +291,7 @@ artifacts:
   json-structure/app-runner-vpc-dns-target-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-06T210741.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-07T135032.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T093022.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-10T111628.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-11T211707.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-12T193225.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-17T064519.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T080027.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T082702.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-19T114122.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T165047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T191845.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-20T205517.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-21T110057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T064859.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-24T171257.yml:
+  kin/checks-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-25T125852.yml:
@@ -393,10 +378,173 @@ artifacts:
   kin/score-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T144739.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T195450.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T211839.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T011047.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-06T224210.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T200636.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-07T213054.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T214843.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-08T232836.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T204815.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-10T222408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T062655.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T080032.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T204651.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-12T221936.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-13T214537.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T064754.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T210656.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-14T225847.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T211329.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-15T230249.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T210549.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-16T225339.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T211151.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-17T233623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T205255.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-18T231945.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T165737.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-19T193153.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T205903.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-20T232958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T211425.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-21T233935.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-22T213221.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-23T000603.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T064009.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T090406.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-24T161608.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   openapi/_original/aws-app-runner-openapi.yml:
     method: harvested
-    evidence: fetched from the provider as-is; byte-identical to the source
-  openapi/aws-app-runner-auto-scaling-api-openapi.yml:
+    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
+      to the provider's source is unverified
+  openapi/amazon-app-runner-x-amz-target-apprunner-createvpcingressconnection-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-deleteautoscalingconfiguration-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-deleteobservabilityconfiguration-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-deletevpcconnector-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-deletevpcingressconnection-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-describeautoscalingconfiguration-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-describeobservabilityconfiguration-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-describevpcconnector-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-describevpcingressconnection-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-listobservabilityconfigurations-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-listtagsforresource-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-listvpcingressconnections-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-tagresource-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-untagresource-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/amazon-app-runner-x-amz-target-apprunner-updatevpcingressconnection-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/aws-app-runner-autoscaling-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/aws-app-runner-aws-app-runner-api-api-openapi.yml:
@@ -408,7 +556,7 @@ artifacts:
   openapi/aws-app-runner-custom-domains-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/aws-app-runner-deleteservice-api-openapi.yml:
+  openapi/aws-app-runner-delete-service-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/aws-app-runner-deployments-api-openapi.yml:
@@ -417,7 +565,7 @@ artifacts:
   openapi/aws-app-runner-describeservice-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/aws-app-runner-listservices-api-openapi.yml:
+  openapi/aws-app-runner-list-services-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/aws-app-runner-observability-api-openapi.yml:
@@ -429,7 +577,7 @@ artifacts:
   openapi/aws-app-runner-resumeservice-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/aws-app-runner-updateservice-api-openapi.yml:
+  openapi/aws-app-runner-update-service-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/aws-app-runner-vpc-api-openapi.yml:
@@ -439,8 +587,8 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   postman/aws-app-runner-auto-scaling-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-auto-scaling-api
+    method: unknown
+    evidence: no authorship recorded
   postman/aws-app-runner-aws-app-runner-api-api.postman_collection.json:
     method: derived
     evidence: openapi/aws-app-runner-aws-app-runner-api-api
@@ -451,8 +599,8 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-custom-domains-api
   postman/aws-app-runner-deleteservice-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-deleteservice-api
+    method: unknown
+    evidence: no authorship recorded
   postman/aws-app-runner-deployments-api.postman_collection.json:
     method: derived
     evidence: openapi/aws-app-runner-deployments-api
@@ -460,8 +608,8 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-describeservice-api
   postman/aws-app-runner-listservices-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-listservices-api
+    method: unknown
+    evidence: no authorship recorded
   postman/aws-app-runner-observability-api.postman_collection.json:
     method: derived
     evidence: openapi/aws-app-runner-observability-api
@@ -472,8 +620,8 @@ artifacts:
     method: derived
     evidence: openapi/aws-app-runner-resumeservice-api
   postman/aws-app-runner-updateservice-api.postman_collection.json:
-    method: derived
-    evidence: openapi/aws-app-runner-updateservice-api
+    method: unknown
+    evidence: no authorship recorded
   postman/aws-app-runner-vpc-api.postman_collection.json:
     method: derived
     evidence: openapi/aws-app-runner-vpc-api
