@@ -1,0 +1,392 @@
+# x-archived-from: amazon-app-runner-x-amz-target-apprunner-createvpcingressconnection-api-openapi.yml
+# x-archived-on: 2026-09-26
+openapi: 3.2.0
+info:
+  version: '2020-05-15'
+  x-release: v4
+  title: 'AWS App Runner #X Amz Target=AppRunner.CreateVpcIngressConne…'
+  description: 'App Runner
+
+    App Runner is an application service that provides a fast, simple, and cost-effective way to go directly from an existing container image or source code to a running service in the Amazon Web Services Cloud in seconds.'
+  x-logo:
+    url: https://api.apis.guru/v2/cache/logo/https_twitter.com_awscloud_profile_image.png
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: apprunner
+  x-aws-signingName: apprunner
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/apprunner-2020-05-15.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://apprunner.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS App Runner multi-region endpoint
+- url: https://apprunner.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS App Runner multi-region endpoint
+- url: http://apprunner.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS App Runner endpoint for China (Beijing) and China (Ningxia)
+- url: https://apprunner.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS App Runner endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: '#X Amz Target=AppRunner.CreateVpcIngressConnection'
+paths:
+  /#X-Amz-Target=AppRunner.CreateVpcIngressConnection:
+    parameters:
+    - $ref: '#/components/parameters/X-Amz-Content-Sha256'
+    - $ref: '#/components/parameters/X-Amz-Date'
+    - $ref: '#/components/parameters/X-Amz-Algorithm'
+    - $ref: '#/components/parameters/X-Amz-Credential'
+    - $ref: '#/components/parameters/X-Amz-Security-Token'
+    - $ref: '#/components/parameters/X-Amz-Signature'
+    - $ref: '#/components/parameters/X-Amz-SignedHeaders'
+    post:
+      operationId: CreateVpcIngressConnection
+      description: Create an App Runner VPC Ingress Connection resource. App Runner requires this resource when you want to associate your App Runner service with an Amazon VPC endpoint.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateVpcIngressConnectionResponse'
+        '480':
+          description: InvalidRequestException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidRequestException'
+        '481':
+          description: InvalidStateException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidStateException'
+        '482':
+          description: InternalServiceErrorException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceErrorException'
+        '483':
+          description: ServiceQuotaExceededException
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceQuotaExceededException'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVpcIngressConnectionRequest'
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.CreateVpcIngressConnection
+      tags:
+      - '#X Amz Target=AppRunner.CreateVpcIngressConnection'
+      summary: Create vpc ingress connection
+      x-summary-source: derived
+components:
+  schemas:
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
+    CreateVpcIngressConnectionRequest:
+      type: object
+      required:
+      - ServiceArn
+      - VpcIngressConnectionName
+      - IngressVpcConfiguration
+      title: CreateVpcIngressConnectionRequest
+      properties:
+        ServiceArn:
+          allOf:
+          - $ref: '#/components/schemas/AppRunnerResourceArn'
+          - description: The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
+        VpcIngressConnectionName:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnectionName'
+          - description: 'A name for the VPC Ingress Connection resource. It must be unique across all the active VPC Ingress Connections in your Amazon Web Services account in the Amazon Web Services Region. '
+        IngressVpcConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/IngressVpcConfiguration'
+          - description: Specifications for the customer’s Amazon VPC and the related Amazon Web Services PrivateLink VPC endpoint that are used to create the VPC Ingress Connection resource.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
+    String:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 51200
+    Timestamp:
+      type: string
+      format: date-time
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+    TagValue:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 256
+    InternalServiceErrorException: {}
+    ServiceQuotaExceededException: {}
+    DomainName:
+      type: string
+      pattern: '[A-Za-z0-9*.-]{1,255}'
+      minLength: 1
+      maxLength: 255
+    InvalidRequestException: {}
+    TagKey:
+      type: string
+      pattern: ^(?!aws:).+
+      minLength: 1
+      maxLength: 128
+    InvalidStateException: {}
+    CustomerAccountId:
+      type: string
+      pattern: '[0-9]{12}'
+      minLength: 12
+      maxLength: 12
+    VpcIngressConnectionName:
+      type: string
+      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,39}'
+      minLength: 4
+      maxLength: 40
+    IngressVpcConfiguration:
+      type: object
+      properties:
+        VpcId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The ID of the VPC that is used for the VPC endpoint.
+        VpcEndpointId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: 'The ID of the VPC endpoint that your App Runner service connects to. '
+      description: The configuration of your VPC and the associated VPC endpoint. The VPC endpoint is an Amazon Web Services PrivateLink resource that allows access to your App Runner services from within an Amazon VPC.
+    VpcIngressConnection:
+      type: object
+      properties:
+        VpcIngressConnectionArn:
+          allOf:
+          - $ref: '#/components/schemas/AppRunnerResourceArn'
+          - description: 'The Amazon Resource Name (ARN) of the VPC Ingress Connection. '
+        VpcIngressConnectionName:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnectionName'
+          - description: The customer-provided VPC Ingress Connection name.
+        ServiceArn:
+          allOf:
+          - $ref: '#/components/schemas/AppRunnerResourceArn'
+          - description: 'The Amazon Resource Name (ARN) of the service associated with the VPC Ingress Connection. '
+        Status:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnectionStatus'
+          - description: 'The current status of the VPC Ingress Connection. The VPC Ingress Connection displays one of the following statuses: <code>AVAILABLE</code>, <code>PENDING_CREATION</code>, <code>PENDING_UPDATE</code>, <code>PENDING_DELETION</code>,<code>FAILED_CREATION</code>, <code>FAILED_UPDATE</code>, <code>FAILED_DELETION</code>, and <code>DELETED</code>.. '
+        AccountId:
+          allOf:
+          - $ref: '#/components/schemas/CustomerAccountId'
+          - description: The Account Id you use to create the VPC Ingress Connection resource.
+        DomainName:
+          allOf:
+          - $ref: '#/components/schemas/DomainName'
+          - description: The domain name associated with the VPC Ingress Connection resource.
+        IngressVpcConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/IngressVpcConfiguration'
+          - description: Specifications for the customer’s VPC and related PrivateLink VPC endpoint that are used to associate with the VPC Ingress Connection resource.
+        CreatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: '<p>The time when the VPC Ingress Connection was created. It''s in the Unix time stamp format.</p> <ul> <li> <p> Type: Timestamp </p> </li> <li> <p> Required: Yes </p> </li> </ul>'
+        DeletedAt:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: '<p>The time when the App Runner service was deleted. It''s in the Unix time stamp format.</p> <ul> <li> <p> Type: Timestamp </p> </li> <li> <p> Required: No </p> </li> </ul>'
+      description: The App Runner resource that specifies an App Runner endpoint for incoming traffic. It establishes a connection between a VPC interface endpoint and a App Runner service, to make your App Runner service accessible from only within an Amazon VPC.
+    CreateVpcIngressConnectionResponse:
+      type: object
+      required:
+      - VpcIngressConnection
+      properties:
+        VpcIngressConnection:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnection'
+          - description: 'A description of the App Runner VPC Ingress Connection resource that''s created by this request. '
+    VpcIngressConnectionStatus:
+      type: string
+      enum:
+      - AVAILABLE
+      - PENDING_CREATION
+      - PENDING_UPDATE
+      - PENDING_DELETION
+      - FAILED_CREATION
+      - FAILED_UPDATE
+      - FAILED_DELETION
+      - DELETED
+    Tag:
+      type: object
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The key of the tag.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The value of the tag.
+      description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
+  parameters:
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/apprunner/
+x-hasEquivalentPaths: true

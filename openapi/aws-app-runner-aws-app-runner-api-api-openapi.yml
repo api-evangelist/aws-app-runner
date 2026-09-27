@@ -85,8 +85,614 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+  /#ListServices:
+    post:
+      operationId: ListServices
+      summary: AWS App Runner List App Runner Services
+      description: Returns a list of running App Runner services in your AWS account.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ListServices
+      requestBody:
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                MaxResults:
+                  type: integer
+                  minimum: 1
+                  maximum: 25
+                NextToken:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ServiceSummaryList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceSummary'
+                  NextToken:
+                    type: string
+              examples:
+                ListServices200Example:
+                  summary: Default ListServices 200 response
+                  x-microcks-default: true
+                  value:
+                    ServiceSummaryList:
+                    - example-value
+                    NextToken: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeService:
+    post:
+      operationId: DescribeService
+      summary: AWS App Runner Describe an App Runner Service
+      description: Returns a full description of an App Runner service.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DescribeService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+              examples:
+                DescribeService200Example:
+                  summary: Default DescribeService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#UpdateService:
+    post:
+      operationId: UpdateService
+      summary: AWS App Runner Update an App Runner Service
+      description: Update an AWS App Runner service. You can update the source configuration, instance configuration, auto scaling, and health check configuration.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.UpdateService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              $ref: '#/components/schemas/UpdateServiceRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+              examples:
+                UpdateService200Example:
+                  summary: Default UpdateService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DeleteService:
+    post:
+      operationId: DeleteService
+      summary: AWS App Runner Delete an App Runner Service
+      description: Delete an AWS App Runner service.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.DeleteService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+              examples:
+                DeleteService200Example:
+                  summary: Default DeleteService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#PauseService:
+    post:
+      operationId: PauseService
+      summary: AWS App Runner Pause an App Runner Service
+      description: Pause an active AWS App Runner service. Pausing a service reduces costs by stopping the running instances.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.PauseService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+              examples:
+                PauseService200Example:
+                  summary: Default PauseService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ResumeService:
+    post:
+      operationId: ResumeService
+      summary: AWS App Runner Resume an App Runner Service
+      description: Resume an active AWS App Runner service that was previously paused.
+      tags:
+      - AWS App Runner API
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - AppRunner.ResumeService
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              required:
+              - ServiceArn
+              properties:
+                ServiceArn:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Service:
+                    $ref: '#/components/schemas/Service'
+                  OperationId:
+                    type: string
+              examples:
+                ResumeService200Example:
+                  summary: Default ResumeService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      ServiceName: my-app-service
+                      ServiceId: abc123
+                      ServiceArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      ServiceUrl: example-value
+                      CreatedAt: example-value
+                      UpdatedAt: example-value
+                      DeletedAt: example-value
+                      Status: CREATE_FAILED
+                      SourceConfiguration: example-value
+                      InstanceConfiguration: example-value
+                      HealthCheckConfiguration: example-value
+                      AutoScalingConfigurationSummary: example-value
+                      NetworkConfiguration:
+                        EgressConfiguration:
+                          EgressType: {}
+                          VpcConnectorArn: {}
+                        IngressConfiguration:
+                          IsPubliclyAccessible: {}
+                        IpAddressType: IPV4
+                      ObservabilityConfiguration:
+                        ObservabilityEnabled: true
+                        ObservabilityConfigurationArn: arn:aws:apprunner:us-east-1:123456789:service/my-service
+                      EncryptionConfiguration:
+                        KmsKey: example-value
+                    OperationId: abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
+    Service:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        DeletedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        AutoScalingConfigurationSummary:
+          $ref: '#/components/schemas/AutoScalingConfigurationSummary'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                  - DEFAULT
+                  - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+              - IPV4
+              - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+        EncryptionConfiguration:
+          type: object
+          properties:
+            KmsKey:
+              type: string
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    UpdateServiceRequest:
+      type: object
+      required:
+      - ServiceArn
+      properties:
+        ServiceArn:
+          type: string
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        AutoScalingConfigurationArn:
+          type: string
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                  - DEFAULT
+                  - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+              - IPV4
+              - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+    ServiceSummary:
+      type: object
+      properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
+        ServiceArn:
+          type: string
+        ServiceUrl:
+          type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
+    HealthCheckConfiguration:
+      type: object
+      properties:
+        Protocol:
+          type: string
+          enum:
+          - TCP
+          - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
     SourceConfiguration:
       type: object
       properties:
@@ -234,137 +840,6 @@ components:
               type: boolean
             ObservabilityConfigurationArn:
               type: string
-    Service:
-      type: object
-      properties:
-        ServiceName:
-          type: string
-        ServiceId:
-          type: string
-        ServiceArn:
-          type: string
-        ServiceUrl:
-          type: string
-        CreatedAt:
-          type: string
-          format: date-time
-        UpdatedAt:
-          type: string
-          format: date-time
-        DeletedAt:
-          type: string
-          format: date-time
-        Status:
-          type: string
-          enum:
-          - CREATE_FAILED
-          - RUNNING
-          - DELETED
-          - DELETE_FAILED
-          - PAUSED
-          - OPERATION_IN_PROGRESS
-        SourceConfiguration:
-          $ref: '#/components/schemas/SourceConfiguration'
-        InstanceConfiguration:
-          $ref: '#/components/schemas/InstanceConfiguration'
-        HealthCheckConfiguration:
-          $ref: '#/components/schemas/HealthCheckConfiguration'
-        AutoScalingConfigurationSummary:
-          $ref: '#/components/schemas/AutoScalingConfigurationSummary'
-        NetworkConfiguration:
-          type: object
-          properties:
-            EgressConfiguration:
-              type: object
-              properties:
-                EgressType:
-                  type: string
-                  enum:
-                  - DEFAULT
-                  - VPC
-                VpcConnectorArn:
-                  type: string
-            IngressConfiguration:
-              type: object
-              properties:
-                IsPubliclyAccessible:
-                  type: boolean
-            IpAddressType:
-              type: string
-              enum:
-              - IPV4
-              - DUAL_STACK
-        ObservabilityConfiguration:
-          type: object
-          properties:
-            ObservabilityEnabled:
-              type: boolean
-            ObservabilityConfigurationArn:
-              type: string
-        EncryptionConfiguration:
-          type: object
-          properties:
-            KmsKey:
-              type: string
-    AutoScalingConfigurationSummary:
-      type: object
-      properties:
-        AutoScalingConfigurationArn:
-          type: string
-        AutoScalingConfigurationName:
-          type: string
-        AutoScalingConfigurationRevision:
-          type: integer
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        CreatedAt:
-          type: string
-          format: date-time
-        HasAssociatedService:
-          type: boolean
-        IsDefault:
-          type: boolean
-    InstanceConfiguration:
-      type: object
-      properties:
-        Cpu:
-          type: string
-          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
-        Memory:
-          type: string
-          description: Memory in MB (e.g., 2048 for 2 GB).
-        InstanceRoleArn:
-          type: string
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
-    HealthCheckConfiguration:
-      type: object
-      properties:
-        Protocol:
-          type: string
-          enum:
-          - TCP
-          - HTTP
-        Path:
-          type: string
-        Interval:
-          type: integer
-          description: Interval in seconds between health checks.
-        Timeout:
-          type: integer
-          description: Timeout in seconds for each health check.
-        HealthyThreshold:
-          type: integer
-        UnhealthyThreshold:
-          type: integer
   securitySchemes:
     aws_sig_v4:
       type: apiKey

@@ -183,14 +183,7 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
-    ConnectionSummary:
+    Connection:
       type: object
       properties:
         ConnectionName:
@@ -212,7 +205,14 @@ components:
         CreatedAt:
           type: string
           format: date-time
-    Connection:
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
+    ConnectionSummary:
       type: object
       properties:
         ConnectionName:
