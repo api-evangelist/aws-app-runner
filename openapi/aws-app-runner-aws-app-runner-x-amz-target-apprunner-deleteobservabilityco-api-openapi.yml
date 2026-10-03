@@ -174,48 +174,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Integer:
-      type: integer
-    DeleteObservabilityConfigurationResponse:
-      type: object
-      required:
-      - ObservabilityConfiguration
-      properties:
-        ObservabilityConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/ObservabilityConfiguration'
-          - description: A description of the App Runner observability configuration that this request just deleted.
-    Boolean:
-      type: boolean
-    ObservabilityConfigurationStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    TracingVendor:
-      type: string
-      enum:
-      - AWSXRAY
-    ResourceNotFoundException: {}
-    InternalServiceErrorException: {}
-    Timestamp:
-      type: string
-      format: date-time
-    TraceConfiguration:
-      type: object
-      required:
-      - Vendor
-      properties:
-        Vendor:
-          allOf:
-          - $ref: '#/components/schemas/TracingVendor'
-          - description: The implementation provider chosen for tracing App Runner services.
-      description: Describes the configuration of the tracing feature within an App Runner observability configuration.
-    ObservabilityConfigurationName:
-      type: string
-      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,31}'
-      minLength: 4
-      maxLength: 32
     AppRunnerResourceArn:
       type: string
       pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
@@ -231,7 +189,19 @@ components:
           allOf:
           - $ref: '#/components/schemas/AppRunnerResourceArn'
           - description: <p>The Amazon Resource Name (ARN) of the App Runner observability configuration that you want to delete.</p> <p>The ARN can be a full observability configuration ARN, or a partial ARN ending with either <code>.../<i>name</i> </code> or <code>.../<i>name</i>/<i>revision</i> </code>. If a revision isn't specified, the latest active revision is deleted.</p>
-    InvalidRequestException: {}
+    ResourceNotFoundException: {}
+    ObservabilityConfigurationStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+    ObservabilityConfigurationName:
+      type: string
+      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,31}'
+      minLength: 4
+      maxLength: 32
+    Integer:
+      type: integer
     ObservabilityConfiguration:
       type: object
       properties:
@@ -268,21 +238,39 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time when the observability configuration was deleted. It's in Unix time stamp format.
       description: <p>Describes an App Runner observability configuration resource. Multiple revisions of a configuration have the same <code>ObservabilityConfigurationName</code> and different <code>ObservabilityConfigurationRevision</code> values.</p> <p>The resource is designed to configure multiple features (currently one feature, tracing). This type contains optional members that describe the configuration of these features (currently one member, <code>TraceConfiguration</code>). If a feature member isn't specified, the feature isn't enabled.</p>
+    TracingVendor:
+      type: string
+      enum:
+      - AWSXRAY
+    DeleteObservabilityConfigurationResponse:
+      type: object
+      required:
+      - ObservabilityConfiguration
+      properties:
+        ObservabilityConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/ObservabilityConfiguration'
+          - description: A description of the App Runner observability configuration that this request just deleted.
+    Timestamp:
+      type: string
+      format: date-time
+    Boolean:
+      type: boolean
+    InvalidRequestException: {}
+    TraceConfiguration:
+      type: object
+      required:
+      - Vendor
+      properties:
+        Vendor:
+          allOf:
+          - $ref: '#/components/schemas/TracingVendor'
+          - description: The implementation provider chosen for tracing App Runner services.
+      description: Describes the configuration of the tracing feature within an App Runner observability configuration.
+    InternalServiceErrorException: {}
   parameters:
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -293,8 +281,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -305,8 +293,20 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

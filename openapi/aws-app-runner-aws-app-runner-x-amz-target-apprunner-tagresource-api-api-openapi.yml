@@ -179,63 +179,21 @@ paths:
       summary: Tag resource
       x-summary-source: derived
 components:
-  schemas:
-    TagResourceRequest:
-      type: object
-      required:
-      - ResourceArn
-      - Tags
-      title: TagResourceRequest
-      properties:
-        ResourceArn:
-          allOf:
-          - $ref: '#/components/schemas/AppRunnerResourceArn'
-          - description: <p>The Amazon Resource Name (ARN) of the resource that you want to update tags for.</p> <p>It must be the ARN of an App Runner resource.</p>
-        Tags:
-          allOf:
-          - $ref: '#/components/schemas/TagList'
-          - description: A list of tag key-value pairs to add or update. If a key is new to the resource, the tag is added with the provided value. If a key is already associated with the resource, the value of the tag is updated.
-    TagValue:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 256
-    TagResourceResponse:
-      type: object
-      properties: {}
-    TagList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Tag'
-    TagKey:
-      type: string
-      pattern: ^(?!aws:).+
-      minLength: 1
-      maxLength: 128
-    AppRunnerResourceArn:
-      type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
-      minLength: 1
-      maxLength: 1011
-    InvalidStateException: {}
-    ResourceNotFoundException: {}
-    Tag:
-      type: object
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The key of the tag.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The value of the tag.
-      description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
-    InvalidRequestException: {}
-    InternalServiceErrorException: {}
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -252,30 +210,72 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
+  schemas:
+    TagValue:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 256
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
+    TagResourceResponse:
+      type: object
+      properties: {}
+    Tag:
+      type: object
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The key of the tag.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The value of the tag.
+      description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
+    TagResourceRequest:
+      type: object
+      required:
+      - ResourceArn
+      - Tags
+      title: TagResourceRequest
+      properties:
+        ResourceArn:
+          allOf:
+          - $ref: '#/components/schemas/AppRunnerResourceArn'
+          - description: <p>The Amazon Resource Name (ARN) of the resource that you want to update tags for.</p> <p>It must be the ARN of an App Runner resource.</p>
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: A list of tag key-value pairs to add or update. If a key is new to the resource, the tag is added with the provided value. If a key is already associated with the resource, the value of the tag is updated.
+    ResourceNotFoundException: {}
+    InternalServiceErrorException: {}
+    InvalidRequestException: {}
+    TagKey:
+      type: string
+      pattern: ^(?!aws:).+
+      minLength: 1
+      maxLength: 128
+    InvalidStateException: {}
   securitySchemes:
     hmac:
       type: apiKey

@@ -139,13 +139,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
     VpcConnector:
       type: object
       properties:
@@ -174,6 +167,13 @@ components:
         DeletedAt:
           type: string
           format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
   securitySchemes:
     aws_sig_v4:
       type: apiKey

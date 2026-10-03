@@ -179,49 +179,6 @@ paths:
       summary: List vpc ingress connections
       x-summary-source: derived
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
     ListVpcIngressConnectionsRequest:
       type: object
@@ -239,6 +196,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: <p>A token from a previous result page. It's used for a paginated request. The request retrieves the next result page. All other parameter values must be identical to the ones that are specified in the initial request.</p> <p>If you don't specify <code>NextToken</code>, the request retrieves the first result page.</p>
+    NextToken:
+      type: string
+      pattern: .*
+      minLength: 1
+      maxLength: 1024
     VpcIngressConnectionSummary:
       type: object
       properties:
@@ -251,30 +213,11 @@ components:
           - $ref: '#/components/schemas/AppRunnerResourceArn'
           - description: 'The Amazon Resource Name (ARN) of the service associated with the VPC Ingress Connection. '
       description: Provides summary information about an VPC Ingress Connection, which includes its VPC Ingress Connection ARN and its associated Service ARN.
-    VpcIngressConnectionSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/VpcIngressConnectionSummary'
     AppRunnerResourceArn:
       type: string
       pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
       minLength: 1
       maxLength: 1011
-    InternalServiceErrorException: {}
-    String:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 51200
-    MaxResults:
-      type: integer
-      minimum: 1
-      maximum: 100
-    NextToken:
-      type: string
-      pattern: .*
-      minLength: 1
-      maxLength: 1024
     ListVpcIngressConnectionsFilter:
       type: object
       properties:
@@ -287,7 +230,11 @@ components:
           - $ref: '#/components/schemas/String'
           - description: 'The ID of a VPC Endpoint to filter by. '
       description: Returns a list of VPC Ingress Connections based on the filter provided. It can return either <code>ServiceArn</code> or <code>VpcEndpointId</code>, or both.
-    InvalidRequestException: {}
+    String:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 51200
     ListVpcIngressConnectionsResponse:
       type: object
       required:
@@ -301,6 +248,59 @@ components:
           allOf:
           - $ref: '#/components/schemas/NextToken'
           - description: The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request.
+    InternalServiceErrorException: {}
+    InvalidRequestException: {}
+    MaxResults:
+      type: integer
+      minimum: 1
+      maximum: 100
+    VpcIngressConnectionSummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/VpcIngressConnectionSummary'
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

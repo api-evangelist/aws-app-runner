@@ -183,6 +183,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ConnectionSummary:
+      type: object
+      properties:
+        ConnectionName:
+          type: string
+        ConnectionArn:
+          type: string
+        ProviderType:
+          type: string
+          enum:
+          - GITHUB
+          - BITBUCKET
+        Status:
+          type: string
+          enum:
+          - PENDING_HANDSHAKE
+          - AVAILABLE
+          - ERROR
+          - DELETED
+        CreatedAt:
+          type: string
+          format: date-time
     Connection:
       type: object
       properties:
@@ -212,28 +234,6 @@ components:
           type: string
         Value:
           type: string
-    ConnectionSummary:
-      type: object
-      properties:
-        ConnectionName:
-          type: string
-        ConnectionArn:
-          type: string
-        ProviderType:
-          type: string
-          enum:
-          - GITHUB
-          - BITBUCKET
-        Status:
-          type: string
-          enum:
-          - PENDING_HANDSHAKE
-          - AVAILABLE
-          - ERROR
-          - DELETED
-        CreatedAt:
-          type: string
-          format: date-time
   securitySchemes:
     aws_sig_v4:
       type: apiKey

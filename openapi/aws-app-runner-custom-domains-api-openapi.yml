@@ -226,15 +226,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    VpcDNSTarget:
-      type: object
-      properties:
-        VpcIngressConnectionArn:
-          type: string
-        VpcId:
-          type: string
-        DomainName:
-          type: string
     CustomDomain:
       type: object
       properties:
@@ -269,6 +260,15 @@ components:
           - DELETE_FAILED
           - PENDING_CERTIFICATE_DNS_VALIDATION
           - BINDING_CERTIFICATE
+    VpcDNSTarget:
+      type: object
+      properties:
+        VpcIngressConnectionArn:
+          type: string
+        VpcId:
+          type: string
+        DomainName:
+          type: string
   securitySchemes:
     aws_sig_v4:
       type: apiKey
