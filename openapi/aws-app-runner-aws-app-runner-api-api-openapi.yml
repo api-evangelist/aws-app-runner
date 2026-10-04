@@ -491,47 +491,62 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AutoScalingConfigurationSummary:
+    UpdateServiceRequest:
       type: object
+      required:
+      - ServiceArn
       properties:
+        ServiceArn:
+          type: string
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
         AutoScalingConfigurationArn:
           type: string
-        AutoScalingConfigurationName:
-          type: string
-        AutoScalingConfigurationRevision:
-          type: integer
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        CreatedAt:
-          type: string
-          format: date-time
-        HasAssociatedService:
-          type: boolean
-        IsDefault:
-          type: boolean
-    HealthCheckConfiguration:
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                  - DEFAULT
+                  - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+              - IPV4
+              - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+    InstanceConfiguration:
       type: object
       properties:
-        Protocol:
+        Cpu:
           type: string
-          enum:
-          - TCP
-          - HTTP
-        Path:
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
           type: string
-        Interval:
-          type: integer
-          description: Interval in seconds between health checks.
-        Timeout:
-          type: integer
-          description: Timeout in seconds for each health check.
-        HealthyThreshold:
-          type: integer
-        UnhealthyThreshold:
-          type: integer
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
     SourceConfiguration:
       type: object
       properties:
@@ -624,49 +639,32 @@ components:
               type: string
             AccessRoleArn:
               type: string
-    ServiceSummary:
+    HealthCheckConfiguration:
       type: object
       properties:
-        ServiceName:
-          type: string
-        ServiceId:
-          type: string
-        ServiceArn:
-          type: string
-        ServiceUrl:
-          type: string
-        CreatedAt:
-          type: string
-          format: date-time
-        UpdatedAt:
-          type: string
-          format: date-time
-        Status:
+        Protocol:
           type: string
           enum:
-          - CREATE_FAILED
-          - RUNNING
-          - DELETED
-          - DELETE_FAILED
-          - PAUSED
-          - OPERATION_IN_PROGRESS
+          - TCP
+          - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
     Tag:
       type: object
       properties:
         Key:
           type: string
         Value:
-          type: string
-    InstanceConfiguration:
-      type: object
-      properties:
-        Cpu:
-          type: string
-          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
-        Memory:
-          type: string
-          description: Memory in MB (e.g., 2048 for 2 GB).
-        InstanceRoleArn:
           type: string
     CreateServiceRequest:
       type: object
@@ -723,6 +721,27 @@ components:
               type: boolean
             ObservabilityConfigurationArn:
               type: string
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
     Service:
       type: object
       properties:
@@ -795,51 +814,32 @@ components:
           properties:
             KmsKey:
               type: string
-    UpdateServiceRequest:
+    ServiceSummary:
       type: object
-      required:
-      - ServiceArn
       properties:
+        ServiceName:
+          type: string
+        ServiceId:
+          type: string
         ServiceArn:
           type: string
-        SourceConfiguration:
-          $ref: '#/components/schemas/SourceConfiguration'
-        InstanceConfiguration:
-          $ref: '#/components/schemas/InstanceConfiguration'
-        AutoScalingConfigurationArn:
+        ServiceUrl:
           type: string
-        HealthCheckConfiguration:
-          $ref: '#/components/schemas/HealthCheckConfiguration'
-        NetworkConfiguration:
-          type: object
-          properties:
-            EgressConfiguration:
-              type: object
-              properties:
-                EgressType:
-                  type: string
-                  enum:
-                  - DEFAULT
-                  - VPC
-                VpcConnectorArn:
-                  type: string
-            IngressConfiguration:
-              type: object
-              properties:
-                IsPubliclyAccessible:
-                  type: boolean
-            IpAddressType:
-              type: string
-              enum:
-              - IPV4
-              - DUAL_STACK
-        ObservabilityConfiguration:
-          type: object
-          properties:
-            ObservabilityEnabled:
-              type: boolean
-            ObservabilityConfigurationArn:
-              type: string
+        CreatedAt:
+          type: string
+          format: date-time
+        UpdatedAt:
+          type: string
+          format: date-time
+        Status:
+          type: string
+          enum:
+          - CREATE_FAILED
+          - RUNNING
+          - DELETED
+          - DELETE_FAILED
+          - PAUSED
+          - OPERATION_IN_PROGRESS
   securitySchemes:
     aws_sig_v4:
       type: apiKey

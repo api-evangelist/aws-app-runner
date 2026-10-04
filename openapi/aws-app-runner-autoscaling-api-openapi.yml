@@ -142,6 +142,34 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
     AutoScalingConfiguration:
       type: object
       properties:
@@ -168,34 +196,6 @@ components:
           type: string
           format: date-time
         DeletedAt:
-          type: string
-          format: date-time
-        HasAssociatedService:
-          type: boolean
-        IsDefault:
-          type: boolean
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
-    AutoScalingConfigurationSummary:
-      type: object
-      properties:
-        AutoScalingConfigurationArn:
-          type: string
-        AutoScalingConfigurationName:
-          type: string
-        AutoScalingConfigurationRevision:
-          type: integer
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        CreatedAt:
           type: string
           format: date-time
         HasAssociatedService:

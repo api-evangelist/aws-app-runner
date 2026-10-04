@@ -181,39 +181,11 @@ paths:
 components:
   schemas:
     ServiceQuotaExceededException: {}
-    TagValue:
+    DomainName:
       type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 256
-    AppRunnerResourceArn:
-      type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      pattern: '[A-Za-z0-9*.-]{1,255}'
       minLength: 1
-      maxLength: 1011
-    Tag:
-      type: object
-      properties:
-        Key:
-          allOf:
-          - $ref: '#/components/schemas/TagKey'
-          - description: The key of the tag.
-        Value:
-          allOf:
-          - $ref: '#/components/schemas/TagValue'
-          - description: The value of the tag.
-      description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
-    VpcIngressConnectionStatus:
-      type: string
-      enum:
-      - AVAILABLE
-      - PENDING_CREATION
-      - PENDING_UPDATE
-      - PENDING_DELETION
-      - FAILED_CREATION
-      - FAILED_UPDATE
-      - FAILED_DELETION
-      - DELETED
+      maxLength: 255
     IngressVpcConfiguration:
       type: object
       properties:
@@ -226,20 +198,6 @@ components:
           - $ref: '#/components/schemas/String'
           - description: 'The ID of the VPC endpoint that your App Runner service connects to. '
       description: The configuration of your VPC and the associated VPC endpoint. The VPC endpoint is an Amazon Web Services PrivateLink resource that allows access to your App Runner services from within an Amazon VPC.
-    TagKey:
-      type: string
-      pattern: ^(?!aws:).+
-      minLength: 1
-      maxLength: 128
-    CreateVpcIngressConnectionResponse:
-      type: object
-      required:
-      - VpcIngressConnection
-      properties:
-        VpcIngressConnection:
-          allOf:
-          - $ref: '#/components/schemas/VpcIngressConnection'
-          - description: 'A description of the App Runner VPC Ingress Connection resource that''s created by this request. '
     CustomerAccountId:
       type: string
       pattern: '[0-9]{12}'
@@ -249,6 +207,60 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
+    CreateVpcIngressConnectionResponse:
+      type: object
+      required:
+      - VpcIngressConnection
+      properties:
+        VpcIngressConnection:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnection'
+          - description: 'A description of the App Runner VPC Ingress Connection resource that''s created by this request. '
+    Tag:
+      type: object
+      properties:
+        Key:
+          allOf:
+          - $ref: '#/components/schemas/TagKey'
+          - description: The key of the tag.
+        Value:
+          allOf:
+          - $ref: '#/components/schemas/TagValue'
+          - description: The value of the tag.
+      description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
+    InvalidRequestException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    CreateVpcIngressConnectionRequest:
+      type: object
+      required:
+      - ServiceArn
+      - VpcIngressConnectionName
+      - IngressVpcConfiguration
+      title: CreateVpcIngressConnectionRequest
+      properties:
+        ServiceArn:
+          allOf:
+          - $ref: '#/components/schemas/AppRunnerResourceArn'
+          - description: The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
+        VpcIngressConnectionName:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnectionName'
+          - description: 'A name for the VPC Ingress Connection resource. It must be unique across all the active VPC Ingress Connections in your Amazon Web Services account in the Amazon Web Services Region. '
+        IngressVpcConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/IngressVpcConfiguration'
+          - description: Specifications for the customer’s Amazon VPC and the related Amazon Web Services PrivateLink VPC endpoint that are used to create the VPC Ingress Connection resource.
+        Tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
+    TagValue:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 256
     VpcIngressConnection:
       type: object
       properties:
@@ -289,72 +301,42 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: '<p>The time when the App Runner service was deleted. It''s in the Unix time stamp format.</p> <ul> <li> <p> Type: Timestamp </p> </li> <li> <p> Required: No </p> </li> </ul>'
       description: The App Runner resource that specifies an App Runner endpoint for incoming traffic. It establishes a connection between a VPC interface endpoint and a App Runner service, to make your App Runner service accessible from only within an Amazon VPC.
-    DomainName:
+    TagKey:
       type: string
-      pattern: '[A-Za-z0-9*.-]{1,255}'
+      pattern: ^(?!aws:).+
       minLength: 1
-      maxLength: 255
-    Timestamp:
+      maxLength: 128
+    InvalidStateException: {}
+    VpcIngressConnectionStatus:
       type: string
-      format: date-time
-    String:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 51200
+      enum:
+      - AVAILABLE
+      - PENDING_CREATION
+      - PENDING_UPDATE
+      - PENDING_DELETION
+      - FAILED_CREATION
+      - FAILED_UPDATE
+      - FAILED_DELETION
+      - DELETED
     VpcIngressConnectionName:
       type: string
       pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,39}'
       minLength: 4
       maxLength: 40
-    InvalidRequestException: {}
-    CreateVpcIngressConnectionRequest:
-      type: object
-      required:
-      - ServiceArn
-      - VpcIngressConnectionName
-      - IngressVpcConfiguration
-      title: CreateVpcIngressConnectionRequest
-      properties:
-        ServiceArn:
-          allOf:
-          - $ref: '#/components/schemas/AppRunnerResourceArn'
-          - description: The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
-        VpcIngressConnectionName:
-          allOf:
-          - $ref: '#/components/schemas/VpcIngressConnectionName'
-          - description: 'A name for the VPC Ingress Connection resource. It must be unique across all the active VPC Ingress Connections in your Amazon Web Services account in the Amazon Web Services Region. '
-        IngressVpcConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/IngressVpcConfiguration'
-          - description: Specifications for the customer’s Amazon VPC and the related Amazon Web Services PrivateLink VPC endpoint that are used to create the VPC Ingress Connection resource.
-        Tags:
-          allOf:
-          - $ref: '#/components/schemas/TagList'
-          - description: An optional list of metadata items that you can associate with the VPC Ingress Connection resource. A tag is a key-value pair.
-    InvalidStateException: {}
+    String:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 51200
     InternalServiceErrorException: {}
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -371,8 +353,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

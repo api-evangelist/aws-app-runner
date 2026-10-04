@@ -205,6 +205,13 @@ components:
         CreatedAt:
           type: string
           format: date-time
+    Tag:
+      type: object
+      properties:
+        Key:
+          type: string
+        Value:
+          type: string
     Connection:
       type: object
       properties:
@@ -227,13 +234,6 @@ components:
         CreatedAt:
           type: string
           format: date-time
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
   securitySchemes:
     aws_sig_v4:
       type: apiKey

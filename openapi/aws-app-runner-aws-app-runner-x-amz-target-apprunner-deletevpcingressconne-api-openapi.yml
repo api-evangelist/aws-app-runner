@@ -191,24 +191,64 @@ paths:
       summary: Delete vpc ingress connection
       x-summary-source: derived
 components:
+  parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    AppRunnerResourceArn:
+    DomainName:
       type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      pattern: '[A-Za-z0-9*.-]{1,255}'
       minLength: 1
-      maxLength: 1011
-    ResourceNotFoundException: {}
-    VpcIngressConnectionStatus:
-      type: string
-      enum:
-      - AVAILABLE
-      - PENDING_CREATION
-      - PENDING_UPDATE
-      - PENDING_DELETION
-      - FAILED_CREATION
-      - FAILED_UPDATE
-      - FAILED_DELETION
-      - DELETED
+      maxLength: 255
+    DeleteVpcIngressConnectionResponse:
+      type: object
+      required:
+      - VpcIngressConnection
+      properties:
+        VpcIngressConnection:
+          allOf:
+          - $ref: '#/components/schemas/VpcIngressConnection'
+          - description: A description of the App Runner VPC Ingress Connection that this request just deleted.
     IngressVpcConfiguration:
       type: object
       properties:
@@ -226,6 +266,11 @@ components:
       pattern: '[0-9]{12}'
       minLength: 12
       maxLength: 12
+    InvalidRequestException: {}
+    Timestamp:
+      type: string
+      format: date-time
+    ResourceNotFoundException: {}
     VpcIngressConnection:
       type: object
       properties:
@@ -266,35 +311,23 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: '<p>The time when the App Runner service was deleted. It''s in the Unix time stamp format.</p> <ul> <li> <p> Type: Timestamp </p> </li> <li> <p> Required: No </p> </li> </ul>'
       description: The App Runner resource that specifies an App Runner endpoint for incoming traffic. It establishes a connection between a VPC interface endpoint and a App Runner service, to make your App Runner service accessible from only within an Amazon VPC.
-    DeleteVpcIngressConnectionResponse:
-      type: object
-      required:
-      - VpcIngressConnection
-      properties:
-        VpcIngressConnection:
-          allOf:
-          - $ref: '#/components/schemas/VpcIngressConnection'
-          - description: A description of the App Runner VPC Ingress Connection that this request just deleted.
-    DomainName:
+    InvalidStateException: {}
+    VpcIngressConnectionStatus:
       type: string
-      pattern: '[A-Za-z0-9*.-]{1,255}'
-      minLength: 1
-      maxLength: 255
-    Timestamp:
-      type: string
-      format: date-time
-    String:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 51200
+      enum:
+      - AVAILABLE
+      - PENDING_CREATION
+      - PENDING_UPDATE
+      - PENDING_DELETION
+      - FAILED_CREATION
+      - FAILED_UPDATE
+      - FAILED_DELETION
+      - DELETED
     VpcIngressConnectionName:
       type: string
       pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,39}'
       minLength: 4
       maxLength: 40
-    InvalidRequestException: {}
-    InvalidStateException: {}
     DeleteVpcIngressConnectionRequest:
       type: object
       required:
@@ -306,49 +339,16 @@ components:
           - $ref: '#/components/schemas/AppRunnerResourceArn'
           - description: The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that you want to delete.
     InternalServiceErrorException: {}
-  parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+    String:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 51200
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
   securitySchemes:
     hmac:
       type: apiKey

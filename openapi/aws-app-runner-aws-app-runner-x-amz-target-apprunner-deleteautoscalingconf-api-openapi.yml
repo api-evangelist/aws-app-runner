@@ -173,13 +173,50 @@ paths:
       summary: Delete auto scaling configuration
       x-summary-source: derived
 components:
+  parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
-    AppRunnerResourceArn:
-      type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
-      minLength: 1
-      maxLength: 1011
-    ResourceNotFoundException: {}
     AutoScalingConfiguration:
       type: object
       properties:
@@ -224,11 +261,24 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: The time when the auto scaling configuration was deleted. It's in Unix time stamp format.
       description: <p>Describes an App Runner automatic scaling configuration resource.</p> <p>A higher <code>MinSize</code> increases the spread of your App Runner service over more Availability Zones in the Amazon Web Services Region. The tradeoff is a higher minimal cost.</p> <p>A lower <code>MaxSize</code> controls your cost. The tradeoff is lower responsiveness during peak demand.</p> <p>Multiple revisions of a configuration might have the same <code>AutoScalingConfigurationName</code> and different <code>AutoScalingConfigurationRevision</code> values.</p>
-    Integer:
-      type: integer
+    DeleteAutoScalingConfigurationResponse:
+      type: object
+      required:
+      - AutoScalingConfiguration
+      properties:
+        AutoScalingConfiguration:
+          allOf:
+          - $ref: '#/components/schemas/AutoScalingConfiguration'
+          - description: A description of the App Runner auto scaling configuration that this request just deleted.
+    InvalidRequestException: {}
     Timestamp:
       type: string
       format: date-time
+    AutoScalingConfigurationName:
+      type: string
+      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,31}'
+      minLength: 4
+      maxLength: 32
     DeleteAutoScalingConfigurationRequest:
       type: object
       required:
@@ -239,72 +289,22 @@ components:
           allOf:
           - $ref: '#/components/schemas/AppRunnerResourceArn'
           - description: <p>The Amazon Resource Name (ARN) of the App Runner auto scaling configuration that you want to delete.</p> <p>The ARN can be a full auto scaling configuration ARN, or a partial ARN ending with either <code>.../<i>name</i> </code> or <code>.../<i>name</i>/<i>revision</i> </code>. If a revision isn't specified, the latest active revision is deleted.</p>
-    Boolean:
-      type: boolean
-    InvalidRequestException: {}
-    AutoScalingConfigurationName:
-      type: string
-      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,31}'
-      minLength: 4
-      maxLength: 32
-    DeleteAutoScalingConfigurationResponse:
-      type: object
-      required:
-      - AutoScalingConfiguration
-      properties:
-        AutoScalingConfiguration:
-          allOf:
-          - $ref: '#/components/schemas/AutoScalingConfiguration'
-          - description: A description of the App Runner auto scaling configuration that this request just deleted.
-    InternalServiceErrorException: {}
+    ResourceNotFoundException: {}
     AutoScalingConfigurationStatus:
       type: string
       enum:
       - ACTIVE
       - INACTIVE
-  parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
+    Integer:
+      type: integer
+    InternalServiceErrorException: {}
+    Boolean:
+      type: boolean
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
   securitySchemes:
     hmac:
       type: apiKey
