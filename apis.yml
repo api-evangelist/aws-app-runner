@@ -164,8 +164,9 @@ apis:
     for aws app runner #x amz target=apprunner.createvpcingressconne….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.CreateVpcIngressConne…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.CreateVpcIngressConne…
   properties:
   - type: OpenAPI
     url: >-
@@ -222,8 +223,9 @@ apis:
     for aws app runner #x amz target=apprunner.deleteautoscalingconf….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DeleteAutoScalingConf…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DeleteAutoScalingConf…
   properties:
   - type: OpenAPI
     url: >-
@@ -280,8 +282,9 @@ apis:
     for aws app runner #x amz target=apprunner.deleteobservabilityco….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DeleteObservabilityCo…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DeleteObservabilityCo…
   properties:
   - type: OpenAPI
     url: >-
@@ -396,8 +399,9 @@ apis:
     for aws app runner #x amz target=apprunner.deletevpcingressconne….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DeleteVpcIngressConne…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DeleteVpcIngressConne…
   properties:
   - type: OpenAPI
     url: >-
@@ -454,8 +458,9 @@ apis:
     for aws app runner #x amz target=apprunner.describeautoscalingco….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DescribeAutoScalingCo…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DescribeAutoScalingCo…
   properties:
   - type: OpenAPI
     url: >-
@@ -512,8 +517,9 @@ apis:
     for aws app runner #x amz target=apprunner.describeobservability….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DescribeObservability…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DescribeObservability…
   properties:
   - type: OpenAPI
     url: >-
@@ -628,8 +634,9 @@ apis:
     for aws app runner #x amz target=apprunner.describevpcingresscon….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.DescribeVpcIngressCon…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.DescribeVpcIngressCon…
   properties:
   - type: OpenAPI
     url: >-
@@ -686,8 +693,9 @@ apis:
     for aws app runner #x amz target=apprunner.listobservabilityconf….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.ListObservabilityConf…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.ListObservabilityConf…
   properties:
   - type: OpenAPI
     url: >-
@@ -802,8 +810,9 @@ apis:
     for aws app runner #x amz target=apprunner.listvpcingressconnect….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.ListVpcIngressConnect…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.ListVpcIngressConnect…
   properties:
   - type: OpenAPI
     url: >-
@@ -859,8 +868,9 @@ apis:
     for aws app runner #x amz target=apprunner.tagresource api.
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.TagResource API'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.TagResource API
   properties:
   - type: OpenAPI
     url: >-
@@ -917,8 +927,9 @@ apis:
     for aws app runner #x amz target=apprunner.untagresource api.
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.UntagResource API'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.UntagResource API
   properties:
   - type: OpenAPI
     url: >-
@@ -975,8 +986,9 @@ apis:
     for aws app runner #x amz target=apprunner.updatevpcingressconne….
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
-  tags:
-  - 'AWS App Runner #X Amz Target=AppRunner.UpdateVpcIngressConne…'
+  tags: []
+  tags_raw:
+  - AWS App Runner #X Amz Target=AppRunner.UpdateVpcIngressConne…
   properties:
   - type: OpenAPI
     url: >-
@@ -1031,6 +1043,8 @@ apis:
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
   tags:
+  - Auto-Scaling
+  tags_raw:
   - Autoscaling
   properties:
   - type: OpenAPI
@@ -1080,6 +1094,9 @@ apis:
   - type: Conformance
     url: conformance/amazon-app-runner-conformance.yml
 common:
+- type: CapabilityMap
+  url: capabilities/aws-app-runner-capability-edges.yml
+  name: AWS App Runner Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/aws-app-runner/overview
 - type: AgenticAccess
