@@ -1,0 +1,95 @@
+slug: aws-app-runner
+provider: AWS App Runner
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: VPC
+  spec_file: aws-app-runner-vpc-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.72
+  evidence: CreateVpcConnector  AWS App Runner Create a VPC Connector
+  reason: VPC connector creation/listing is cloud network infrastructure provisioning — IT Infrastructure
+    Management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.CreateVpcIngressConne…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-createvpcingressconne-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: CreateVpcIngressConnection  Create vpc ingress connection; schemas IngressVpcConfiguration,
+    VpcIngressConnection
+  reason: Provisions private VPC network ingress for a managed container service — cloud network/compute
+    infrastructure provisioning, i.e. IT Infrastructure Management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DeleteObservabilityCo…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-deleteobservabilityco-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: DeleteObservabilityConfiguration  Delete observability configuration; schemas TraceConfiguration,
+    TracingVendor
+  reason: Operation configures tracing/observability for the running service; schema names TraceConfiguration
+    and TracingVendor ground this on Observability Management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DeleteVpcConnector…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-deletevpcconnector-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: DeleteVpcConnector  Delete vpc connector; schemas VpcConnector, VpcConnectorStatus
+  reason: Lifecycle of VPC network connectors for the compute service — cloud network infrastructure management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DeleteVpcIngressConne…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-deletevpcingressconne-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: DeleteVpcIngressConnection  Delete vpc ingress connection; schemas IngressVpcConfiguration,
+    VpcIngressConnection
+  reason: Deletes private network ingress endpoints for the managed service — cloud network infrastructure
+    management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DescribeObservability…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-describeobservability-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: DescribeObservabilityConfiguration  Describe observability configuration; TracingVendor, TraceConfiguration
+  reason: Retrieves tracing/observability settings for the running service — Observability Management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DescribeVpcConnector…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-describevpcconnector-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: DescribeVpcConnector  Describe vpc connector; schemas VpcConnector, VpcConnectorStatus
+  reason: Inspects VPC network connector resources — cloud network infrastructure management.
+- tag: 'AWS App Runner #X Amz Target=AppRunner.DescribeVpcIngressCon…'
+  spec_file: aws-app-runner-aws-app-runner-x-amz-target-apprunner-describevpcingresscon-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: DescribeVpcIngressConnection  Describe vpc ingress connection
+  reason: Inspects private VPC ingress connectivity for the service — cloud network infrastructure management.
+- tag: Deployments
+  spec_file: aws-app-runner-deployments-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.7
+  evidence: StartDeployment  AWS App Runner Start a Deployment
+  reason: Triggering and tracking deployments of an application to the running service matches Deployment
+    Orchestration — delivering software changes to production.
