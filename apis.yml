@@ -1092,6 +1092,12 @@ apis:
   - type: Conformance
     url: conformance/amazon-app-runner-conformance.yml
 common:
+- type: Plans
+  url: plans/aws-app-runner-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/aws-app-runner-rate-limits.yml
+- type: FinOps
+  url: finops/aws-app-runner-finops.yml
 - type: CapabilityMap
   url: capabilities/aws-app-runner-capability-edges.yml
   name: AWS App Runner Business Capability Map
