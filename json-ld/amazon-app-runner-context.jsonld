@@ -1,0 +1,23 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "DNSTarget": {
+      "@id": "schema:DNSTarget",
+      "@type": "xsd:string"
+    },
+    "ServiceArn": {
+      "@id": "schema:ServiceArn",
+      "@type": "xsd:string"
+    },
+    "CustomDomain": {
+      "@id": "schema:CustomDomain",
+      "@type": "xsd:string"
+    },
+    "VpcDNSTargets": {
+      "@id": "schema:VpcDNSTargets",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: derived
+format: aws-modeled-exception
+source: >-
+  Derived from the error responses in
+  openapi/amazon-app-runner-openapi.yaml and enriched from
+  https://docs.aws.amazon.com/apprunner/latest/api/CommonErrors.html.
+notes: >-
+  AWS App Runner uses the AWS JSON RPC protocol. Errors are returned as modeled
+  exceptions in an application/json body carrying an __type field, with an HTTP
+  400 (client) or 500 (server) class status, not RFC 9457 problem+json. The
+  aws2openapi converter that produced the OpenAPI file assigns synthetic 480-483
+  status codes whose numeric value is per-operation ordering and is NOT a stable
+  code per exception, so problems below are keyed by exception name.
+problems:
+  - exception: InvalidRequestException
+    http_class: 400
+    title: One or more input parameters aren't valid.
+    remediation: Correct the invalid request parameters and retry.
+  - exception: InvalidStateException
+    http_class: 400
+    title: >-
+      The request contains invalid values, or the requested resource is in an
+      invalid state that doesn't allow the operation.
+    remediation: >-
+      Wait for the resource to reach a valid state (for example a RUNNING
+      service) before retrying the operation.
+  - exception: ResourceNotFoundException
+    http_class: 400
+    title: >-
+      A resource doesn't exist for the specified Amazon Resource Name (ARN) in
+      your Amazon Web Services account.
+    remediation: Verify the ARN and Region and retry against an existing resource.
+  - exception: ServiceQuotaExceededException
+    http_class: 400
+    title: App Runner can't create this resource because you've reached one of its quota limits.
+    remediation: Request a service quota increase, or delete unused resources, then retry.
+  - exception: InternalServiceErrorException
+    http_class: 500
+    title: An unexpected service exception occurred.
+    remediation: Retry the request with backoff; if the error persists, contact AWS Support.

@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/amazon-app-runner-openapi.yaml (securitySchemes, response shapes,
+  list-operation parameters) plus AWS App Runner API documentation.
+standards:
+  - id: aws-sigv4
+    conforms: true
+    evidence: >-
+      securitySchemes.hmac is an apiKey Authorization header with
+      x-amazon-apigateway-authtype awsSigv4 (Amazon Signature Version 4).
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 security scheme; authentication is AWS SigV4.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors are AWS modeled exceptions (application/json), not
+      application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      List operations accept MaxResults and NextToken and return NextToken for
+      token-based pagination (43 NextToken / 44 MaxResults references).
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No client idempotency token or Idempotency-Key parameter is present on
+      create operations.
+  - id: json-api
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: fhir
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: psd2
+    conforms: false
