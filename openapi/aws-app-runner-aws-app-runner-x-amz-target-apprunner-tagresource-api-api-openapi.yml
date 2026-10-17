@@ -180,16 +180,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InvalidStateException: {}
-    TagValue:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 256
-    ResourceNotFoundException: {}
-    TagResourceResponse:
-      type: object
-      properties: {}
     Tag:
       type: object
       properties:
@@ -202,8 +192,22 @@ components:
           - $ref: '#/components/schemas/TagValue'
           - description: The value of the tag.
       description: Describes a tag that is applied to an App Runner resource. A tag is a metadata item consisting of a key-value pair.
+    AppRunnerResourceArn:
+      type: string
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      minLength: 1
+      maxLength: 1011
+    ResourceNotFoundException: {}
+    InvalidStateException: {}
+    TagValue:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 256
+    TagResourceResponse:
+      type: object
+      properties: {}
     InternalServiceErrorException: {}
-    InvalidRequestException: {}
     TagResourceRequest:
       type: object
       required:
@@ -219,6 +223,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/TagList'
           - description: A list of tag key-value pairs to add or update. If a key is new to the resource, the tag is added with the provided value. If a key is already associated with the resource, the value of the tag is updated.
+    InvalidRequestException: {}
     TagList:
       type: array
       items:
@@ -228,14 +233,9 @@ components:
       pattern: ^(?!aws:).+
       minLength: 1
       maxLength: 128
-    AppRunnerResourceArn:
-      type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
-      minLength: 1
-      maxLength: 1011
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -246,8 +246,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -264,14 +270,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

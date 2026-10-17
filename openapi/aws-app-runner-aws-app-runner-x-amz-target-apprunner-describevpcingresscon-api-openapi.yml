@@ -173,55 +173,14 @@ paths:
       summary: Describe vpc ingress connection
       x-summary-source: derived
 components:
-  parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    DomainName:
+    AppRunnerResourceArn:
       type: string
-      pattern: '[A-Za-z0-9*.-]{1,255}'
+      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
       minLength: 1
-      maxLength: 255
+      maxLength: 1011
+    ResourceNotFoundException: {}
+    InternalServiceErrorException: {}
     DescribeVpcIngressConnectionRequest:
       type: object
       required:
@@ -232,28 +191,25 @@ components:
           allOf:
           - $ref: '#/components/schemas/AppRunnerResourceArn'
           - description: The Amazon Resource Name (ARN) of the App Runner VPC Ingress Connection that you want a description for.
-    IngressVpcConfiguration:
-      type: object
-      properties:
-        VpcId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: The ID of the VPC that is used for the VPC endpoint.
-        VpcEndpointId:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: 'The ID of the VPC endpoint that your App Runner service connects to. '
-      description: The configuration of your VPC and the associated VPC endpoint. The VPC endpoint is an Amazon Web Services PrivateLink resource that allows access to your App Runner services from within an Amazon VPC.
+    String:
+      type: string
+      pattern: .*
+      minLength: 0
+      maxLength: 51200
+    VpcIngressConnectionName:
+      type: string
+      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,39}'
+      minLength: 4
+      maxLength: 40
+    InvalidRequestException: {}
     CustomerAccountId:
       type: string
       pattern: '[0-9]{12}'
       minLength: 12
       maxLength: 12
-    InvalidRequestException: {}
     Timestamp:
       type: string
       format: date-time
-    ResourceNotFoundException: {}
     VpcIngressConnection:
       type: object
       properties:
@@ -314,22 +270,66 @@ components:
           allOf:
           - $ref: '#/components/schemas/VpcIngressConnection'
           - description: A description of the App Runner VPC Ingress Connection that you specified in this request.
-    VpcIngressConnectionName:
+    DomainName:
       type: string
-      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{3,39}'
-      minLength: 4
-      maxLength: 40
-    String:
-      type: string
-      pattern: .*
-      minLength: 0
-      maxLength: 51200
-    InternalServiceErrorException: {}
-    AppRunnerResourceArn:
-      type: string
-      pattern: arn:aws(-[\w]+)*:[a-z0-9-\\.]{0,63}:[a-z0-9-\\.]{0,63}:[0-9]{12}:(\w|\/|-){1,1011}
+      pattern: '[A-Za-z0-9*.-]{1,255}'
       minLength: 1
-      maxLength: 1011
+      maxLength: 255
+    IngressVpcConfiguration:
+      type: object
+      properties:
+        VpcId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: The ID of the VPC that is used for the VPC endpoint.
+        VpcEndpointId:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: 'The ID of the VPC endpoint that your App Runner service connects to. '
+      description: The configuration of your VPC and the associated VPC endpoint. The VPC endpoint is an Amazon Web Services PrivateLink resource that allows access to your App Runner services from within an Amazon VPC.
+  parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

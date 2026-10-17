@@ -491,21 +491,31 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UpdateServiceRequest:
+    CreateServiceRequest:
       type: object
       required:
-      - ServiceArn
+      - ServiceName
+      - SourceConfiguration
       properties:
-        ServiceArn:
+        ServiceName:
           type: string
         SourceConfiguration:
           $ref: '#/components/schemas/SourceConfiguration'
         InstanceConfiguration:
           $ref: '#/components/schemas/InstanceConfiguration'
-        AutoScalingConfigurationArn:
-          type: string
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        EncryptionConfiguration:
+          type: object
+          properties:
+            KmsKey:
+              type: string
         HealthCheckConfiguration:
           $ref: '#/components/schemas/HealthCheckConfiguration'
+        AutoScalingConfigurationArn:
+          type: string
         NetworkConfiguration:
           type: object
           properties:
@@ -536,16 +546,12 @@ components:
               type: boolean
             ObservabilityConfigurationArn:
               type: string
-    InstanceConfiguration:
+    Tag:
       type: object
       properties:
-        Cpu:
+        Key:
           type: string
-          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
-        Memory:
-          type: string
-          description: Memory in MB (e.g., 2048 for 2 GB).
-        InstanceRoleArn:
+        Value:
           type: string
     SourceConfiguration:
       type: object
@@ -639,109 +645,6 @@ components:
               type: string
             AccessRoleArn:
               type: string
-    HealthCheckConfiguration:
-      type: object
-      properties:
-        Protocol:
-          type: string
-          enum:
-          - TCP
-          - HTTP
-        Path:
-          type: string
-        Interval:
-          type: integer
-          description: Interval in seconds between health checks.
-        Timeout:
-          type: integer
-          description: Timeout in seconds for each health check.
-        HealthyThreshold:
-          type: integer
-        UnhealthyThreshold:
-          type: integer
-    Tag:
-      type: object
-      properties:
-        Key:
-          type: string
-        Value:
-          type: string
-    CreateServiceRequest:
-      type: object
-      required:
-      - ServiceName
-      - SourceConfiguration
-      properties:
-        ServiceName:
-          type: string
-        SourceConfiguration:
-          $ref: '#/components/schemas/SourceConfiguration'
-        InstanceConfiguration:
-          $ref: '#/components/schemas/InstanceConfiguration'
-        Tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-        EncryptionConfiguration:
-          type: object
-          properties:
-            KmsKey:
-              type: string
-        HealthCheckConfiguration:
-          $ref: '#/components/schemas/HealthCheckConfiguration'
-        AutoScalingConfigurationArn:
-          type: string
-        NetworkConfiguration:
-          type: object
-          properties:
-            EgressConfiguration:
-              type: object
-              properties:
-                EgressType:
-                  type: string
-                  enum:
-                  - DEFAULT
-                  - VPC
-                VpcConnectorArn:
-                  type: string
-            IngressConfiguration:
-              type: object
-              properties:
-                IsPubliclyAccessible:
-                  type: boolean
-            IpAddressType:
-              type: string
-              enum:
-              - IPV4
-              - DUAL_STACK
-        ObservabilityConfiguration:
-          type: object
-          properties:
-            ObservabilityEnabled:
-              type: boolean
-            ObservabilityConfigurationArn:
-              type: string
-    AutoScalingConfigurationSummary:
-      type: object
-      properties:
-        AutoScalingConfigurationArn:
-          type: string
-        AutoScalingConfigurationName:
-          type: string
-        AutoScalingConfigurationRevision:
-          type: integer
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-        CreatedAt:
-          type: string
-          format: date-time
-        HasAssociatedService:
-          type: boolean
-        IsDefault:
-          type: boolean
     Service:
       type: object
       properties:
@@ -814,6 +717,103 @@ components:
           properties:
             KmsKey:
               type: string
+    UpdateServiceRequest:
+      type: object
+      required:
+      - ServiceArn
+      properties:
+        ServiceArn:
+          type: string
+        SourceConfiguration:
+          $ref: '#/components/schemas/SourceConfiguration'
+        InstanceConfiguration:
+          $ref: '#/components/schemas/InstanceConfiguration'
+        AutoScalingConfigurationArn:
+          type: string
+        HealthCheckConfiguration:
+          $ref: '#/components/schemas/HealthCheckConfiguration'
+        NetworkConfiguration:
+          type: object
+          properties:
+            EgressConfiguration:
+              type: object
+              properties:
+                EgressType:
+                  type: string
+                  enum:
+                  - DEFAULT
+                  - VPC
+                VpcConnectorArn:
+                  type: string
+            IngressConfiguration:
+              type: object
+              properties:
+                IsPubliclyAccessible:
+                  type: boolean
+            IpAddressType:
+              type: string
+              enum:
+              - IPV4
+              - DUAL_STACK
+        ObservabilityConfiguration:
+          type: object
+          properties:
+            ObservabilityEnabled:
+              type: boolean
+            ObservabilityConfigurationArn:
+              type: string
+    AutoScalingConfigurationSummary:
+      type: object
+      properties:
+        AutoScalingConfigurationArn:
+          type: string
+        AutoScalingConfigurationName:
+          type: string
+        AutoScalingConfigurationRevision:
+          type: integer
+        Status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        CreatedAt:
+          type: string
+          format: date-time
+        HasAssociatedService:
+          type: boolean
+        IsDefault:
+          type: boolean
+    InstanceConfiguration:
+      type: object
+      properties:
+        Cpu:
+          type: string
+          description: CPU units (e.g., 1024 for 1 vCPU, 256, 512, 1024, 2048, 4096).
+        Memory:
+          type: string
+          description: Memory in MB (e.g., 2048 for 2 GB).
+        InstanceRoleArn:
+          type: string
+    HealthCheckConfiguration:
+      type: object
+      properties:
+        Protocol:
+          type: string
+          enum:
+          - TCP
+          - HTTP
+        Path:
+          type: string
+        Interval:
+          type: integer
+          description: Interval in seconds between health checks.
+        Timeout:
+          type: integer
+          description: Timeout in seconds for each health check.
+        HealthyThreshold:
+          type: integer
+        UnhealthyThreshold:
+          type: integer
     ServiceSummary:
       type: object
       properties:
