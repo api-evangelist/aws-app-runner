@@ -1043,6 +1043,8 @@ apis:
   humanURL: https://aws.amazon.com/apprunner/
   baseURL: https://apprunner.{region}.amazonaws.com
   tags:
+  - Auto-Scaling
+  tags_raw:
   - Autoscaling
   properties:
   - type: OpenAPI
